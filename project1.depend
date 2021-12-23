@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1640279718 source:c:\users\mariam\desktop\project1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"color.h"
+	"Display.h"
+
+1640275582 c:\users\mariam\desktop\project1\color.h
+	<stdio.h>
+	<stdlib.h>
+
+1640280072 c:\users\mariam\desktop\project1\display.h
+
