@@ -5,11 +5,9 @@
 
 int main()
 {
- menu();
 
- players_mode_ui();
+menu();
 
- difficulty_mode_ui();
 
- threex3();
+
 }

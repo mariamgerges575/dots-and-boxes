@@ -10,17 +10,17 @@
 #define RESET "\033[1;0m"
 void color(char c[7], char text[9999999999999999999999999]){
    system("");
-   printf("%s %s %s",c,text,RESET);
+   printf("%s%s%s",c,text,RESET);
 }
 void color_int(char c[7], char text[9999999999999999999999999],int x){
    system("");
-   printf("%s %s%d %s",c,text,x,RESET);
+   printf("%s%s%d%s",c,text,x,RESET);
 }
 void color_str(char c[7], char text[9999999999999999999999999],char x[100]){
    system("");
-   printf("%s %s %s %s",c,text,x,RESET);
+   printf("%s%s%s%s",c,text,x,RESET);
 }
 void color_char(char c[7], char text){
    system("");
-   printf("%s %c %s",c,text,RESET);
+   printf("%s%c%s",c,text,RESET);
 }
