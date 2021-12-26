@@ -5,7 +5,7 @@ void menu(){
    color(PURPLE,"\t\t1:Top Ten\n\n");
    color(PURPLE,"\t\t2:Continue\n\n");
    color(PURPLE,"\t\t3:EXIT\n\n\n\n");
-   printf("\t\t4:enter your choice\n\n\n\n");
+   printf("\t\t4:enter your choice:");
    int x;
    scanf("%d",&x);
    system("cls");
@@ -71,7 +71,7 @@ void difficulty_mode_ui(int p)
         break;
     case 1:
         if (p == 2)
-            twoplayersx3();
+            twoplayersx3(-1,-1,1);
         else if(p == 1)
              break;
         break;
@@ -83,20 +83,43 @@ void difficulty_mode_ui(int p)
     }
 }
 
-void twoplayersx3(){
- while(1){
-   char A[6][10]={{' ','1',' ','2',' ','3',' ','4',' ','5'},{'1',254,' ',' ',' ',254,' ',' ',' ',254}
-   ,{'2',186,' ',' ',' ',' ',' ',' ',' ',' '},{'3',254,' ',' ',' ',254,' ',' ',' ',254}
-   ,{'4',' ',' ',' ',' ',' ',' ',' ',' ',' '},{'5',254,' ',' ',' ',254,' ',' ',' ',254}};
+void twoplayersx3(int col,int row ,int player)
+ {while(1)
+  {
+   char shape;
+   char A[6][10]={{32,'1','2','3','4','5'},
+                  {'1',254,32,254,32,254},
+                  {'2',32,32,32,32,32},
+                  {'3',254,32,254,32,254},
+                  {'4',32,32,32,32,32},
+                  {'5',254,32,254,32,254}};
+
+   if (row%2==1 && row!=-1)
+   {
+        shape=205;
+   }
+   else if (row%2==0 && row!=-1)
+   {
+        shape=186;
+   }
    printf("\n\n");
    for (int i=0;i<6;i++){
         printf("\t\t\t\t\t\t   ");
     for(int j=0;j<10;j++){
-        if(i==2 && j==1){
-        color_char(RED,186);
+        if(i== row&& j==col)
+        {
+                if (player==1)
+                {
+                    color_char(RED,shape);
+                }
+                else if (player==2)
+                {
+                    color_char(BLUE,shape);
+                }
+
         }
         else{
-        printf("%c",A[i][j]);
+        printf("%c ",A[i][j]);
         }
     }
     printf("\n");
@@ -107,11 +130,31 @@ void twoplayersx3(){
    color_int(RED,"\n\n\tfirst player's score:",5);  color_int(BLUE,"\t\t\t\t\t\t   second player's score:",5);
    color_int(YELLOW,"\n\n\tnumber of remaining lines:",3);
    color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
-   int col,row;
+
+   if (player==1)
+            printf("\n\n\t>>>>first player\'s turn:\n");
+   else if (player==2)
+            printf("\n\n\t>>>>second player\'s turn:\n");
    color(RED,"\n\n\tENTER ROW:");
-   printf(RED); scanf("%d",&col); printf(RESET);
-   color(RED,"\tENTER COL:");
    printf(RED); scanf("%d",&row); printf(RESET);
+   color(RED,"\tENTER COL:");
+   printf(RED); scanf("%d",&col); printf(RESET);
+   // mmkn nstkhdem xor bs bgrb y3ny
+   while(row%2==0 && col%2==0 || row%2==1 && col%2==1)
+   {
+       //elmafrod hena 3yzen nclear akher talat sotor lesa mesh 3arfa ezay
+       printf("\33[2K\r");
+       if (player==1)
+            printf("\n\n\t>>>>first player\'s turn:\n");
+       else if (player==2)
+            printf("\n\n\t>>>>second player\'s turn:\n");
+       color(RED,"\n\n\tENTER ROW:");
+       printf(RED); scanf("%d",&col); printf(RESET);
+       color(RED,"\tENTER COL:");
+       printf(RED); scanf("%d",&row); printf(RESET);
+
+   }
+
    system("cls");
  }
 }
