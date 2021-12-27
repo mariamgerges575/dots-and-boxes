@@ -101,13 +101,13 @@ char A[6][10]={{32,'1','2','3','4','5'},
                   {'3',254,32,254,32,254},
                   {'4',32,32,32,32,32},
                   {'5',254,32,254,32,254}};
-int col=-1,row=-1,player=2;
-int index1=0;
-int index2=0;
+int col=-1,row=-1,player=2,index1=0,index2=0,box1=0,box2=0,box3=0,box4=0,bluewins=0,redwins=0;
 char r[10],c[10];
+
 while(1)
 
   {
+
     if (player%2==1 && row!=-1)
     {
         playerOne[index1][0]=row;
@@ -118,6 +118,104 @@ while(1)
         playerTwo[index2][0]=row;
         playerTwo[index2++][1]=col;
     }
+
+   //boxes checking
+    if (0<row && row<4 && 0<col && col<4 )
+    {
+        box1++;
+    }
+
+    if (0<row && row<4 && 2<col && col<6 )
+    {
+        box2++;
+    }
+
+    if (2<row && row<6 && 0<col && col<4 )
+    {
+       box3++;
+    }
+
+    if (2<row && row<6 && 2<col && col<6 )
+    {
+       box4++;
+    }
+    if (box1==4 || box2==4 || box3==4 || box4==4)
+    {
+        if (box1==4)
+        {
+            A[2][2]=219;
+            if (player%2==1)
+            {
+                playerOne[index1][0]=2;
+                playerOne[index1++][1]=2;
+                redwins++;
+            }
+            else
+            {
+               playerTwo[index2][0]=2;
+               playerTwo[index2++][1]=2;
+               bluewins++;
+            }
+            box1=0;
+        }
+        if (box2==4)
+        {
+            A[2][4]=219;
+            if (player%2==1)
+            {
+                playerOne[index1][0]=2;
+                playerOne[index1++][1]=4;
+                redwins++;
+            }
+            else
+            {
+               playerTwo[index2][0]=2;
+               playerTwo[index2++][1]=4;
+               bluewins++;
+            }
+            box2=0;
+        }
+        if (box3==4)
+        {
+            A[4][2]=219;
+            if (player%2==1)
+            {
+                playerOne[index1][0]=4;
+                playerOne[index1++][1]=2;
+                redwins++;
+            }
+            else
+            {
+               playerTwo[index2][0]=4;
+               playerTwo[index2++][1]=2;
+               bluewins++;
+            }
+            box3=0;
+        }
+        if (box4==4)
+        {
+            A[4][4]=219;
+            if (player%2==1)
+            {
+                playerOne[index1][0]=4;
+                playerOne[index1++][1]=4;
+                redwins++;
+            }
+            else
+            {
+               playerTwo[index2][0]=4;
+               playerTwo[index2++][1]=4;
+               bluewins++;
+            }
+            box4=0;
+        }
+
+        player++;
+    }
+
+
+   printf("%d\n%d\n%d\n%d\n%d\n%d\n",row,col,box1,box2,box3,box4);
+
 
    for (int i=0;i<12;i++){
     for (int j=0;j<2;j++){
