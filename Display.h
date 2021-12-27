@@ -203,9 +203,9 @@ while(1)
             }
             else
             {
-               playerTwo[index2][0]=4;
-               playerTwo[index2++][1]=4;
-               bluewins++;
+                playerTwo[index2][0]=4;
+                playerTwo[index2++][1]=4;
+                bluewins++;
             }
             box4=0;
         }
@@ -270,9 +270,9 @@ while(1)
             }
             else if (i==playerTwo[k][0]&&j==playerTwo[k][1])
             {
-                color_char(BLUE,A[i][j]);
-                variable=1;
-                break;
+                  color_char(BLUE,A[i][j]);
+                  variable=1;
+                  break;
             }
 
         }
@@ -287,7 +287,7 @@ while(1)
 
    if (redwins>2)
    {
-       color(RED,"FIRST PLAYER WINS!");
+       color(RED,"\n\n\tFIRST PLAYER WINS!");
        color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
        winner=1;
 
@@ -296,7 +296,7 @@ while(1)
    }
    else if(bluewins>2)
    {
-       color(BLUE,"SECOND PLAYER WINS!");
+       color(BLUE,"\n\n\tSECOND PLAYER WINS!");
        color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
        winner=2;
 
@@ -304,7 +304,7 @@ while(1)
    }
    else if (redwins==2 && bluewins==2)
    {
-       printf ("tie");
+       printf ("\n\n\t tie");
        color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
        winner=0;
 
@@ -313,10 +313,10 @@ while(1)
    else
    {
        color_str(RED,"\n\tfirst player's name:","name");  color_str(BLUE,"\t\t\t\t\t   second player's name:","name");
-   color_int(RED,"\n\n\tnumber of moves for first player:",5); color_int(BLUE,"\t\t\t\t   number of moves for second player:",5);
-   color_int(RED,"\n\n\tfirst player's score:",5);  color_int(BLUE,"\t\t\t\t\t\t   second player's score:",5);
-   color_int(YELLOW,"\n\n\tnumber of remaining lines:",3);
-   color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
+       color_int(RED,"\n\n\tnumber of moves for first player:",5); color_int(BLUE,"\t\t\t\t   number of moves for second player:",5);
+       color_int(RED,"\n\n\tfirst player's score:",5);  color_int(BLUE,"\t\t\t\t\t\t   second player's score:",5);
+       color_int(YELLOW,"\n\n\tnumber of remaining lines:",3);
+       color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
 
    if (player%2==1)
    {
@@ -371,22 +371,6 @@ while(1)
    }
 
  }
- /*switch (winner)
- {
- case 0:
-     printf ("tie");
-     color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
-     break;
- case 1:
-     color(RED,"FIRST PLAYER WINS!");
-     color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
-     break;
- case 2:
-     color(BLUE,"SECOND PLAYER WINS!");
-     color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
-     break;*/
 
-
- //}
 
 }
