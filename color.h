@@ -24,3 +24,17 @@ void color_char(char c[7], char text){
    system("");
    printf("%s%c %s",c,text,RESET);
 }
+int scan_int(char s[])
+{  int a;int len;
+        gets(s);
+        len=strlen(s);
+        if(len==1 && isdigit(s[0])){
+            a=s[0]-48;
+        }
+        else
+        {
+           a=0;
+        }
+return a;
+}
+

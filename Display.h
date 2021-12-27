@@ -1,25 +1,27 @@
 
 void menu(){
    printf("\n\n\t\t\t\t\t\t  DOTS AND BOXES");
-   color(PURPLE,"\n\n\n\t\t0:NEW GAME\n\n");
-   color(PURPLE,"\t\t1:Top Ten\n\n");
-   color(PURPLE,"\t\t2:Continue\n\n");
-   color(PURPLE,"\t\t3:EXIT\n\n\n\n");
-   printf("\t\t4:enter your choice:");
-   int x;
-   scanf("%d",&x);
+   color(PURPLE,"\n\n\n\t\t1:NEW GAME\n\n");
+   color(PURPLE,"\t\t2:Top Ten\n\n");
+   color(PURPLE,"\t\t3:Continue\n\n");
+   color(PURPLE,"\t\t4:EXIT\n\n\n\n");
+   printf("\t\t5:enter your choice:");
+   char s [10];int x;
+   x=scan_int(s);
    system("cls");
     switch(x)
     {
-     case 0:
+     case 1:
         players_mode_ui();
-        break;
-    case 1:
         break;
     case 2:
         break;
     case 3:
         break;
+    case 4:
+        break;
+    default:
+        menu();
     }
 
 
@@ -28,27 +30,29 @@ void menu(){
 void players_mode_ui()
 {
     color(YELLOW,"\n\n\n\t\t\t\t\t\t select mode \n\n\n\n\n");
-    color(PURPLE,"\t\t 0:return to main menu\n\n");
-    color(PURPLE,"\t\t 1:one player\n\n");
-    color(PURPLE,"\t\t 2:two player\n\n");
-    color(PURPLE,"\t\t 3:to EXIT\n\n\t\t ");
+    color(PURPLE,"\t\t 1:return to main menu\n\n");
+    color(PURPLE,"\t\t 2:one player\n\n");
+    color(PURPLE,"\t\t 3:two player\n\n");
+    color(PURPLE,"\t\t 4:to EXIT\n\n\t\t ");
     color(RESET,"enter your choice:");
-    int x;
-    scanf("%d",&x);
+    int x; char s[10];
+    x=scan_int(s);
     system("cls");
     switch(x)
     {
-     case 0:
+     case 1:
         menu();
-        break;
-    case 1:
-        difficulty_mode_ui(x);
         break;
     case 2:
         difficulty_mode_ui(x);
         break;
     case 3:
+        difficulty_mode_ui(x);
         break;
+    case 4:
+        break;
+    default:
+        players_mode_ui();
     }
 
 }
@@ -56,30 +60,34 @@ void players_mode_ui()
 void difficulty_mode_ui(int p)
 {
     color(YELLOW,"\n\n\n\t\t\t\t\t\t select difficulty \n\n\n\n\n");
-    color(PURPLE,"\t\t 0:return to main menu\n\n");
-    color(PURPLE,"\t\t 1:easy\n\n");
-    color(PURPLE,"\t\t 2:hard\n\n");
-    color(PURPLE,"\t\t 3:to EXIT\n\n\t\t ");
+    color(PURPLE,"\t\t 1:return to main menu\n\n");
+    color(PURPLE,"\t\t 2:easy\n\n");
+    color(PURPLE,"\t\t 3:hard\n\n");
+    color(PURPLE,"\t\t 4:to EXIT\n\n\t\t ");
     printf("enter your choice:");
-    int x;
-    scanf("%d",&x);
+    int x; char s[10];
+    x=scan_int(s);
     system("cls");
         switch(x)
     {
-     case 0:
+     case 1:
         menu();
         break;
-    case 1:
-        if (p == 2)
+    case 2:
+        if (p == 3)
             twoplayersx3();
-        else if(p == 1)
+        else if(p == 2)
              break;
         break;
-    case 2:
+    case 3:
 
         break;
-    case 3:
+    case 4:
         break;
+    default:
+        difficulty_mode_ui(p);
+
+
     }
 }
 
@@ -96,6 +104,7 @@ char A[6][10]={{32,'1','2','3','4','5'},
 int col=-1,row=-1,player=2;
 int index1=0;
 int index2=0;
+char r[10],c[10];
 while(1)
 
   {
@@ -188,9 +197,9 @@ while(1)
 
             printf("\n\n\t>>>>first player\'s turn:\n");
             color(RED,"\n\n\tENTER ROW:");
-            printf(RED); scanf("%d",&row); printf(RESET);
+            printf(RED); row=scan_int(r); printf(RESET);
             color(RED,"\tENTER COL:");
-            printf(RED); scanf("%d",&col); printf(RESET);
+            printf(RED); col=scan_int(c); printf(RESET);
 
    }
 
@@ -199,9 +208,9 @@ while(1)
 
             printf("\n\n\t>>>>second player\'s turn:\n");
             color(BLUE,"\n\n\tENTER ROW:");
-            printf(BLUE); scanf("%d",&row); printf(RESET);
+            printf(BLUE);row=scan_int(r); printf(RESET);
             color(BLUE,"\tENTER COL:");
-            printf(BLUE); scanf("%d",&col); printf(RESET);
+            printf(BLUE); col=scan_int(c); printf(RESET);
    }
 
 
