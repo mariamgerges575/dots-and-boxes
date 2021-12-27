@@ -22,5 +22,5 @@ void color_str(char c[7], char text[9999999999999999999999999],char x[100]){
 }
 void color_char(char c[7], char text){
    system("");
-   printf("%s%c%s",c,text,RESET);
+   printf("%s%c %s",c,text,RESET);
 }
