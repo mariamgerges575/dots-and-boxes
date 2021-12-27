@@ -101,7 +101,7 @@ char A[6][10]={{32,'1','2','3','4','5'},
                   {'3',254,32,254,32,254},
                   {'4',32,32,32,32,32},
                   {'5',254,32,254,32,254}};
-int col=-1,row=-1,player=2,index1=0,index2=0,box1=0,box2=0,box3=0,box4=0,bluewins=0,redwins=0;
+int col=-1,row=-1,player=2,index1=0,index2=0,box1=0,box2=0,box3=0,box4=0,bluewins=0,redwins=0,winner;
 char r[10],c[10];
 
 while(1)
@@ -284,7 +284,35 @@ while(1)
 
    }printf("\n");}
 
-   color_str(RED,"\n\tfirst player's name:","name");  color_str(BLUE,"\t\t\t\t\t   second player's name:","name");
+
+   if (redwins>2)
+   {
+       color(RED,"FIRST PLAYER WINS!");
+       color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
+       winner=1;
+
+       break;
+
+   }
+   else if(bluewins>2)
+   {
+       color(BLUE,"SECOND PLAYER WINS!");
+       color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
+       winner=2;
+
+       break;
+   }
+   else if (redwins==2 && bluewins==2)
+   {
+       printf ("tie");
+       color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
+       winner=0;
+
+       break;
+   }
+   else
+   {
+       color_str(RED,"\n\tfirst player's name:","name");  color_str(BLUE,"\t\t\t\t\t   second player's name:","name");
    color_int(RED,"\n\n\tnumber of moves for first player:",5); color_int(BLUE,"\t\t\t\t   number of moves for second player:",5);
    color_int(RED,"\n\n\tfirst player's score:",5);  color_int(BLUE,"\t\t\t\t\t\t   second player's score:",5);
    color_int(YELLOW,"\n\n\tnumber of remaining lines:",3);
@@ -340,5 +368,25 @@ while(1)
 
 
    system("cls");
+   }
+
  }
+ /*switch (winner)
+ {
+ case 0:
+     printf ("tie");
+     color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
+     break;
+ case 1:
+     color(RED,"FIRST PLAYER WINS!");
+     color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
+     break;
+ case 2:
+     color(BLUE,"SECOND PLAYER WINS!");
+     color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
+     break;*/
+
+
+ //}
+
 }
