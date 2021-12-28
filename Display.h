@@ -139,7 +139,7 @@ char A[6][10]={{32,'1','2','3','4','5'},
                   {'3',254,32,254,32,254},
                   {'4',32,32,32,32,32},
                   {'5',254,32,254,32,254}};
-int col=-1,row=-1,player=2,index1=0,index2=0,box1=0,box2=0,box3=0,box4=0,bluewins=0,redwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,NoOfLines=12,timer=0;
+int col=-1,row=-1,player=2,index1=0,index2=0,box1=0,box2=0,box3=0,box4=0,bluewins=0,redwins=0,previousbluewins=0,previousredwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,NoOfLines=12,timer=0;
 char r[10],c[10];
 time_t timeOfBeginning=time(0);
 
@@ -188,7 +188,7 @@ while(1)
     {
         if (box1==4)
         {
-            A[2][2]=219;
+            //A[2][2]=219;
             if (player%2==1)
             {
                 playerOne[index1][0]=2;
@@ -205,7 +205,7 @@ while(1)
         }
         if (box2==4)
         {
-            A[2][4]=219;
+            //A[2][4]=219;
             if (player%2==1)
             {
                 playerOne[index1][0]=2;
@@ -222,7 +222,7 @@ while(1)
         }
         if (box3==4)
         {
-            A[4][2]=219;
+            //A[4][2]=219;
             if (player%2==1)
             {
                 playerOne[index1][0]=4;
@@ -239,7 +239,7 @@ while(1)
         }
         if (box4==4)
         {
-            A[4][4]=219;
+            //A[4][4]=219;
             if (player%2==1)
             {
                 playerOne[index1][0]=4;
@@ -262,6 +262,9 @@ while(1)
    printf("%d\n%d\n%d\n%d\n%d\n%d\n",row,col,box1,box2,box3,box4);
 
 
+   printf ("index1 %d index2 %d\n",index1,index2);
+   printf(" bluewins %d redwins %d\n",bluewins,redwins);
+   printf(" previousbluewins %d previousredwins %d\n",previousbluewins,previousredwins);
    for (int i=0;i<12;i++){
     for (int j=0;j<2;j++){
         printf("%d ",playerOne[i][j]);
@@ -274,9 +277,10 @@ while(1)
     }
     printf("\n");
    }
-   char shape;
+   printf("%d   %d   %d   %d",box1,box2,box3,box4);
+   //char shape;
    player++;
-   if (row%2==1 && row!=-1)
+  /* if (row%2==1 && row!=-1)
    {
         shape=205;
         A[row][col]=shape;
@@ -285,7 +289,7 @@ while(1)
    {
         shape=186;
         A[row][col]=shape;
-   }
+   }*/
 
    //timeeee
 
@@ -303,9 +307,27 @@ while(1)
         int variable =0;
         for (int k=0;k<12;k++)
         {
+            char shape;
+            if (A[i][j]==32 )
+                  {
+
+                      if (i%2==1)
+                      {
+                          shape=205;
+                      }
+                      else if (i%2==0 && j%2==0)
+                      {
+                          shape=219;
+                      }
+                      else if(i%2==0 && j%2==1)
+                      {
+                          shape=186;
+                      }
+                  }
             if (i==playerOne[k][0]&&j==playerOne[k][1])
             {
-                  color_char(RED,A[i][j]);
+
+                  color_char(RED,shape);
                   variable=1;
                   break;
 
@@ -314,7 +336,7 @@ while(1)
             }
             else if (i==playerTwo[k][0]&&j==playerTwo[k][1])
             {
-                  color_char(BLUE,A[i][j]);
+                  color_char(BLUE,shape);
                   variable=1;
                   break;
             }
@@ -325,9 +347,9 @@ while(1)
                printf("%c ",A[i][j]);
            }
 
-
-   }printf("\n");}
-
+    }
+   printf("\n");
+   }
 
    if (redwins>2)
    {
@@ -404,7 +426,314 @@ while(1)
 
 
    }
-   if(row%2==0 && col%2==0 || row%2==1 && col%2==1|| row<0 || row>5||col<0||col>5)
+   if (row==0 && col==0)
+   {
+       if (player%2==0)
+       {
+           if ((bluewins-previousbluewins)==1)
+           {
+               bluewins--;
+               index2--;
+               playerTwo[index2][0]=-1;
+               playerTwo[index2][1]=-1;
+               index2--;
+                if (0<playerTwo[index2][0] && playerTwo[index2][0]<4 && 0<playerTwo[index2][1] && playerTwo[index2][1]<4 )
+                {
+                    if (box1==0)
+                    {
+                        box1=3;
+                    }
+                    else
+                    {
+                        box1--;
+                    }
+                }
+
+                if (0<playerTwo[index2][0] && playerTwo[index2][0]<4 && 2<playerTwo[index2][1] && playerTwo[index2][1]<6 )
+                {
+                    if (box2==0)
+                    {
+                        box2=3;
+                    }
+                    else
+                    {
+                        box2--;
+                    }
+                }
+
+                if (2<playerTwo[index2][0] && playerTwo[index2][0]<6 && 0<playerTwo[index2][1] && playerTwo[index2][1]<4 )
+                {
+                    if (box3==0)
+                    {
+                        box3=3;
+                    }
+                    else
+                    {
+                        box3--;
+                    }
+                }
+
+                if (2<playerTwo[index2][0] && playerTwo[index2][0]<6 && 2<playerTwo[index2][1] && playerTwo[index2][1]<6 )
+                {
+                    if (box4==0)
+                    {
+                        box4=3;
+                    }
+                    else
+                    {
+                        box4--;
+                    }
+                }
+
+                playerTwo[index2][0]=-1;
+                playerTwo[index2][1]=-1;
+                row=-1;
+                player++;
+                system("cls");
+
+            }
+           else if ((bluewins-previousbluewins)==2)
+           {
+                bluewins--;
+                index2--;
+                playerTwo[index2][0]=-1;
+                playerTwo[index2][1]=-1;
+                bluewins--;
+                index2--;
+                playerTwo[index2][0]=-1;
+                playerTwo[index2][1]=-1;
+                index2--;
+                if (0<playerTwo[index2][0] && playerTwo[index2][0]<4 && 0<playerTwo[index2][1] && playerTwo[index2][1]<4 )
+                {
+                    box1=3;
+                }
+
+                if (0<playerTwo[index2][0] && playerTwo[index2][0]<4 && 2<playerTwo[index2][1] && playerTwo[index2][1]<6 )
+                {
+                    box2=3;
+                }
+
+                if (2<playerTwo[index2][0] && playerTwo[index2][0]<6 && 0<playerTwo[index2][1] && playerTwo[index2][1]<4 )
+                {
+                    box3=3;
+
+                }
+                if (2<playerTwo[index2][0] && playerTwo[index2][0]<6 && 2<playerTwo[index2][1] && playerTwo[index2][1]<6 )
+                {
+                    box4=3;
+
+                }
+
+                playerTwo[index2][0]=-1;
+                playerTwo[index2][1]=-1;
+                row=-1;
+                player++;
+                system("cls");
+
+
+
+           }
+           else if (bluewins-previousbluewins==0)
+           {
+                index1--;
+                if (0<playerOne[index1][0] && playerOne[index1][0]<4 && 0<playerOne[index1][1] && playerOne[index1][1]<4 )
+                {
+                    box1--;
+                }
+
+                if (0<playerOne[index1][0] && playerOne[index1][0]<4 && 2<playerOne[index1][1] && playerOne[index1][1]<6 )
+                {
+                    box2--;
+                }
+
+                if (2<playerOne[index1][0] && playerOne[index1][0]<6 && 0<playerOne[index1][1] && playerOne[index1][1]<4 )
+                {
+                    box3--;
+                }
+
+                if (2<playerOne[index1][0] && playerOne[index1][0]<6 && 2<playerOne[index1][1] && playerOne[index1][1]<6 )
+                {
+                    box4--;
+                }
+                playerOne[index1][0]=-1;
+                playerOne[index1][1]=-1;
+                row=-1;
+                system("cls");
+
+           }
+
+
+       }
+       else
+       {
+           if ((redwins-previousredwins)==1)
+           {
+                redwins--;
+                index1--;
+                playerOne[index1][0]=-1;
+                playerOne[index1][1]=-1;
+                index1--;
+                if (0<playerOne[index1][0] && playerOne[index1][0]<4 && 0<playerOne[index1][1] && playerOne[index1][1]<4 )
+                {
+                    printf(" \nbox1 %d\n",box1);
+                    if (box1==0)
+                    {
+                        box1=3;
+                        printf(" \nbox1 fel 3 %d\n",box1);
+
+                    }
+                    else
+                    {
+                        box1--;
+                        printf(" \nbox1 fel -1 %d\n",box1);
+                    }
+                }
+
+                if (0<playerOne[index1][0] && playerOne[index1][0]<4 && 2<playerOne[index1][1] && playerOne[index1][1]<6 )
+                {
+                    if (box2==0)
+                    {
+                        box2=3;
+                    }
+                    else
+                    {
+                        box2--;
+                    }
+            }
+
+                if (2<playerOne[index1][0] && playerOne[index1][0]<6 && 0<playerOne[index1][1] && playerOne[index1][1]<4 )
+                {
+                    if (box3==0)
+                    {
+                        box3=3;
+                    }
+                    else
+                    {
+                        box3--;
+                    }
+                }
+
+                if (2<playerOne[index1][0] && playerOne[index1][0]<6 && 2<playerOne[index1][1] && playerOne[index1][1]<6 )
+                {
+                    if (box4==0)
+                    {
+                        box4=3;
+                    }
+                    else
+                    {
+                        box4--;
+                    }
+                }
+                playerOne[index1][0]=-1;
+                playerOne[index1][1]=-1;
+                row=-1;
+                player++;
+                system("cls");
+
+
+           }
+           else if ((redwins-previousredwins)==2)
+           {
+               redwins--;
+               index1--;
+               playerOne[index1][0]=-1;
+               playerOne[index1][1]=-1;
+               redwins--;
+               index1--;
+               playerOne[index1][0]=-1;
+               playerOne[index1][1]=-1;
+               index1--;
+               if (0<playerOne[index1][0] && playerOne[index1][0]<4 && 0<playerOne[index1][1] && playerOne[index1][1]<4 )
+                {
+                    box1=3;
+                }
+
+                if (0<playerOne[index1][0] && playerOne[index1][0]<4 && 2<playerOne[index1][1] && playerOne[index1][1]<6 )
+                {
+                    box2=3;
+                }
+
+                if (2<playerOne[index1][0] && playerOne[index1][0]<6 && 0<playerOne[index1][1] && playerOne[index1][1]<4 )
+                {
+                    box3=3;
+                }
+
+                if (2<playerOne[index1][0] && playerOne[index1][0]<6 && 2<playerOne[index1][1] && playerOne[index1][1]<6 )
+                {
+                    box4=3;
+                }
+                playerOne[index1][0]=-1;
+                playerOne[index1][1]=-1;
+                row=-1;
+                player++;
+                system("cls");
+            }
+           else
+           {
+                index2--;
+                if (0<playerTwo[index2][0] && playerTwo[index2][0]<4 && 0<playerTwo[index2][1] && playerTwo[index2][1]<4 )
+                {
+                    if (box1==0)
+                    {
+                        box1=3;
+                }
+                else
+                {
+                    box1--;
+                }
+            }
+
+            if (0<playerTwo[index2][0] && playerTwo[index2][0]<4 && 2<playerTwo[index2][1] && playerTwo[index2][1]<6 )
+            {
+                if (box2=0)
+                {
+                    box2=3;
+                }
+                else
+                {
+                    box2--;
+                }
+            }
+
+            if (2<playerTwo[index2][0] && playerTwo[index2][0]<6 && 0<playerTwo[index2][1] && playerTwo[index2][1]<4 )
+            {
+                if (box3==0)
+                {
+                    box3=3;
+                }
+                else
+                {
+                    box3--;
+                }
+            }
+
+            if (2<playerTwo[index2][0] && playerTwo[index2][0]<6 && 2<playerTwo[index2][1] && playerTwo[index2][1]<6 )
+            {
+                if (box4==0)
+                {
+                    box4=3;
+                }
+                else
+                {
+                    box4--;
+                }
+            }
+
+            playerTwo[index2][0]=-1;
+            playerTwo[index2][1]=-1;
+            row=-1;
+            system("cls");
+           }
+
+
+       }
+   }
+
+   else
+   {
+        previousredwins=redwins;
+        previousbluewins=bluewins;
+       if(row%2==0 && col%2==0 || row%2==1 && col%2==1|| row<1 || row>5||col<1||col>5)
    {
        //elmafrod hena 3yzen nclear akher talat sotor lesa mesh 3arfa ezay
        printf("\33[2K\r");
@@ -429,5 +758,9 @@ while(1)
    system("cls");
    }
 
+   }
+
+
  }
 }
+
