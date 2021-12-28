@@ -75,7 +75,7 @@ void difficulty_mode_ui(int p)
         break;
     case 2:
         if (p == 3)
-            twoplayersx3();
+            twoplayersx3(0);
         else if(p == 2)
              break;
         break;
@@ -121,10 +121,15 @@ void getTime (int timeOfBeginning,int timehrsMinSec[])
 
 }
 
-void twoplayersx3()
+void twoplayersx3(int x)
  {
      char name1[10],name2[10];
-     GetNames(name1,name2);
+     if (x==0)
+     {
+         char name1[10],name2[10];
+         GetNames(name1,name2);
+     }
+
 
 char playerOne[12][2]={{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1}};
 char playerTwo[12][2]={{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1}};
@@ -393,6 +398,22 @@ while(1)
 
 
 
+   if (row==1&&col==1)
+   {
+       if (turnsOfPlayer1>0||turnsOfPlayer2>0)
+       {
+           system("cls");
+           twoplayersx3(1);
+
+       }
+       else
+       {
+           system("cls");
+           twoplayersx3(0);
+       }
+
+
+   }
    if(row%2==0 && col%2==0 || row%2==1 && col%2==1|| row<0 || row>5||col<0||col>5)
    {
        //elmafrod hena 3yzen nclear akher talat sotor lesa mesh 3arfa ezay
@@ -419,6 +440,4 @@ while(1)
    }
 
  }
-
-
 }
