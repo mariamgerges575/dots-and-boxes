@@ -91,8 +91,20 @@ void difficulty_mode_ui(int p)
     }
 }
 
+void GetNames (char p1[10],char p2[10])
+{
+
+    color(RED,"\n\n\n\n\n\n\t ENTER THE NAME OF THE FIRST PLAYER:");
+    gets(p1);
+    color(BLUE,"\n\n\t ENTER THE NAME OF THE SECOND PLAYER:");
+    gets(p2);
+    system("cls");
+
+}
 void twoplayersx3()
  {
+     char name1[10],name2[10];
+     GetNames(name1,name2);
 char playerOne[12][2]={{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1}};
 char playerTwo[12][2]={{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1}};
 char A[6][10]={{32,'1','2','3','4','5'},
@@ -101,7 +113,7 @@ char A[6][10]={{32,'1','2','3','4','5'},
                   {'3',254,32,254,32,254},
                   {'4',32,32,32,32,32},
                   {'5',254,32,254,32,254}};
-int col=-1,row=-1,player=2,index1=0,index2=0,box1=0,box2=0,box3=0,box4=0,bluewins=0,redwins=0,winner;
+int col=-1,row=-1,player=2,index1=0,index2=0,box1=0,box2=0,box3=0,box4=0,bluewins=0,redwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,NoOfLines=12;
 char r[10],c[10];
 
 while(1)
@@ -112,11 +124,15 @@ while(1)
     {
         playerOne[index1][0]=row;
         playerOne[index1++][1]=col;
+        turnsOfPlayer1++;
+        NoOfLines--;
     }
     else if (player%2==0 && row!=-1)
     {
         playerTwo[index2][0]=row;
         playerTwo[index2++][1]=col;
+        turnsOfPlayer2++;
+        NoOfLines--;
     }
 
    //boxes checking
@@ -287,7 +303,7 @@ while(1)
 
    if (redwins>2)
    {
-       color(RED,"\n\n\tFIRST PLAYER WINS!");
+       color_str(RED,"\n\n\t\t\t\t\t",name1);color(RED,"  WINS!");
        color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
        winner=1;
 
@@ -296,7 +312,7 @@ while(1)
    }
    else if(bluewins>2)
    {
-       color(BLUE,"\n\n\tSECOND PLAYER WINS!");
+       color_str(BLUE,"\n\n\t\t\t\t\t",name2);color(BLUE,"  WINS!");
        color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
        winner=2;
 
@@ -312,10 +328,11 @@ while(1)
    }
    else
    {
-       color_str(RED,"\n\tfirst player's name:","name");  color_str(BLUE,"\t\t\t\t\t   second player's name:","name");
-       color_int(RED,"\n\n\tnumber of moves for first player:",5); color_int(BLUE,"\t\t\t\t   number of moves for second player:",5);
-       color_int(RED,"\n\n\tfirst player's score:",5);  color_int(BLUE,"\t\t\t\t\t\t   second player's score:",5);
-       color_int(YELLOW,"\n\n\tnumber of remaining lines:",3);
+       color_str(RED,"\n\n\n\n\t",name1);  color_str(BLUE,"\t\t\t\t\t\t    ",name2);
+
+       color_int(RED,"\n\n\tnumber of moves for first player: ",turnsOfPlayer1); color_int(BLUE,"\t\t   number of moves for second player: ",turnsOfPlayer2);
+       color_int(RED,"\n\n\tfirst player's score:",redwins);  color_int(BLUE,"\t\t\t\t   second player's score:",bluewins);
+       color_int(YELLOW,"\n\n\tnumber of remaining lines:",NoOfLines);
        color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
 
    if (player%2==1)
@@ -356,7 +373,6 @@ while(1)
            {
                if ( row==playerOne[k][0]&&col==playerOne[k][1] || row==playerTwo[k][0]&&col==playerTwo[k][1])
                {
-                    printf("\33[2K\r");
                     printf("\n\tinvalid numbers \n");
                     player--;
                     row=-1;
@@ -364,8 +380,6 @@ while(1)
                }
 
            }
-
-
 
    system("cls");
    }
