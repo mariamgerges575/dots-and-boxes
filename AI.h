@@ -294,7 +294,6 @@ while(1)
     /*while (ohh==1){
         printf("%d",box);
     }*/
-    while(i1<4 && i2<4 && i3<4 && i4<4){
     switch(box)
     {
         case 0:
@@ -319,10 +318,10 @@ while(1)
             break;
 
     }
-    break;
+
     }
 
-   }
+
 
 
 printf("%d",box);
