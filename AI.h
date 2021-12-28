@@ -14,7 +14,7 @@ int col=-1,row=-1,player=2,index1=0,index2=0,bluewins=0,redwins=0,winner;
     char box3[4][2]={{5,2},{4,1},{3,4},{3,2}};
     char box4[4][2]={{5,4},{4,5},{3,4},{4,3}};
     char boxes[4]={0,0,0,0};
-    int box=-1 , i1=0,i2=0,i3=0,i4=0,ohh=0;
+    int box=-1 , i1=0,i2=0,i3=0,i4=0;
 char r[10],c[10];
 
 while(1)
@@ -250,7 +250,6 @@ while(1)
                 if (boxes[i]==3)
                 {
                     box=i;
-                    ohh=1;
                     break;
                 }
             }
@@ -291,9 +290,6 @@ while(1)
         }
         }
 
-    /*while (ohh==1){
-        printf("%d",box);
-    }*/
     switch(box)
     {
         case 0:
