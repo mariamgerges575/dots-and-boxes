@@ -305,20 +305,9 @@ while(1)
         {
             if (i==playerOne[k][0]&&j==playerOne[k][1])
             {
-                if (A[i][j]== 205)
-                {
-                    color_char(RED,A[i][j]);
-                    color_char(RED,A[i][j]);
-                    color_char(RED,A[i][j]);
-                    variable=1;
-                    break;
-                }
-                else
-                {
-                    color_char(RED,A[i][j]);
-                    variable=1;
-                    break;
-                }
+                  color_char(RED,A[i][j]);
+                  variable=1;
+                  break;
 
 
 
