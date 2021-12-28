@@ -23,10 +23,11 @@
 
 1640613295 c:\users\mariam\desktop\dots-and-boxes\display.h
 
-1640687528 source:c:\users\samni\desktop\dots-and-boxes\main.c
+1640691740 source:c:\users\samni\desktop\dots-and-boxes\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<time.h>
 	"color.h"
 	"Display.h"
 
@@ -34,5 +35,5 @@
 	<stdio.h>
 	<stdlib.h>
 
-1640687623 c:\users\samni\desktop\dots-and-boxes\display.h
+1640697359 c:\users\samni\desktop\dots-and-boxes\display.h
 

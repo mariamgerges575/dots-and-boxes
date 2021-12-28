@@ -101,10 +101,31 @@ void GetNames (char p1[10],char p2[10])
     system("cls");
 
 }
+void getTime (int timeOfBeginning,int timehrsMinSec[])
+{
+    int timer;
+    time_t timenow=time(0);
+    timer= timenow-timeOfBeginning;
+    int hours=0,minutes=0,seconds=0;
+    minutes=timer/60;
+    seconds=timer-60*minutes;
+    if (minutes>59)
+    {
+        hours=minutes/60;
+        minutes=minutes-60*hours;
+    }
+
+     timehrsMinSec[0]=hours;
+     timehrsMinSec[1]=minutes;
+     timehrsMinSec[2]=seconds;
+
+}
+
 void twoplayersx3()
  {
      char name1[10],name2[10];
      GetNames(name1,name2);
+
 char playerOne[12][2]={{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1}};
 char playerTwo[12][2]={{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1},{-1,-1}};
 char A[6][10]={{32,'1','2','3','4','5'},
@@ -113,8 +134,11 @@ char A[6][10]={{32,'1','2','3','4','5'},
                   {'3',254,32,254,32,254},
                   {'4',32,32,32,32,32},
                   {'5',254,32,254,32,254}};
-int col=-1,row=-1,player=2,index1=0,index2=0,box1=0,box2=0,box3=0,box4=0,bluewins=0,redwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,NoOfLines=12;
+int col=-1,row=-1,player=2,index1=0,index2=0,box1=0,box2=0,box3=0,box4=0,bluewins=0,redwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,NoOfLines=12,timer=0;
 char r[10],c[10];
+time_t timeOfBeginning=time(0);
+
+
 
 while(1)
 
@@ -257,6 +281,16 @@ while(1)
         shape=186;
         A[row][col]=shape;
    }
+
+   //timeeee
+
+   int timehrsMinSec[3]={0,0,0};
+   getTime(timeOfBeginning,timehrsMinSec);
+
+
+
+
+
    printf("\n\n");
    for (int i=0;i<6;i++){
         printf("\t\t\t\t\t\t   ");
@@ -332,7 +366,7 @@ while(1)
 
        color_int(RED,"\n\n\tnumber of moves for first player: ",turnsOfPlayer1); color_int(BLUE,"\t\t   number of moves for second player: ",turnsOfPlayer2);
        color_int(RED,"\n\n\tfirst player's score:",redwins);  color_int(BLUE,"\t\t\t\t   second player's score:",bluewins);
-       color_int(YELLOW,"\n\n\tnumber of remaining lines:",NoOfLines);
+       color_int(YELLOW,"\n\n\tnumber of remaining lines:",NoOfLines);color_int(YELLOW,"\t\t\t TIME: ",timehrsMinSec[0]);color_int(YELLOW,":",timehrsMinSec[1]);color_int(YELLOW,":",timehrsMinSec[2]);
        color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
 
    if (player%2==1)
