@@ -11,17 +11,20 @@
 
 1640280072 c:\users\mariam\desktop\project1\display.h
 
-1640447533 source:c:\users\mariam\desktop\dots-and-boxes\main.c
+1640730630 source:c:\users\mariam\desktop\dots-and-boxes\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
+	<time.h>
 	"color.h"
 	"Display.h"
+	"AI.h"
 
-1640613295 c:\users\mariam\desktop\dots-and-boxes\color.h
+1640730659 c:\users\mariam\desktop\dots-and-boxes\color.h
 	<stdio.h>
 	<stdlib.h>
 
-1640613295 c:\users\mariam\desktop\dots-and-boxes\display.h
+1640730678 c:\users\mariam\desktop\dots-and-boxes\display.h
 
 1640702787 source:c:\users\samni\desktop\dots-and-boxes\main.c
 	<stdio.h>
@@ -36,4 +39,6 @@
 	<stdlib.h>
 
 1640728846 c:\users\samni\desktop\dots-and-boxes\display.h
+
+1640730203 c:\users\mariam\desktop\dots-and-boxes\ai.h
 
