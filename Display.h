@@ -105,7 +105,7 @@ char A[6][10]={{32,'1','2','3','4','5'},
                   {'3',254,32,254,32,254},
                   {'4',32,32,32,32,32},
                   {'5',254,32,254,32,254}};
-int col=-1,row=-1,player=2,index1=0,index2=0,box1=0,box2=0,box3=0,box4=0,bluewins=0,redwins=0,previousbluewins=0,previousredwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,NoOfLines=12,timer=0;
+int col=-1,row=-1,player=2,index1=0,index2=0,box1=0,box2=0,box3=0,box4=0,,box5=0,box6=0,box7=0,box8=0,box9=0,box10=0,box11=0,box12=0,box13=0,box14=0,box15=0,box16=0,bluewins=0,redwins=0,previousbluewins=0,previousredwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,NoOfLines=12,timer=0;
 char r[10],c[10];
 time_t timeOfBeginning=time(0);
 
@@ -150,7 +150,55 @@ while(1)
     {
        box4++;
     }
-    if (box1==4 || box2==4 || box3==4 || box4==4)
+    if (0<row && row<4 && 4<col && col<8 )
+    {
+        box5++;
+    }
+    if (0<row && row<4 && 6<col && col<10 )
+    {
+        box6++;
+    }
+    if (2<row && row<6 && 4<col && col<8 )
+    {
+        box7++;
+    }
+    if (2<row && row<6 && 6<col && col<10 )
+    {
+        box8++;
+    }
+    if (4<row && row<8 && 0<col && col<4 )
+    {
+        box9++;
+    }
+    if (4<row && row<8 && 2<col && col<6 )
+    {
+        box10++;
+    }
+    if (6<row && row<10 && 0<col && col<4 )
+    {
+        box11++;
+    }
+    if (6<row && row<10 && 2<col && col<6 )
+    {
+        box12++;
+    }
+    if (4<row && row<8 && 4<col && col<8)
+    {
+        box13++;
+    }
+    if (4<row && row<8 && 6<col && col<10 )
+    {
+        box14++;
+    }
+    if (6<row && row<10 && 4<col && col<8 )
+    {
+        box15++;
+    }
+    if (6<row && row<10 && 6<col && col<10 )
+    {
+        box16++;
+    }
+    if (box1==4 || box2==4 || box3==4 || box4==4 || box4==4 || box5==4 || box6==4 || box7==4 || box8==4 || box9==4 || box10==4 || box11==4 || box12==4 || box13==4 || box14==4 ||box15==4 ||box16==4 )
     {
         if (box1==4)
         {
