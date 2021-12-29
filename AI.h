@@ -1,4 +1,4 @@
-void oneplayerx3()
+void oneplayerx3(char name[])
  {
 char playerOne[12][2]; negative_one(playerOne,12);
 char computer[12][2]; negative_one(computer,12);
@@ -11,7 +11,7 @@ char A[6][10]={{32,'1','2','3','4','5'},
 int col=-1,row=-1,player=2,index1=0,index2=0,bluewins=0,redwins=0,winner;
     char box1[4][2]={{1,2},{2,1},{3,2},{2,3}};
     char box2[4][2]={{1,4},{2,5},{2,3},{3,4}};
-    char box3[4][2]={{5,2},{4,1},{3,4},{3,2}};
+    char box3[4][2]={{5,2},{4,1},{3,2},{4,3}};
     char box4[4][2]={{5,4},{4,5},{3,4},{4,3}};
     char boxes[4]={0,0,0,0};
     int box=-1 , i1=0,i2=0,i3=0,i4=0;
@@ -225,7 +225,7 @@ while(1)
    }
    else
    {
-       color_str(RED,"\n\tfirst player's name:","name");  color_str(BLUE,"\t\t\t\t\t   second player's name:","computer");
+       color_str(RED,"\n\tfirst player's name:",name);  color_str(BLUE,"\t\t\t\t\t   second player's name:","computer");
        color_int(RED,"\n\n\tnumber of moves for first player:",5); color_int(BLUE,"\t\t\t\t   number of moves for second player:",5);
        color_int(RED,"\n\n\tfirst player's score:",5);  color_int(BLUE,"\t\t\t\t\t\t   second player's score:",5);
        color_int(YELLOW,"\n\n\tnumber of remaining lines:",3);
@@ -305,6 +305,7 @@ while(1)
         case 2:
             row=box3[i3][0];
             col=box3[i3++][1];
+            printf("\ndakhal f case 2\n");
             box=-1;
             break;
         case 3:

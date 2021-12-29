@@ -75,15 +75,15 @@ void difficulty_mode_ui(int p)
         break;
     case 2:
         if (p == 3)
-            twoplayersx3Names();
+            twoplayersNames(2);
         else if(p == 2)
-            oneplayerx3();
+            oneplayerName();
         break;
     case 3:
          if (p == 3)
-            twoplayersx5Names();
+            twoplayersNames(3);
         else if(p == 2)
-             oneplayerx3();
+             oneplayerName();
         break;
     case 4:
         break;
@@ -380,7 +380,7 @@ while(1)
        if (turnsOfPlayer1==0 && turnsOfPlayer2==0)
        {
            system("cls");
-           twoplayersx3Names();
+           twoplayersNames(2);
 
        }
        else
@@ -1227,15 +1227,12 @@ while(1)
             printf(BLUE); col=scan_int(c); printf(RESET);
    }
 
-
-
-
    if (row==1&&col==1)
    {
        if (turnsOfPlayer1==0 && turnsOfPlayer2==0)
        {
            system("cls");
-           twoplayersx5Names();
+           twoplayersNames(3);
 
        }
        else
@@ -1252,8 +1249,6 @@ while(1)
    if(row%2==0 && col%2==0 || row%2==1 && col%2==1|| row<0 || row>9||col<0||col>9)
    {
        //elmafrod hena 3yzen nclear akher talat sotor lesa mesh 3arfa ezay
-       printf("\33[2K\r");
-       printf("\n\tinvalid numbers \n");
        player--;
        row=-1;
 
@@ -1263,7 +1258,6 @@ while(1)
            {
                if ( row==playerOne[k][0]&&col==playerOne[k][1] || row==playerTwo[k][0]&&col==playerTwo[k][1])
                {
-                    printf("\n\tinvalid numbers \n");
                     player--;
                     row=-1;
                     break;

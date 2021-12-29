@@ -28,13 +28,14 @@ int scan_int(char s[])
 {  int a;int len;
         gets(s);
         len=strlen(s);
-        if(len==1 && isdigit(s[0])){
-            a=s[0]-48;
-        }
+        if(len==1 && isdigit(s[0]))
+           {
+              a=s[0]-48;
+           }
         else
-        {
-           a=0;
-        }
+         {
+             a=0;
+         }
 return a;
 }
 
@@ -67,12 +68,18 @@ void getTime (int timeOfBeginning,int timehrsMinSec[])
      timehrsMinSec[2]=seconds;
 
 }
-void twoplayersx3Names()
-{
-    char name1[10],name2[10];
-    GetNames(name1,name2);
-    twoplayersx3(name1,name2);
+void twoplayersNames(int x)
+{char name1[10],name2[10];
+ GetNames(name1,name2);
+   switch(x)
+   {
+    case(2):
+        twoplayersx3(name1,name2);
+    case(3):
+        twoplayersx5(name1,name2);
+    }
 }
+
 int negative_one(char A[][2],int m)
 {
     for (int i=0;i<m;i++)
@@ -81,12 +88,33 @@ int negative_one(char A[][2],int m)
         A[i][1]=-1;
     }
 }
-void twoplayersx5Names()
+
+void oneplayerName()
 {
-    char name1[10],name2[10];
-    GetNames(name1,name2);
-    twoplayersx5(name1,name2);
+    char name[10];
+    GetName(name);
+    oneplayerx3(name);
+}
+void GetName (char p1[10])
+{
+    color(RED,"\n\n\n\n\n\n\t ENTER THE NAME OF THE PLAYER:");
+    printf(RED);gets(p1);printf(RESET);
+    system("cls");
 }
 
+/*void initialize_grid (int n,int m,char A[ ][n])
+{
+        A[0]={32,'1','2','3','4','5','6','7','8','9'};
+        A[1]={'1',254,32,254,32,254,32,254,32,254};
+        A[2]={'2',32,32,32,32,32,32,32,32,32};
+        A[3]={'3',254,32,254,32,254,32,254,32,254};
+        A[4]={'4',32,32,32,32,32,32,32,32,32};
+        A[5]={'5',254,32,254,32,254,32,254,32,254};
+        A[6]={'6',32,32,32,32,32,32,32,32,32};
+        A[7]={'7',254,32,254,32,254,32,254,32,254};
+        A[8]={'8',32,32,32,32,32,32,32,32,32};
+        A[9]{'9',254,32,254,32,254,32,254,32,254};
+    return 0;
 
+}*/
 

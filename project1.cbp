@@ -31,6 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="AI.h" />
 		<Unit filename="Display.h" />
 		<Unit filename="color.h" />
 		<Unit filename="main.c">
