@@ -673,10 +673,13 @@ while(1)
     }
     printf("\n");
    }
-   // previousbluewins=bluewins;previousredwins=redwins;
+   //initializing all variables with zero
+
     box1=0;box2=0;box4=0;box3=0;bluewins=0;redwins=0;noOfWinsPerTurn=0;turnsOfPlayer1=0;turnsOfPlayer2=0;windifference=0;
     printf("\ni=%d\n",N);
     printf("player = %d",player);
+
+    // adding the new points to the array of players
     if (player%2==1 && row!=-1)
     {
         playerOne[index1][0]=row;
@@ -697,9 +700,7 @@ while(1)
     }
 
 
-   //boxes checking
-   //row=0;
-   //col=1;
+
    //counting turns
    for (int i=0;i<20;i++)
    {
@@ -709,6 +710,7 @@ while(1)
         turnsOfPlayer2++;
 
    }
+   //getting value of all boxes after each turn
    for (int i=0;i<20;i++)
    {
         if ( playerOne[i][0]%2==0 && playerOne[i][1]%2==0)
@@ -1069,6 +1071,7 @@ while(1)
    //char shape;
    //player++;
 
+   //knowing whose player turn it is
    for(int i=0;i<20;i++)
    {
         if (playerOne[i][0]==-1 && playerOne[i][1]==-1)
@@ -1109,6 +1112,7 @@ while(1)
         }
    }
 
+    //getting the win difference
     for (int i=0;i<20;i++)
     {
         if (playerOne[i][0]==-1 && playerOne[i][1]==-1)
@@ -1139,7 +1143,7 @@ while(1)
 
    int timehrsMinSec[3]={0,0,0};
    getTime(timeOfBeginning,timehrsMinSec);
-//////////////////////////////////printing of the grid
+//////////////////////////////////printing of the grid making sure it doesnt print if row or col =0
    printf("\n\n");
 
    for (int i=0;i<6;i++){
@@ -1197,6 +1201,7 @@ while(1)
    printf("\n");
    }
 
+   //conditions of winning
    if (redwins>2)
    {
        color_str(RED,"\n\n\t\t\t\t\t",name1);color(RED,"  WINS!");
@@ -1222,6 +1227,7 @@ while(1)
 
        break;
    }
+
    else
    {
        color_str(RED,"\n\n\n\n\t",name1);  color_str(BLUE,"\t\t\t\t\t\t    ",name2);
@@ -1261,8 +1267,8 @@ while(1)
 
    if (row==1&&col==1)
    {
-       undo=1;
-       row=-1;
+       //undo=1;
+       //row=-1;
        if (turnsOfPlayer1==0 && turnsOfPlayer2==0)
        {
            system("cls");
@@ -1278,6 +1284,7 @@ while(1)
 
 
    }
+   /////////UNDO
    if (row==0 && col==0)
    {
 
@@ -1301,8 +1308,8 @@ while(1)
 
                printf("\nindexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx1 %d\n",index1);
                index1--;index2--;
-               /*if (index1<0)
-                break;*/
+               if (index1<0)
+                break;
                undo1array[indexOfUndo1][0]=playerOne[index1][0];
                undo1array[indexOfUndo1][1]=playerOne[index1][1];
                undo2array[indexOfUndo1][0]=playerTwo[index1][0];
@@ -1326,12 +1333,12 @@ while(1)
   else if (row==2 && col==2)
 
    {
-       NoOfLines++;
+       printf(" the index of undo %d",indexOfUndo1);
        row=-1;
        if (undo==0)
        {
            redo=0;
-           player--;
+           //player--;
            system("cls");
        }
        else if (undo==1)
@@ -1355,6 +1362,8 @@ while(1)
                 undo1array[indexOfUndo1][1]=-1;
                 undo2array[indexOfUndo1][0]=-1;
                 undo2array[indexOfUndo1][1]=-1;
+                NoOfLines++;
+                redo=1;
 
                 index1++;index2++;
                 }
@@ -1376,7 +1385,7 @@ while(1)
        if(row%2==0 && col%2==0 || row%2==1 && col%2==1|| row<1 || row>5||col<1||col>5)
    {
 
-       player--;
+       //player--;
        row=-1;
 
 
@@ -1386,7 +1395,7 @@ while(1)
            {
                if ( row==playerOne[k][0]&&col==playerOne[k][1] || row==playerTwo[k][0]&&col==playerTwo[k][1])
                {
-                    player--;
+                    //player--;
                     row=-1;
                     break;
                }
@@ -1431,7 +1440,7 @@ char A[10][10]={{32,'1','2','3','4','5','6','7','8','9'},
                   {'7',254,32,254,32,254,32,254,32,254},
                   {'8',32,32,32,32,32,32,32,32,32},
                   {'9',254,32,254,32,254,32,254,32,254}};
-int undo=0,indexOfUndo1=0,noOfWinsPerTurn=0,windifference=0,indexOfUndo2=0,N=0,x=0,redo=1,col=-1,row=-1,player=2,index1=0,index2=0,box1=0,box2=0,box3=0,box4=0,box5=0,box6=0,box7=0,box8=0,box9=0,box10=0,box11=0,box12=0,box13=0,box14=0,box15=0,box16=0,bluewins=0,redwins=0,previousbluewins=0,previousredwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,NoOfLines=12,timer=0;
+int undo=0,indexOfUndo1=0,noOfWinsPerTurn=0,windifference=0,indexOfUndo2=0,N=0,x=0,redo=1,col=-1,row=-1,player=2,index1=0,index2=0,bluewins=0,redwins=0,previousbluewins=0,previousredwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,NoOfLines=12,timer=0,box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16;
 char r[10],c[10];
 time_t timeOfBeginning=time(0);
 
@@ -1454,10 +1463,11 @@ while(1)
     }
     printf("\n");
    }
-    previousbluewins=bluewins;previousredwins=redwins;
-    box1=0;box2=0;box4=0;box3=0;bluewins=0;redwins=0;noOfWinsPerTurn=0;turnsOfPlayer1=0;turnsOfPlayer2=0;windifference=0;
+    //////////////INITIALIZING ALL VALUES WITH ZERO
+    bluewins=0;redwins=0;noOfWinsPerTurn=0;turnsOfPlayer1=0;turnsOfPlayer2=0;windifference=0;
     printf("\ni=%d\n",N);
     printf("player = %d",player);
+    ////////////ADDING THE TWO NEW POINTS
     if (player%2==1 && row!=-1)
     {
         playerOne[index1][0]=row;
@@ -1477,9 +1487,7 @@ while(1)
         NoOfLines--;
     }
 
-   //boxes checking
-   //row=0;
-   //col=1;
+
    //counting turns
    for (int i=0;i<40;i++)
    {
@@ -1489,9 +1497,11 @@ while(1)
         turnsOfPlayer2++;
 
    }
+   box5=0;box1=0;box2=0;box3=0;box4=0;box5=0;box6=0;box7=0;box8=0;box9=0;box10=0;box11=0;box12=0;box13=0;box14=0;box15=0;box16=0;
+   //////GETTING THE VALUES OF BOXES AFTER EACH TURN
    for (int i=0;i<40;i++)
    {
-        if ( playerOne[i][0]%2==0 && playerOne[i][1]%2==0)
+        if ( playerOne[i][0]%2==0 && playerOne[i][1]%2==0 && playerOne[i][0]!=-1 && playerOne[i][1]!=0 && playerTwo[i][0]%2==0 && playerTwo[i][1]%2==0 && playerTwo[i][0]!=-1 && playerTwo[i][1]!=0)
         {
             box1=box1;
         }
@@ -1536,6 +1546,7 @@ while(1)
                         if(playerOne[i][0]==2 &&playerOne[i][1]==4)
                         {
                             found=1;
+                            break;
                         }
 
                     }
@@ -1561,6 +1572,7 @@ while(1)
                         if(playerOne[i][0]==4 &&playerOne[i][1]==2)
                         {
                             found=1;
+                            break;
 
                         }
 
@@ -1590,6 +1602,7 @@ while(1)
                             if(playerOne[i][0]==4 &&playerOne[i][1]==4)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -1612,6 +1625,7 @@ while(1)
             if (0<playerOne[i][0] && playerOne[i][0]<4 && 4<playerOne[i][1] && playerOne[i][1]<8 )
             {
                 box5++;
+                printf ("\n7asaalleet f playerone\n");
                 if (box5==4)
                 {
                     int found=0;
@@ -1620,6 +1634,7 @@ while(1)
                             if(playerOne[i][0]==2 &&playerOne[i][1]==6)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -1650,6 +1665,7 @@ while(1)
                             if(playerOne[i][0]==2 &&playerOne[i][1]==8)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -1680,6 +1696,7 @@ while(1)
                             if(playerOne[i][0]==4 &&playerOne[i][1]==6)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -1705,6 +1722,7 @@ while(1)
                             if(playerOne[i][0]==4 &&playerOne[i][1]==8)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -1729,6 +1747,7 @@ while(1)
                             if(playerOne[i][0]==6 &&playerOne[i][1]==4)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -1753,6 +1772,7 @@ while(1)
                             if(playerOne[i][0]==6 &&playerOne[i][1]==2)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -1777,6 +1797,7 @@ while(1)
                             if(playerOne[i][0]==8 &&playerOne[i][1]==2)
                             {
                                 found=1;
+                                break;
                             }
                     }
                     if (found==0)
@@ -1800,6 +1821,7 @@ while(1)
                             if(playerOne[i][0]==8 &&playerOne[i][1]==4)
                             {
                                 found=1;
+                                break;
                             }
                     }
                     if (found==0)
@@ -1824,6 +1846,7 @@ while(1)
                             if(playerOne[i][0]==6 &&playerOne[i][1]==6)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -1848,6 +1871,7 @@ while(1)
                             if(playerOne[i][0]==6 &&playerOne[i][1]==8)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -1873,6 +1897,7 @@ while(1)
                             if(playerOne[i][0]==8 &&playerOne[i][1]==6)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -1897,6 +1922,7 @@ while(1)
                             if(playerOne[i][0]==8 &&playerOne[i][1]==8)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -1936,6 +1962,7 @@ while(1)
                             if (playerTwo[i][0]==2 &&playerTwo[i][1]==2)
                             {
                                 found=1;
+                                break;
                             }
 
 
@@ -1964,6 +1991,7 @@ while(1)
                         if (playerTwo[i][0]==2 &&playerTwo[i][1]==4)
                         {
                             found=1;
+                            break;
                         }
 
                     }
@@ -1993,6 +2021,7 @@ while(1)
                         if (playerTwo[i][0]==4 &&playerTwo[i][1]==2)
                         {
                             found=1;
+                            break;
                         }
 
                     }
@@ -2022,6 +2051,7 @@ while(1)
                     if(playerTwo[i][0]==4 &&playerTwo[i][1]==4)
                     {
                         found=1;
+                        break;
                     }
 
                 }
@@ -2039,6 +2069,7 @@ while(1)
             if (0<playerTwo[i][0] && playerTwo[i][0]<4 && 4<playerTwo[i][1] && playerTwo[i][1]<8 )
             {
                 box5++;
+                printf ("\n7asaalleet f playertwo\n");
                 if (box5==4)
                 {
                     int found=0;
@@ -2047,6 +2078,7 @@ while(1)
                             if(playerTwo[i][0]==2 &&playerTwo[i][1]==6)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -2077,6 +2109,7 @@ while(1)
                             if(playerTwo[i][0]==2 &&playerTwo[i][1]==8)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -2107,6 +2140,7 @@ while(1)
                             if(playerTwo[i][0]==4 &&playerTwo[i][1]==6)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -2132,6 +2166,7 @@ while(1)
                             if(playerTwo[i][0]==4 &&playerTwo[i][1]==8)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -2156,6 +2191,7 @@ while(1)
                             if(playerTwo[i][0]==6 &&playerTwo[i][1]==4)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -2180,6 +2216,7 @@ while(1)
                             if(playerTwo[i][0]==6 &&playerTwo[i][1]==2)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -2204,6 +2241,7 @@ while(1)
                             if(playerTwo[i][0]==8 &&playerTwo[i][1]==2)
                             {
                                 found=1;
+                                break;
                             }
                     }
                     if (found==0)
@@ -2227,6 +2265,7 @@ while(1)
                             if(playerTwo[i][0]==8 &&playerTwo[i][1]==4)
                             {
                                 found=1;
+                                break;
                             }
                     }
                     if (found==0)
@@ -2251,6 +2290,7 @@ while(1)
                             if(playerTwo[i][0]==6 &&playerTwo[i][1]==6)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -2275,6 +2315,7 @@ while(1)
                             if(playerTwo[i][0]==6 &&playerTwo[i][1]==8)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -2300,6 +2341,7 @@ while(1)
                             if(playerTwo[i][0]==8 &&playerTwo[i][1]==6)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -2324,6 +2366,7 @@ while(1)
                             if(playerTwo[i][0]==8 &&playerTwo[i][1]==8)
                             {
                                 found=1;
+                                break;
                             }
 
                     }
@@ -2348,7 +2391,7 @@ while(1)
     printf("\nthe box1 are equal to %d",box1);
 
 
-        if (player%2==1){
+      /*  if (player%2==1){
         for(int i=1;i<40;i++)
         {
             if(playerOne[i][0]==-1&&playerOne[i][1]==-1 )
@@ -2380,7 +2423,7 @@ while(1)
             }
 
         }}
-
+*/
 
     printf("\nthe blue wins are equal to %d",bluewins);
     printf("\nthe red wins are equal to %d\n",redwins);
@@ -2402,7 +2445,7 @@ while(1)
     }
     printf("\n");
    }
-   printf("%d   %d   %d   %d",box1,box2,box3,box4);
+   printf("%d   %d   %d   %d  %d   %d  %d  %d   %d   %d   %d  %d  %d   %d   %d   %d   ",box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15 ,box16);
    //char shape;
    player++;
 
@@ -2411,7 +2454,7 @@ while(1)
    int timehrsMinSec[3]={0,0,0};
    getTime(timeOfBeginning,timehrsMinSec);
 
-
+////////GETTING WHOSE TURN IT IS
 
    for(int i=0;i<40;i++)
    {
@@ -2452,7 +2495,7 @@ while(1)
             }
         }
    }
-
+///////GETTING WINDIFFERENCE
     for (int i=0;i<40;i++)
     {
         if (playerOne[i][0]==-1 && playerOne[i][1]==-1)
@@ -2481,7 +2524,7 @@ while(1)
     printf("\n\n windifference %d\n\n",windifference);
 //////////////////////////////////printing of the grid
     printf("\n\n");
-
+/////////PRINTING THE GRID
    for (int i=0;i<sizeOfGrid;i++){
         printf("\t\t\t\t\t\t   ");
     for(int j=0;j<sizeOfGrid;j++){
@@ -2622,8 +2665,10 @@ while(1)
 
                printf("\nindexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx1 %d\n",index1);
                index1--;index2--;
-               /*if (index1<0)
-                break;*/
+               if (index1<0)
+                 {index1++;
+                  index2++;
+                break;}
                undo1array[indexOfUndo1][0]=playerOne[index1][0];
                undo1array[indexOfUndo1][1]=playerOne[index1][1];
                undo2array[indexOfUndo1][0]=playerTwo[index1][0];
@@ -2647,7 +2692,7 @@ while(1)
   else if (row==2 && col==2)
 
    {
-       NoOfLines++;
+
        row=-1;
        if (undo==0)
        {
@@ -2676,7 +2721,7 @@ while(1)
                 undo1array[indexOfUndo1][1]=-1;
                 undo2array[indexOfUndo1][0]=-1;
                 undo2array[indexOfUndo1][1]=-1;
-
+                NoOfLines++;
                 index1++;index2++;
                 }
 
@@ -2690,18 +2735,17 @@ while(1)
         undo=0;x=0;redo=1;
         negative_one(undo1array,20);
         negative_one(undo2array,20);
-        previousredwins=redwins;
-        previousbluewins=bluewins;
-       if(row%2==0 && col%2==0 || row%2==1 && col%2==1|| row<1 || row>5||col<1||col>5)
+
+       if(row%2==0 && col%2==0 || row%2==1 && col%2==1|| row<1 || row>sizeOfGrid-1||col<1||col>sizeOfGrid-1)
    {
 
-       player--;
+      // player--;
        row=-1;
 
 
    }
    else{
-   for (int k=0;k<12;k++)
+   for (int k=0;k<40;k++)
            {
                if ( row==playerOne[k][0]&&col==playerOne[k][1] || row==playerTwo[k][0]&&col==playerTwo[k][1])
                {
