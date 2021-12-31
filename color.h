@@ -71,13 +71,14 @@ void getTime (int timeOfBeginning,int timehrsMinSec[])
 void twoplayersNames(int x)
 {char name1[10],name2[10];
  GetNames(name1,name2);
-   switch(x)
+ twoplayers(name1,name2,x);
+  /* switch(x)
    {
     case(2):
         twoplayersx3(name1,name2);
     case(3):
         twoplayersx5(name1,name2);
-    }
+    }*/
 }
 
 int negative_one(char A[][2],int m)
