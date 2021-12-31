@@ -8,7 +8,7 @@
 
 int main()
 {
-
+menu();
 twoplayersNames(5);
 return 0;
 
