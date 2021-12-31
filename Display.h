@@ -98,6 +98,7 @@ void twoplayersx5(char name1[],char name2[])
 char playerOne[40][2]; negative_one(playerOne,40);
 char playerTwo[40][2]; negative_one(playerTwo,40);
 
+
 char A[10][10]= {{32,'1','2','3','4','5','6','7','8','9'},
                   {'1',254,32,254,32,254,32,254,32,254},
                   {'2',32,32,32,32,32,32,32,32,32},
@@ -110,7 +111,18 @@ char A[10][10]= {{32,'1','2','3','4','5','6','7','8','9'},
                   {'9',254,32,254,32,254,32,254,32,254}};
 int col=-1,row=-1,player=2,index1=0,index2=0,bluewins=0,redwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,NoOfLines=40,timer=0;
 int boxes[16]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-char r[10],c[10];
+
+char playerOne[12][2];negative_one(playerOne,12);
+char playerTwo[12][2];negative_one(playerTwo,12);
+char A[6][10]={{32,'1','2','3','4','5'},
+                  {'1',254,32,254,32,254},
+                  {'2',32,32,32,32,32},
+                  {'3',254,32,254,32,254},
+                  {'4',32,32,32,32,32},
+                  {'5',254,32,254,32,254}};
+int col=-1,row=-1,player=2,index1=0,index2=0,box1=0,box2=0,box3=0,box4=0,bluewins=0,redwins=0,previousbluewins=0,previousredwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,NoOfLines=12,timer=0;
+
+ngeschar r[10],c[10];
 time_t timeOfBeginning=time(0);
 
 
@@ -151,6 +163,7 @@ while(1)
         boxes[4]++;
 
     if (2<row && row<6 && 2<col && col<6 )
+<<<<<<< Updated upstream
         boxes[5]++;
 
     if (2<row && row<6 &&  4<col && col<8)
@@ -188,6 +201,14 @@ while(1)
         || boxes[8]==4 || boxes[9]==4 || boxes[10]==4 || boxes[11]==4 || boxes[12]==4 || boxes[13]==4 || boxes[14]==4 || boxes[15]==4)
     {
         if (boxes[0]==4)
+=======
+    {
+       box4++;
+    }
+    if (box1==4 || box2==4 || box3==4 || box4==4)
+    {
+        if (box1==4)
+>>>>>>> Stashed changes
         {
             A[2][2]=219;
             if (player%2==1)
