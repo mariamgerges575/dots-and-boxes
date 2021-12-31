@@ -33,6 +33,7 @@
 		</Compiler>
 		<Unit filename="AI.h" />
 		<Unit filename="Display.h" />
+		<Unit filename="ai with undo.h" />
 		<Unit filename="color.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
