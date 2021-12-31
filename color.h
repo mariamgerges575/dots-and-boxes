@@ -103,19 +103,66 @@ void GetName (char p1[10])
     system("cls");
 }
 
-/*void initialize_grid (int n,int m,char A[ ][n])
-{
-        A[0]={32,'1','2','3','4','5','6','7','8','9'};
-        A[1]={'1',254,32,254,32,254,32,254,32,254};
-        A[2]={'2',32,32,32,32,32,32,32,32,32};
-        A[3]={'3',254,32,254,32,254,32,254,32,254};
-        A[4]={'4',32,32,32,32,32,32,32,32,32};
-        A[5]={'5',254,32,254,32,254,32,254,32,254};
-        A[6]={'6',32,32,32,32,32,32,32,32,32};
-        A[7]={'7',254,32,254,32,254,32,254,32,254};
-        A[8]={'8',32,32,32,32,32,32,32,32,32};
-        A[9]{'9',254,32,254,32,254,32,254,32,254};
-    return 0;
+void initialize_grid(int m,char A[m][m])
+{   int i,j; char k=49;
+    A[0][0]=32;
+    for (i=1;i<m;i++)
+    {
+        A[0][i]=k;
+        A[i][0]=k++;
+    }
 
-}*/
+    for(i=1;i<m;i++)
+    {
+        for(j=1;j<m;j++)
+        {
+             if(i%2==0)
+            {
+               A[i][j]=32;
+            }
+            else if(i%2==1)
+            {
+                if(j%2==0)
+                    A[i][j]=32;
+                else
+                    A[i][j]=254;
+            }
+        }
+    }
+    return;
+}
+
+int choose_file()
+{   char s[10]; int x;
+    color(PURPLE,"\n 1 for file 1 \n 2 for file 2 \n 3 for file 3");
+    printf("\nenter the number");x=scan_int(s);
+    return x;
+}
+
+
+void continue_fn(FILE *file,int m,char player1[m][2],char player2[m][2])
+{   fopen(file,"r");
+    for(int i=10;i<m;i++)
+    {
+        fscanf(file ,"%c %c ",&player1[i][0],&player1[i][1]);
+    }
+    for(int i=10;i<m;i++)
+    {
+        fscanf(file ,"%c %c ",player2[i][0],player2[i][1]);
+    }
+    fclose(file);
+}
+void save (FILE *file,int m,char player1[m][2],char player2[m][2])
+{   fopen(file,"r");
+    for(int i=10;i<m;i++)
+    {
+        fprintf(file ,"%c %c ",player1[i][0],player1[i][1]);
+    }
+
+    for(int i=10;i<m;i++)
+    {
+        fprintf(file ,"%c %c ",player2[i][0],player2[i][1]);
+    }
+    fclose(file);
+}
 

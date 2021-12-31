@@ -2,12 +2,7 @@ void oneplayerx3(char name[])
  {
 char playerOne[12][2]; negative_one(playerOne,12);
 char computer[12][2]; negative_one(computer,12);
-char A[6][10]={{32,'1','2','3','4','5'},
-                  {'1',254,32,254,32,254},
-                  {'2',32,32,32,32,32},
-                  {'3',254,32,254,32,254},
-                  {'4',32,32,32,32,32},
-                  {'5',254,32,254,32,254}};
+char A[6][6]; initialize_grid(6,A);
 int col=-1,row=-1,player=2,index1=0,index2=0,bluewins=0,redwins=0,winner;
     char box1[4][2]={{1,2},{2,1},{3,2},{2,3}};
     char box2[4][2]={{1,4},{2,5},{2,3},{3,4}};

@@ -22,8 +22,6 @@ void menu(){
     default:
         menu();
     }
-
-
 }
 
 void players_mode_ui()
@@ -97,16 +95,7 @@ void twoplayersx5(char name1[],char name2[])
 char playerOne[40][2]; negative_one(playerOne,40);
 char playerTwo[40][2]; negative_one(playerTwo,40);
 
-char A[10][10]= {{32,'1','2','3','4','5','6','7','8','9'},
-                  {'1',254,32,254,32,254,32,254,32,254},
-                  {'2',32,32,32,32,32,32,32,32,32},
-                  {'3',254,32,254,32,254,32,254,32,254},
-                  {'4',32,32,32,32,32,32,32,32,32},
-                  {'5',254,32,254,32,254,32,254,32,254},
-                  {'6',32,32,32,32,32,32,32,32,32},
-                  {'7',254,32,254,32,254,32,254,32,254},
-                  {'8',32,32,32,32,32,32,32,32,32},
-                  {'9',254,32,254,32,254,32,254,32,254}};
+char A[10][10]; initialize_grid(10,A);
 int col=-1,row=-1,player=2,index1=0,index2=0,bluewins=0,redwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,NoOfLines=40,timer=0;
 int boxes[16]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 char r[10],c[10];
@@ -1410,7 +1399,7 @@ while(1)
  }
  }*/
 void twoplayers(char name1[],char name2[],int difficulty)
- {
+{
      int sizeOfGrid,noOfBoxes;
 if (difficulty==3)
 {
@@ -1429,16 +1418,7 @@ char undo1array[40][2];negative_one(undo1array,40);
 char undo2array[40][2];negative_one(undo2array,40);
 char playerOne[40][2];negative_one(playerOne,40);
 char playerTwo[40][2];negative_one(playerTwo,40);
-char A[10][10]={{32,'1','2','3','4','5','6','7','8','9'},
-                  {'1',254,32,254,32,254,32,254,32,254},
-                  {'2',32,32,32,32,32,32,32,32,32},
-                  {'3',254,32,254,32,254,32,254,32,254},
-                  {'4',32,32,32,32,32,32,32,32,32},
-                  {'5',254,32,254,32,254,32,254,32,254},
-                  {'6',32,32,32,32,32,32,32,32,32},
-                  {'7',254,32,254,32,254,32,254,32,254},
-                  {'8',32,32,32,32,32,32,32,32,32},
-                  {'9',254,32,254,32,254,32,254,32,254}};
+char A[10][10]; initialize_grid(10,A);
 int undo=0,indexOfUndo1=0,noOfWinsPerTurn=0,windifference=0,indexOfUndo2=0,N=0,x=0,redo=1,col=-1,row=-1,player=2,index1=0,index2=0,bluewins=0,redwins=0,previousbluewins=0,previousredwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,NoOfLines=12,timer=0,box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16;
 char r[10],c[10];
 time_t timeOfBeginning=time(0);
