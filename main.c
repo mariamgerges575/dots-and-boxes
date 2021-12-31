@@ -6,10 +6,12 @@
 #include "Display.h"
 #include "AI.h"
 
+
 int main()
 {
-menu();
-twoplayersNames(5);
+
+char name[4]="mmmm";
+oneplayerx3(name);
 return 0;
 
 }
