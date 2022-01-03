@@ -210,7 +210,7 @@ while(1)
    if (indwin[2]>noOfBoxes/2)
    {
        color(RED,"\n\n\tFIRST PLAYER WINS!");
-       color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
+       color(CYAN,"\n\n\tenter 4,4 for main menu");
        winner=1;
 
        break;
@@ -507,8 +507,10 @@ else if (row==2 && col==2)
 
        if (undo==0)
        {
-       row=-1;
        system("cls");
+       row=-1;
+       continue;
+
        }
        else{
        NoOfLines-=2;
