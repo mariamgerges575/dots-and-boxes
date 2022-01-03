@@ -150,12 +150,12 @@ void save (FILE *file,int m,int player1[m][2],int player2[m][2])
 {
     for(int i=10;i<m;i++)
     {
-        fprintf(file ,"%d %d ",player1[i][0],player1[i][1]);
+        fprintf(file ,"%d%d",player1[i][0],player1[i][1]);
     }
 
     for(int i=10;i<m;i++)
     {
-        fprintf(file ,"%d %d ",player2[i][0],player2[i][1]);
+        fprintf(file ,"%d%d",player2[i][0],player2[i][1]);
     }
 
 }

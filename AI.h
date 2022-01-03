@@ -1,12 +1,13 @@
 void oneplayerx3(char name[],int difficulty)
 {
-int sizeOfGrid,noOfBoxes,turns,maxi,maxturns;
+int sizeOfGrid,noOfBoxes,turns,maxi,maxturns,maxlines;
 if (difficulty==2)
 {
      sizeOfGrid=6;
      noOfBoxes=4;
      maxi=3;
-     maxturns=12;
+     maxturns=24;
+     maxlines=12;
 
 }
 else if (difficulty==3)
@@ -14,14 +15,15 @@ else if (difficulty==3)
      sizeOfGrid=10;
      noOfBoxes=16;
      maxi=7;
-     maxturns=40;
+     maxturns=60;
+     maxlines=40;
 }
 int undo1array[maxturns][2];negative_one(undo1array,maxturns);
 int undo2array[maxturns][2];negative_one(undo2array,maxturns);
 int playerOne[maxturns][2];negative_one(playerOne,maxturns);
 int computer[maxturns][2];negative_one(computer,maxturns);
 char A[sizeOfGrid][sizeOfGrid]; initialize_grid(sizeOfGrid,A);
-int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=maxturns,undo=0,indexOfUndo1=0,windifference=0,N=0,x=0,redo=1,timer=0;
+int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=maxlines,undo=0,indexOfUndo1=0,windifference=0,N=0,x=0,redo=1,timer=0;
     int box1array[4][2]={{1,2},{2,1},{2,3},{3,2}};
     int box2array[4][2]={{1,4},{2,5},{2,3},{3,4}};
     int box3array[4][2]={{1,6},{2,5},{2,7},{3,6}};
@@ -217,7 +219,7 @@ while(1)
    else if(indwin[3]>noOfBoxes/2)
    {
        color(BLUE,"\n\n\tcomputer WINS!");
-       color(CYAN,"\n\n\tenter 3,3 for main menu");
+       color(CYAN,"\n\n\tenter 4,4 for main menu");
        winner=2;
 
        break;
@@ -388,7 +390,7 @@ while(1)
 
 ////////////////////
 if (row==1 && col==1)
-{   if(NoOfLines==maxturns)
+{   if(NoOfLines==maxlines)
     {
        printf("no possible undo");
        row=-1;

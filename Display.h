@@ -92,20 +92,20 @@ void difficulty_mode_ui(int p)
 
 void twoplayers(char name1[],char name2[],int difficulty)
 {
-     int sizeOfGrid,noOfBoxes,maxi,maxturns;
+     int sizeOfGrid,noOfBoxes,maxi,maxturns,maxlines;
 if (difficulty==2)
 {
      sizeOfGrid=6;
      noOfBoxes=4;
      maxi=3;
-     maxturns=12;
+     maxturns=24; maxlines=12;
 }
 else if (difficulty==3)
 {
      sizeOfGrid=10;
      noOfBoxes=16;
      maxi=7;
-     maxturns=40;
+     maxturns=60; maxlines=40;
 }
 int bluewinsarray[12],redwinsarray[12],box1array[12],box2array[12],box3array[12],box4array[12];
 zeros(12,bluewinsarray);zeros(12,redwinsarray);zeros(12,box1array);zeros(12,box2array);zeros(12,box3array);zeros(12,box4array);
@@ -115,7 +115,7 @@ int undo2array[maxturns][2];negative_one(undo2array,maxturns);
 int playerOne[maxturns][2];negative_one(playerOne,maxturns);
 int playerTwo[maxturns][2];negative_one(playerTwo,maxturns);
 char A[sizeOfGrid][sizeOfGrid]; initialize_grid(sizeOfGrid,A);
-int undo=0,indexOfUndo1=0,noOfWinsPerTurn=0,windifference=0,indexOfUndo2=0,N=0,x=0,redo=1,col=-1,row=-1,player=2,previousbluewins=0,previousredwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,timer=0,noOflines=maxturns;
+int undo=0,indexOfUndo1=0,noOfWinsPerTurn=0,windifference=0,indexOfUndo2=0,N=0,x=0,redo=1,col=-1,row=-1,player=2,previousbluewins=0,previousredwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,timer=0,noOflines=maxlines;
 char r[10],c[10]; int boxes[noOfBoxes]; zeros(noOfBoxes,boxes);
 time_t timeOfBeginning=time(0);
 int indwin[4]; zeros(4,indwin); //[0]=index1,[1]=index2,[2]=redwins,[3]=bluewins;
@@ -372,7 +372,7 @@ while(1)
 ////////////Undo////////////
    if (row==1 && col==1)
    {
-       if(noOflines==maxturns)
+       if(noOflines==maxlines)
        {
            printf("no possible undo");
        }
@@ -463,7 +463,7 @@ while(1)
    else if (row==3 && col==3)
    {
     FILE *file=fopen("file.txt","w");
-    save(file,40,playerOne,playerTwo);
+    save(file,maxturns,playerOne,playerTwo);
     fclose(file);
     system("cls");
     menu();
