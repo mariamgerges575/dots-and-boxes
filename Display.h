@@ -307,6 +307,16 @@ while(1)
     }}
    printf("\n");
    }
+
+   ///////////////counting no of lines
+   noOflines=maxlines;
+   for (int i=0;i<maxturns;i++)
+   {
+       if (playerOne[i][0]%2==1 && playerOne[i][1]%2==0 || playerOne[i][0]==0 && playerOne[i][1]==1 )
+        noOflines--;
+      if (playerTwo[i][0]%2==1 && playerTwo[i][1]%2==0 || playerTwo[i][0]==0 && playerTwo[i][1]==1 )
+        noOflines--;
+   }
 //////////////////////////////////////////////
    if (indwin[2]>noOfBoxes/2)
    {
@@ -341,10 +351,7 @@ while(1)
        color_int(RED,"\n\n\tfirst player's score:",indwin[2]);  color_int(BLUE,"\t\t\t\t   second player's score:",indwin[3]);
        color_int(YELLOW,"\n\n\tnumber of remaining lines:",noOflines);color_int(YELLOW,"\t\t\t TIME: ",timehrsMinSec[0]);color_int(YELLOW,":",timehrsMinSec[1]);color_int(YELLOW,":",timehrsMinSec[2]);
        color(CYAN,"\n\n\tenter 1,1 for undo\t 2,2 for redo\t3,3 for save\t4,4 for main menu\t1,1 for clear");
-       if (redo==0)
-       {
-           printf("\n\n\n\n\t NO POINTS TO REDO\nenter another two points\n\n");
-       }
+
 //////////////choose row and colum////////////////
    if (player%2==1)
    {
@@ -376,7 +383,6 @@ while(1)
        {
            printf("no possible undo");
            row=-1;
-           system("cls");
        }
        else{
        noOflines++;

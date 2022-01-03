@@ -41,7 +41,7 @@ int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=ma
     int box15array[4][2]={{9,6},{8,5},{8,7},{7,6}};
     int box16array[4][2]={{9,8},{8,9},{8,7},{7,8}};
     int boxes[noOfBoxes]; zeros(noOfBoxes,boxes);
-    int box_index[16]; zeros(noOfBoxes,box_index); int indwin[4]; zeros(4,indwin);
+    int box_index[noOfBoxes]; zeros(noOfBoxes,box_index); int indwin[4]; zeros(4,indwin);
     int box=-1 ;
 char r[10],c[10];
 while(1)
@@ -82,7 +82,7 @@ while(1)
    check_boxes(playerOne,computer,noOfBoxes,boxes,maxi,indwin,maxturns);
     for (int k=0;k<noOfBoxes;k++)
     {
-        printf("%d\t%d\n",boxes[k],box_index[k]);
+        printf("%d\n",boxes[k]);
     }
 ////////gwtting whose turn
    for(int i=0;i<maxturns;i++)
@@ -313,23 +313,23 @@ while(1)
             box=-1;
             break;
         case 2:
-            row=box5array[box_index[4]][0];
-            col=box5array[box_index[4]++][1];
+            row=box5array[box_index[2]][0];
+            col=box5array[box_index[2]++][1];
             box=-1;
             break;
         case 3:
-            row=box6array[box_index[5]][0];
-            col=box6array[box_index[5]++][1];
+            row=box6array[box_index[3]][0];
+            col=box6array[box_index[3]++][1];
             box=-1;
             break;
         case 4:
-            row=box3array[box_index[2]][0];
-            col=box3array[box_index[2]++][1];
+            row=box3array[box_index[4]][0];
+            col=box3array[box_index[4]++][1];
             box=-1;
             break;
         case 5:
-            row=box4array[box_index[3]][0];
-            col=box4array[box_index[3]++][1];
+            row=box4array[box_index[5]][0];
+            col=box4array[box_index[5]++][1];
             box=-1;
             break;
         case 6:
@@ -407,7 +407,7 @@ if (row==1 && col==1)
             {
                 if (indwin[0]<0)
                 {
-                    indwin[0]++;indwin[1]++;
+
                     na2esWa7da=0;
                     break;
                 }
@@ -429,7 +429,7 @@ if (row==1 && col==1)
             {
                 if (indwin[0]<0)
                 {
-                    indwin[0]++;indwin[1]++;
+                    indwin[0]=indwin[0];
                 }
                 else
                 {
@@ -441,6 +441,7 @@ if (row==1 && col==1)
                     playerOne[indwin[0]][1]=-1;
                     computer[indwin[0]][0]=-1;
                     computer[indwin[0]][1]=-1;
+                    indwin[0]--;indwin[1]--;
 
                 }
             }
@@ -451,7 +452,7 @@ if (row==1 && col==1)
             {
                 if (indwin[0]<0)
                 {
-                    indwin[0]++;indwin[1]++;
+
                     na2esWa7da=0;
                     break;
                 }
@@ -475,7 +476,7 @@ if (row==1 && col==1)
             {
                 if (indwin[0]<0)
                 {
-                    indwin[0]++;indwin[1]++;
+                    indwin[0]=indwin[0];
                 }
                 else
                 {
@@ -487,6 +488,7 @@ if (row==1 && col==1)
                     playerOne[indwin[0]][1]=-1;
                     computer[indwin[0]][0]=-1;
                     computer[indwin[0]][1]=-1;
+                    indwin[0]--;indwin[1]--;
 
                 }
           }
@@ -495,6 +497,7 @@ if (row==1 && col==1)
     col=-1;
     undo=1;
     system("cls");
+    indwin[0]++;indwin[1]++;
 
 
     }
@@ -508,6 +511,7 @@ else if (row==2 && col==2)
        if (undo==0)
        {
        system("cls");
+
        row=-1;
        continue;
 
@@ -526,7 +530,7 @@ else if (row==2 && col==2)
                     redo=0;
                     undo=0;
                     na2esWa7da=0;
-                    indexOfUndo1++;
+                    indexOfUndo1=indexOfUndo1;
                     break;
                 }
                 else
@@ -547,7 +551,7 @@ else if (row==2 && col==2)
 
         if (indexOfUndo1<0)
            {
-            indexOfUndo1++;
+            indexOfUndo1=indexOfUndo1;
            }
            else
            {
@@ -569,7 +573,7 @@ else if (row==2 && col==2)
                     redo=0;
                     undo=0;
                     na2esWa7da=0;
-                    indexOfUndo1++;
+                    indexOfUndo1=indexOfUndo1;
                     break;
                 }
                 else
@@ -587,7 +591,7 @@ else if (row==2 && col==2)
            }
            if (indexOfUndo1<0)
            {
-               indexOfUndo1++;
+               indexOfUndo1=indexOfUndo1;
            }
            else
            {
@@ -605,7 +609,7 @@ else if (row==2 && col==2)
        {
            if (indexOfUndo1<0)
            {
-               indexOfUndo1++;
+               indexOfUndo1=indexOfUndo1;
            }
            else
             {
@@ -620,14 +624,15 @@ else if (row==2 && col==2)
                 indwin[0]++;indwin[1]++;
             }
        }
-       row=-1;
+
+    }
+
+    row=-1;
        col=-1;
        system("cls");
        indexOfUndo1++;
-    }
-
-
    }
+
    }
 else if (row==3 && col==3)
 {
