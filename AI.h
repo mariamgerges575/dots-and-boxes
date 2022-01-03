@@ -41,7 +41,7 @@ int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=ma
     int box15array[4][2]={{9,6},{8,5},{8,7},{7,6}};
     int box16array[4][2]={{9,8},{8,9},{8,7},{7,8}};
     int boxes[noOfBoxes]; zeros(noOfBoxes,boxes);
-    int box_index[noOfBoxes]; zeros(noOfBoxes,box_index); int indwin[4]; zeros(4,indwin);
+    int box_index[16]; zeros(noOfBoxes,box_index); int indwin[4]; zeros(4,indwin);
     int box=-1 ;
 char r[10],c[10];
 while(1)
@@ -82,7 +82,7 @@ while(1)
    check_boxes(playerOne,computer,noOfBoxes,boxes,maxi,indwin,maxturns);
     for (int k=0;k<noOfBoxes;k++)
     {
-        printf("%d\n",boxes[k]);
+        printf("%d\t%d\n",boxes[k],box_index[k]);
     }
 ////////gwtting whose turn
    for(int i=0;i<maxturns;i++)
@@ -313,23 +313,23 @@ while(1)
             box=-1;
             break;
         case 2:
-            row=box5array[box_index[2]][0];
-            col=box5array[box_index[2]++][1];
+            row=box5array[box_index[4]][0];
+            col=box5array[box_index[4]++][1];
             box=-1;
             break;
         case 3:
-            row=box6array[box_index[3]][0];
-            col=box6array[box_index[3]++][1];
+            row=box6array[box_index[5]][0];
+            col=box6array[box_index[5]++][1];
             box=-1;
             break;
         case 4:
-            row=box3array[box_index[4]][0];
-            col=box3array[box_index[4]++][1];
+            row=box3array[box_index[2]][0];
+            col=box3array[box_index[2]++][1];
             box=-1;
             break;
         case 5:
-            row=box4array[box_index[5]][0];
-            col=box4array[box_index[5]++][1];
+            row=box4array[box_index[3]][0];
+            col=box4array[box_index[3]++][1];
             box=-1;
             break;
         case 6:

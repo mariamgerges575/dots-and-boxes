@@ -375,6 +375,8 @@ while(1)
        if(noOflines==maxlines)
        {
            printf("no possible undo");
+           row=-1;
+           system("cls");
        }
        else{
        noOflines++;
