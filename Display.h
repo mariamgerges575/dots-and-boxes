@@ -328,7 +328,7 @@ while(1)
    else if (indwin[2]==noOfBoxes/2 && indwin[3]==noOfBoxes/2)
    {
        printf ("\n\n\t tie");
-       color(CYAN,"\n\n\tenter 3,3 for main menu");
+       color(CYAN,"\n\n\tenter 4,4 for main menu");
        winner=0;
 
        break;
