@@ -81,7 +81,7 @@ void twoplayersNames(int x)
     }*/
 }
 
-int negative_one(char A[][2],int m)
+void negative_one(int A[][2],int m)
 {
     for (int i=0;i<m;i++)
     {
@@ -89,12 +89,19 @@ int negative_one(char A[][2],int m)
         A[i][1]=-1;
     }
 }
+void zeros(int m ,int A[m])
+{
+    for (int i=0;i<m;i++)
+    {
+        A[i]=0;
+    }
+}
 
-void oneplayerName()
+void oneplayerName(int x)
 {
     char name[10];
     GetName(name);
-    oneplayerx3(name);
+    oneplayerx3(name,x);
 }
 void GetName (char p1[10])
 {
@@ -139,30 +146,104 @@ int choose_file()
     return x;
 }
 
-
-void continue_fn(FILE *file,int m,char player1[m][2],char player2[m][2])
-{   fopen(file,"r");
+void save (FILE *file,int m,int player1[m][2],int player2[m][2])
+{
     for(int i=10;i<m;i++)
     {
-        fscanf(file ,"%c %c ",&player1[i][0],&player1[i][1]);
-    }
-    for(int i=10;i<m;i++)
-    {
-        fscanf(file ,"%c %c ",player2[i][0],player2[i][1]);
-    }
-    fclose(file);
-}
-void save (FILE *file,int m,char player1[m][2],char player2[m][2])
-{   fopen(file,"r");
-    for(int i=10;i<m;i++)
-    {
-        fprintf(file ,"%c %c ",player1[i][0],player1[i][1]);
+        fprintf(file ,"%d %d ",player1[i][0],player1[i][1]);
     }
 
     for(int i=10;i<m;i++)
     {
-        fprintf(file ,"%c %c ",player2[i][0],player2[i][1]);
+        fprintf(file ,"%d %d ",player2[i][0],player2[i][1]);
+    }
+
+}
+void continue_fn(FILE *file,int m,int player1[m][2],int player2[m][2])
+{   file=fopen("file.txt","r");
+    for(int i=10;i<m;i++)
+    {
+        fscanf(file ,"%d %d ",&player1[i][0],&player1[i][1]);
+    }
+    for(int i=10;i<m;i++)
+    {
+        fscanf(file ,"%d %d ",&player2[i][0],&player2[i][1]);
     }
     fclose(file);
 }
+
+
+void check_boxes(int player1[40][2],int player2[40][2],int noOfboxes,int boxes[noOfboxes],int maxi, int indwin[4],int maxturns)
+{  int k=0,box=0,colwin=2,rowwin=2,i,j,M,found1=0,found2=0;
+    while(k<maxturns && (player1[k][0]!=-1 || player1[k][0]!=-1 || player2[k][0]!=-1 || player2[k][0]!=-1))
+    {   rowwin=2; box=0;
+        for ( i=0;i<maxi;i+=2)
+        {   colwin=2;
+            for( j=0;j<maxi;j+=2)
+            {
+                if(i<player1[k][0] && player1[k][0]<(i+4) && j<player1[k][1] && player1[k][1]<(j+4)  || i<player2[k][0] && player2[k][0]<(i+4) && j<player2[k][1] && player2[k][1]<(j+4) )
+                {
+
+                     if( i<player1[k][0] && player1[k][0]<(i+4) && j<player1[k][1] && player1[k][1]<(j+4) && (player1[k][0]%2!=0 || player1[k][1]%2!=0) )
+                    {
+                        boxes[box]++;
+                        if(boxes[box]==4)
+                        {   found1=0; M=0;
+                            while ( M<maxturns && (player1[k][0]!=-1 || player1[k][0]!=-1) )
+                            {
+                                if (player1[M][0]==rowwin && player1[M][1]==colwin)
+                                {
+                                   found1=1;
+                                   break;
+                                }
+                            M++;
+                            }
+                            if (found1==0)
+                            {
+                               player1[indwin[0]][0]=rowwin;
+                               player1[indwin[0]++][1]=colwin;
+                               player2[indwin[1]][0]=-1;
+                               player2[indwin[1]++][1]=0;
+                            }
+
+
+                        indwin[2]++;
+                        }
+                    }
+                    else if ( i<player2[k][0] && player2[k][0]<(i+4) && j<player2[k][1] && player2[k][1]<(j+4) && ( player2[k][0]%2!=0 || player2[k][1]%2!=0 ) )
+                    {
+                        boxes[box]++;
+                        if(boxes[box]==4)
+                        {   found2=0; M=0;
+                            while (M<maxturns && (player2[k][0]!=-1 || player2[k][0]!=-1) )
+                            {
+                                if (player2[M][0]==rowwin && player2[M][1]==colwin)
+                                {
+                                    found2=1;
+                                    break;
+                                }
+                            M++;
+                            }
+                            if (found2==0)
+                            {
+                                player1[indwin[0]][0]=-1;
+                                player1[indwin[0]++][1]=0;
+                                player2[indwin[1]][0]=rowwin;
+                                player2[indwin[1]++][1]=colwin;
+                            }
+                        indwin[3]++;
+                        }
+                    }
+                }
+
+            box++;
+            colwin+=2;
+            }
+
+        rowwin+=2;
+        }
+     k++;
+    }
+}
+
 
