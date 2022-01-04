@@ -374,6 +374,76 @@ if (row==1 && col==1)
                     na2esWa7da=1;
                     playerOne[indwin[0]][0]=-1;
                     playerOne[indwin[0]][1]=-1;
+                    printf ("%d %d",computer[indwin[0]][0],computer[indwin[0]][1]);
+                   for (int i=0;i<4;i++)
+                    {
+                        if (computer[indwin[0]][0]==box1array[i][0] && computer[indwin[0]][1]==box1array[i][1])
+                        {
+                            box_index[0]--;
+                        }
+                        if (computer[indwin[0]][0]==box2array[i][0] && computer[indwin[0]][1]==box2array[i][1])
+                        {
+                            box_index[1]--;
+                        }
+                        if (computer[indwin[0]][0]==box3array[i][0] && computer[indwin[0]][1]==box3array[i][1])
+                        {
+                            box_index[2]--;
+                        }
+                        if (computer[indwin[0]][0]==box6array[i][0] && computer[indwin[0]][1]==box6array[i][1])
+                        {
+                            box_index[3]--;
+                        }
+                        if (computer[indwin[0]][0]==box5array[i][0] && computer[indwin[0]][1]==box5array[i][1])
+                        {
+                            box_index[4]--;
+                        }
+                        if (computer[indwin[0]][0]==box6array[i][0] && computer[indwin[0]][1]==box6array[i][1])
+                        {
+                            box_index[5]--;
+                        }
+                        if (computer[indwin[0]][0]==box7array[i][0] && computer[indwin[0]][1]==box7array[i][1])
+                        {
+                            box_index[6]--;
+                        }
+                        if (computer[indwin[0]][0]==box8array[i][0] && computer[indwin[0]][1]==box8array[i][1])
+                        {
+                            box_index[7]--;
+                        }
+                        if (computer[indwin[0]][0]==box9array[i][0] && computer[indwin[0]][1]==box9array[i][1])
+                        {
+                            box_index[8]--;
+                        }
+                        if (computer[indwin[0]][0]==box10array[i][0] && computer[indwin[0]][1]==box10array[i][1])
+                        {
+                            box_index[9]--;
+                        }
+                        if (computer[indwin[0]][0]==box11array[i][0] && computer[indwin[0]][1]==box11array[i][1])
+                        {
+                            box_index[10]--;
+                        }
+                        if (computer[indwin[0]][0]==box12array[i][0] && computer[indwin[0]][1]==box12array[i][1])
+                        {
+                            box_index[11]--;
+                        }
+                        if (computer[indwin[0]][0]==box13array[i][0] && computer[indwin[0]][1]==box13array[i][1])
+                        {
+                            box_index[12]--;
+                        }
+                        if (computer[indwin[0]][0]==box14array[i][0] && computer[indwin[0]][1]==box14array[i][1])
+                        {
+                            box_index[13]--;
+                        }
+                        if (computer[indwin[0]][0]==box15array[i][0] && computer[indwin[0]][1]==box15array[i][1])
+                        {
+                            box_index[14]--;
+                        }
+                        if (computer[indwin[0]][0]==box16array[i][0] && computer[indwin[0]][1]==box16array[i][1])
+                        {
+                            box_index[15]--;
+                        }
+
+
+                    }
                     computer[indwin[0]][0]=-1;
                     computer[indwin[0]][1]=-1;
                     indwin[0]--;indwin[1]--;
@@ -393,6 +463,75 @@ if (row==1 && col==1)
                     undo2array[indexOfUndo1++][1]=computer[indwin[0]][1];
                     playerOne[indwin[0]][0]=-1;
                     playerOne[indwin[0]][1]=-1;
+                    for (int i=0;i<4;i++)
+                    {
+                        if (computer[indwin[0]][0]==box1array[i][0] && computer[indwin[0]][1]==box1array[i][1])
+                        {
+                            box_index[0]--;
+                        }
+                        if (computer[indwin[0]][0]==box2array[i][0] && computer[indwin[0]][1]==box2array[i][1])
+                        {
+                            box_index[1]--;
+                        }
+                        if (computer[indwin[0]][0]==box3array[i][0] && computer[indwin[0]][1]==box4array[i][1])
+                        {
+                            box_index[2]--;
+                        }
+                        if (computer[indwin[0]][0]==box4array[i][0] && computer[indwin[0]][1]==box4array[i][1])
+                        {
+                            box_index[3]--;
+                        }
+                        if (computer[indwin[0]][0]==box5array[i][0] && computer[indwin[0]][1]==box5array[i][1])
+                        {
+                            box_index[4]--;
+                        }
+                        if (computer[indwin[0]][0]==box6array[i][0] && computer[indwin[0]][1]==box6array[i][1])
+                        {
+                            box_index[5]--;
+                        }
+                        if (computer[indwin[0]][0]==box7array[i][0] && computer[indwin[0]][1]==box7array[i][1])
+                        {
+                            box_index[6]--;
+                        }
+                        if (computer[indwin[0]][0]==box8array[i][0] && computer[indwin[0]][1]==box8array[i][1])
+                        {
+                            box_index[7]--;
+                        }
+                        if (computer[indwin[0]][0]==box9array[i][0] && computer[indwin[0]][1]==box9array[i][1])
+                        {
+                            box_index[8]--;
+                        }
+                        if (computer[indwin[0]][0]==box10array[i][0] && computer[indwin[0]][1]==box10array[i][1])
+                        {
+                            box_index[9]--;
+                        }
+                        if (computer[indwin[0]][0]==box11array[i][0] && computer[indwin[0]][1]==box11array[i][1])
+                        {
+                            box_index[10]--;
+                        }
+                        if (computer[indwin[0]][0]==box12array[i][0] && computer[indwin[0]][1]==box12array[i][1])
+                        {
+                            box_index[11]--;
+                        }
+                        if (computer[indwin[0]][0]==box13array[i][0] && computer[indwin[0]][1]==box13array[i][1])
+                        {
+                            box_index[12]--;
+                        }
+                        if (computer[indwin[0]][0]==box14array[i][0] && computer[indwin[0]][1]==box14array[i][1])
+                        {
+                            box_index[13]--;
+                        }
+                        if (computer[indwin[0]][0]==box15array[i][0] && computer[indwin[0]][1]==box15array[i][1])
+                        {
+                            box_index[14]--;
+                        }
+                        if (computer[indwin[0]][0]==box16array[i][0] && computer[indwin[0]][1]==box16array[i][1])
+                        {
+                            box_index[15]--;
+                        }
+
+
+                    }
                     computer[indwin[0]][0]=-1;
                     computer[indwin[0]][1]=-1;
                     indwin[0]--;indwin[1]--;
@@ -418,6 +557,75 @@ if (row==1 && col==1)
                     undo2array[indexOfUndo1++][1]=computer[indwin[0]][1];
                     playerOne[indwin[0]][0]=-1;
                     playerOne[indwin[0]][1]=-1;
+                  for (int i=0;i<4;i++)
+                    {
+                        if (computer[indwin[0]][0]==box1array[i][0] && computer[indwin[0]][1]==box1array[i][1])
+                        {
+                            box_index[0]--;
+                        }
+                        if (computer[indwin[0]][0]==box2array[i][0] && computer[indwin[0]][1]==box2array[i][1])
+                        {
+                            box_index[1]--;
+                        }
+                        if (computer[indwin[0]][0]==box3array[i][0] && computer[indwin[0]][1]==box3array[i][1])
+                        {
+                            box_index[2]--;
+                        }
+                        if (computer[indwin[0]][0]==box4array[i][0] && computer[indwin[0]][1]==box4array[i][1])
+                        {
+                            box_index[3]--;
+                        }
+                        /*if (computer[indwin[0]][0]==box5array[i][0] && computer[indwin[0]][1]==box5array[i][1])
+                        {
+                            box_index[4]--;
+                        }
+                        if (computer[indwin[0]][0]==box6array[i][0] && computer[indwin[0]][1]==box6array[i][1])
+                        {
+                            box_index[5]--;
+                        }
+                        if (computer[indwin[0]][0]==box7array[i][0] && computer[indwin[0]][1]==box7array[i][1])
+                        {
+                            box_index[6]--;
+                        }
+                        if (computer[indwin[0]][0]==box8array[i][0] && computer[indwin[0]][1]==box8array[i][1])
+                        {
+                            box_index[7]--;
+                        }
+                        if (computer[indwin[0]][0]==box9array[i][0] && computer[indwin[0]][1]==box9array[i][1])
+                        {
+                            box_index[8]--;
+                        }
+                        if (computer[indwin[0]][0]==box10array[i][0] && computer[indwin[0]][1]==box10array[i][1])
+                        {
+                            box_index[9]--;
+                        }
+                        if (computer[indwin[0]][0]==box11array[i][0] && computer[indwin[0]][1]==box11array[i][1])
+                        {
+                            box_index[10]--;
+                        }
+                        if (computer[indwin[0]][0]==box12array[i][0] && computer[indwin[0]][1]==box12array[i][1])
+                        {
+                            box_index[11]--;
+                        }
+                        if (computer[indwin[0]][0]==box13array[i][0] && computer[indwin[0]][1]==box13array[i][1])
+                        {
+                            box_index[12]--;
+                        }
+                        if (computer[indwin[0]][0]==box14array[i][0] && computer[indwin[0]][1]==box14array[i][1])
+                        {
+                            box_index[13]--;
+                        }
+                        if (computer[indwin[0]][0]==box15array[i][0] && computer[indwin[0]][1]==box15array[i][1])
+                        {
+                            box_index[14]--;
+                        }
+                        if (computer[indwin[0]][0]==box16array[i][0] && computer[indwin[0]][1]==box16array[i][1])
+                        {
+                            box_index[15]--;
+                        }*/
+
+
+                    }
                     computer[indwin[0]][0]=-1;
                     computer[indwin[0]][1]=-1;
                     indwin[0]--;indwin[1]--;
@@ -440,6 +648,75 @@ if (row==1 && col==1)
                     undo2array[indexOfUndo1++][1]=computer[indwin[0]][1];
                     playerOne[indwin[0]][0]=-1;
                     playerOne[indwin[0]][1]=-1;
+                    for (int i=0;i<4;i++)
+                    {
+                        if (computer[indwin[0]][0]==box1array[i][0] && computer[indwin[0]][1]==box1array[i][1])
+                        {
+                            box_index[0]--;
+                        }
+                        if (computer[indwin[0]][0]==box2array[i][0] && computer[indwin[0]][1]==box2array[i][1])
+                        {
+                            box_index[1]--;
+                        }
+                        if (computer[indwin[0]][0]==box3array[i][0] && computer[indwin[0]][1]==box3array[i][1])
+                        {
+                            box_index[2]--;
+                        }
+                        if (computer[indwin[0]][0]==box4array[i][0] && computer[indwin[0]][1]==box4array[i][1])
+                        {
+                            box_index[3]--;
+                        }
+                       /* if (computer[indwin[0]][0]==box5array[i][0] && computer[indwin[0]][1]==box5array[i][1])
+                        {
+                            box_index[4]--;
+                        }
+                        if (computer[indwin[0]][0]==box6array[i][0] && computer[indwin[0]][1]==box6array[i][1])
+                        {
+                            box_index[5]--;
+                        }
+                        if (computer[indwin[0]][0]==box7array[i][0] && computer[indwin[0]][1]==box7array[i][1])
+                        {
+                            box_index[6]--;
+                        }
+                        if (computer[indwin[0]][0]==box8array[i][0] && computer[indwin[0]][1]==box8array[i][1])
+                        {
+                            box_index[7]--;
+                        }
+                        if (computer[indwin[0]][0]==box9array[i][0] && computer[indwin[0]][1]==box9array[i][1])
+                        {
+                            box_index[8]--;
+                        }
+                        if (computer[indwin[0]][0]==box10array[i][0] && computer[indwin[0]][1]==box10array[i][1])
+                        {
+                            box_index[9]--;
+                        }
+                        if (computer[indwin[0]][0]==box11array[i][0] && computer[indwin[0]][1]==box11array[i][1])
+                        {
+                            box_index[10]--;
+                        }
+                        if (computer[indwin[0]][0]==box12array[i][0] && computer[indwin[0]][1]==box12array[i][1])
+                        {
+                            box_index[11]--;
+                        }
+                        if (computer[indwin[0]][0]==box13array[i][0] && computer[indwin[0]][1]==box13array[i][1])
+                        {
+                            box_index[12]--;
+                        }
+                        if (computer[indwin[0]][0]==box14array[i][0] && computer[indwin[0]][1]==box14array[i][1])
+                        {
+                            box_index[13]--;
+                        }
+                        if (computer[indwin[0]][0]==box15array[i][0] && computer[indwin[0]][1]==box15array[i][1])
+                        {
+                            box_index[14]--;
+                        }
+                        if (computer[indwin[0]][0]==box16array[i][0] && computer[indwin[0]][1]==box16array[i][1])
+                        {
+                            box_index[15]--;
+                        }*/
+
+
+                    }
                     computer[indwin[0]][0]=-1;
                     computer[indwin[0]][1]=-1;
                     indwin[0]--;indwin[1]--;
@@ -590,6 +867,7 @@ else if (row==2 && col==2)
    }
 else if (row==3 && col==3)
 {
+
     FILE *file;
     save(file,maxturns,playerOne,computer);
     system("cls");
