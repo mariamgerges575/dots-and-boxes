@@ -1,4 +1,4 @@
-void oneplayerx3(char name[],int difficulty)
+void oneplayerx3(char name[],int difficulty,int continuefn)
 {
 int sizeOfGrid,noOfBoxes,turns,maxi,maxturns,maxlines;
 if (difficulty==2)
@@ -20,8 +20,6 @@ else if (difficulty==3)
 }
 int undo1array[maxturns][2];negative_one(undo1array,maxturns);
 int undo2array[maxturns][2];negative_one(undo2array,maxturns);
-int playerOne[maxturns][2];negative_one(playerOne,maxturns);
-int computer[maxturns][2];negative_one(computer,maxturns);
 char A[sizeOfGrid][sizeOfGrid]; initialize_grid(sizeOfGrid,A);
 int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=maxlines,undo=0,indexOfUndo1=0,windifference=0,N=0,x=0,redo=1,timer=0;
     int box1array[4][2]={{1,2},{2,1},{2,3},{3,2}};
@@ -43,7 +41,19 @@ int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=ma
     int boxes[noOfBoxes]; zeros(noOfBoxes,boxes);
     int box_index[noOfBoxes]; zeros(noOfBoxes,box_index); int indwin[4]; zeros(4,indwin);
     int box=-1 ;
-char r[10],c[10];
+    int playerOne[maxturns][2];int computer[maxturns][2];
+    if(continuefn==1)
+    {
+        FILE *file=open("file.txt","r");
+        continue_fn(file,maxturns,playerOne,computer);
+        close(file);
+    }
+    else{
+        negative_one(playerOne,maxturns);
+        negative_one(computer,maxturns);
+    }
+    time_t timeOfBeginning=time(0);
+    char r[10],c[10];
 while(1)
 
   {
@@ -77,14 +87,17 @@ while(1)
        if ( (computer[i][0]%2==1 && computer[i][1]%2==0 || computer[i][0]%2==0 && computer[i][1]%2==1)&& computer[i][0]!=-1)
         turnsOfPlayer2++;
 
-   }
-   //boxes checking
+   };
+////////////////boxes checking//////////////
+
    check_boxes(playerOne,computer,noOfBoxes,boxes,maxi,indwin,maxturns);
-    for (int k=0;k<noOfBoxes;k++)
-    {
-        printf("%d\n",boxes[k]);
-    }
-////////gwtting whose turn
+
+////////////////////////////////////////////////////timeeee
+
+   int timehrsMinSec[3]={0,0,0};
+   getTime(timeOfBeginning,timehrsMinSec);
+
+////////gwtting whose turn/////////////////
    for(int i=0;i<maxturns;i++)
    {
         if (playerOne[i][0]==-1 && playerOne[i][1]==-1)
@@ -183,13 +196,9 @@ while(1)
                   }
             if (i==playerOne[k][0]&&j==playerOne[k][1])
             {
-
                   color_char(RED,shape);
                   variable=1;
                   break;
-
-
-
             }
             else if (i==computer[k][0]&&j==computer[k][1])
             {
@@ -237,7 +246,7 @@ while(1)
        color_str(RED,"\n\tfirst player's name:",name);  color_str(BLUE,"\t\t\t\t\t   second player's name:","computer");
        color_int(RED,"\n\n\tnumber of moves for first player:",turnsOfPlayer1); color_int(BLUE,"\t\t\t\t   number of moves for second player:",turnsOfPlayer2);
        color_int(RED,"\n\n\tfirst player's score:",indwin[2]);  color_int(BLUE,"\t\t\t\t\t\t   second player's score:",indwin[3]);
-       color_int(YELLOW,"\n\n\tnumber of remaining lines:",NoOfLines);
+       color_int(YELLOW,"\n\n\tnumber of remaining lines:",NoOfLines);color_int(YELLOW,"\t\t\t\t\t   TIME: ",timehrsMinSec[0]);color_int(YELLOW,":",timehrsMinSec[1]);color_int(YELLOW,":",timehrsMinSec[2]);
        color(CYAN,"\n\n\tenter 1,1 for undo\t2,2 for redo\t3,3 for save\t4,4 for main menu");
 
    if (player%2==1)
@@ -313,23 +322,55 @@ while(1)
             box=-1;
             break;
         case 2:
-            row=box5array[box_index[2]][0];
-            col=box5array[box_index[2]++][1];
+            if (difficulty==2)
+            {
+                row=box5array[box_index[2]][0];
+                col=box5array[box_index[2]++][1];
+            }
+            else if (difficulty==3)
+            {
+                row=box3array[box_index[2]][0];
+                col=box3array[box_index[2]++][1];
+            }
             box=-1;
             break;
         case 3:
-            row=box6array[box_index[3]][0];
-            col=box6array[box_index[3]++][1];
+            if (difficulty==2)
+            {
+                row=box6array[box_index[3]][0];
+                col=box6array[box_index[3]++][1];
+            }
+            else if (difficulty==3)
+            {
+                row=box4array[box_index[3]][0];
+                col=box4array[box_index[3]++][1];
+            }
             box=-1;
             break;
         case 4:
-            row=box3array[box_index[4]][0];
-            col=box3array[box_index[4]++][1];
+            if (difficulty==2)
+            {
+               row=box3array[box_index[4]][0];
+               col=box3array[box_index[4]++][1];
+            }
+            if (difficulty==3)
+            {
+               row=box5array[box_index[4]][0];
+               col=box5array[box_index[4]++][1];
+            }
             box=-1;
             break;
         case 5:
-            row=box4array[box_index[5]][0];
-            col=box4array[box_index[5]++][1];
+            if (difficulty==2)
+            {
+              row=box4array[box_index[5]][0];
+              col=box4array[box_index[5]++][1];
+            }
+            if (difficulty==3)
+            {
+               row=box6array[box_index[5]][0];
+               col=box6array[box_index[5]++][1];
+            }
             box=-1;
             break;
         case 6:
@@ -636,9 +677,8 @@ else if (row==2 && col==2)
    }
 else if (row==3 && col==3)
 {
-    FILE *file=fopen("file.txt","w");
-    save(file,40,playerOne,computer);
-    fclose(file);
+    FILE *file;
+    save(file,maxturns,playerOne,computer);
     system("cls");
     menu();
 

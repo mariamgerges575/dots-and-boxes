@@ -139,33 +139,38 @@ void initialize_grid(int m,char A[m][m])
     return;
 }
 
-int choose_file()
-{   char s[10]; int x;
+int choose_file(char c)
+{
+    char s[10]; int x;
     color(PURPLE,"\n 1 for file 1 \n 2 for file 2 \n 3 for file 3");
     printf("\nenter the number");x=scan_int(s);
     return x;
+
 }
 
 void save (FILE *file,int m,int player1[m][2],int player2[m][2])
 {
+    file=fopen("file.txt","w");
     for(int i=0;i<m;i++)
     {
-        fprintf(file ,"%d%d",player1[i][0],player1[i][1]);
+        fprintf(file ,"%d %d ",player1[i][0],player1[i][1]);
     }
 
     for(int i=0;i<m;i++)
     {
-        fprintf(file ,"%d%d",player2[i][0],player2[i][1]);
+        fprintf(file ,"%d %d ",player2[i][0],player2[i][1]);
     }
+    fclose(file);
 
 }
 void continue_fn(FILE *file,int m,int player1[m][2],int player2[m][2])
-{   file=fopen("file.txt","r");
-    for(int i=10;i<m;i++)
+{
+    file=fopen("file.txt","r");
+    for(int i=0;i<m;i++)
     {
         fscanf(file ,"%d %d ",&player1[i][0],&player1[i][1]);
     }
-    for(int i=10;i<m;i++)
+    for(int i=0;i<m;i++)
     {
         fscanf(file ,"%d %d ",&player2[i][0],&player2[i][1]);
     }
@@ -235,11 +240,9 @@ void check_boxes(int player1[40][2],int player2[40][2],int noOfboxes,int boxes[n
                         }
                     }
                 }
-
             box++;
             colwin+=2;
             }
-
         rowwin+=2;
         }
      k++;

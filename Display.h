@@ -123,22 +123,7 @@ int indwin[4]; zeros(4,indwin); //[0]=index1,[1]=index2,[2]=redwins,[3]=bluewins
 while(1)
 
   {
-     /* printf ("\n undo1\n");
-      for (int i=0;i<20;i++){
-    for (int j=0;j<2;j++){
-        printf("%d ",undo1array[i][j]);
-    }
-    printf("\n");
 
-   }
-   printf ("\n undo2\n");
-   printf("\n");
-   for (int i=0;i<40;i++){
-    for (int j=0;j<2;j++){
-        printf("%d ",undo2array[i][j]);
-    }
-    printf("\n");
-   }*/
     //////////////INITIALIZING ALL VALUES WITH ZERO
     indwin[3]=0;indwin[2]=0;noOfWinsPerTurn=0;turnsOfPlayer1=0;turnsOfPlayer2=0;windifference=0;
     zeros(noOfBoxes,boxes);
