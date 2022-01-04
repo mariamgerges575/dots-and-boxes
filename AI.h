@@ -375,7 +375,7 @@ if (row==1 && col==1)
                     playerOne[indwin[0]][0]=-1;
                     playerOne[indwin[0]][1]=-1;
                     printf ("%d %d",computer[indwin[0]][0],computer[indwin[0]][1]);
-                   for (int i=0;i<4;i++)
+                    for (int i=0;i<4;i++)
                     {
                         if (computer[indwin[0]][0]==box1array[i][0] && computer[indwin[0]][1]==box1array[i][1])
                         {
@@ -575,7 +575,7 @@ if (row==1 && col==1)
                         {
                             box_index[3]--;
                         }
-                        /*if (computer[indwin[0]][0]==box5array[i][0] && computer[indwin[0]][1]==box5array[i][1])
+                        if (computer[indwin[0]][0]==box5array[i][0] && computer[indwin[0]][1]==box5array[i][1])
                         {
                             box_index[4]--;
                         }
@@ -622,7 +622,7 @@ if (row==1 && col==1)
                         if (computer[indwin[0]][0]==box16array[i][0] && computer[indwin[0]][1]==box16array[i][1])
                         {
                             box_index[15]--;
-                        }*/
+                        }
 
 
                     }
@@ -666,7 +666,7 @@ if (row==1 && col==1)
                         {
                             box_index[3]--;
                         }
-                       /* if (computer[indwin[0]][0]==box5array[i][0] && computer[indwin[0]][1]==box5array[i][1])
+                       if (computer[indwin[0]][0]==box5array[i][0] && computer[indwin[0]][1]==box5array[i][1])
                         {
                             box_index[4]--;
                         }
@@ -713,7 +713,7 @@ if (row==1 && col==1)
                         if (computer[indwin[0]][0]==box16array[i][0] && computer[indwin[0]][1]==box16array[i][1])
                         {
                             box_index[15]--;
-                        }*/
+                        }
 
 
                     }
