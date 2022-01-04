@@ -350,3 +350,53 @@ int whose_turn(int maxturns,int playerOne[maxturns][2],int playerTwo[maxturns][2
    }
    return player;
 }
+struct game
+{
+    char playerOne[40];
+    char playerTwo[40];
+    int time;
+    int difficulty;
+    int noOfPLayers;
+    int name1;
+    int name2;
+
+};
+void saveClicked (char arrayOfPlayerOne[][],char arrayOfplayerTwo[],int timer,int difficulty,int noOfPLayers,int name_1,int name_2)
+{
+    printf("choose one of  the following files\n\n1:file1\n2:file2\n3:file3\nyour choice:");
+    char r[10];
+    int choice;
+    choice=scan_int(r);
+    if (choice==1)
+    {
+        struct game file1;
+        file1.playerOne=arrayOfPlayerOne;
+        file1.playerTwo=arrayOfplayerTwo;
+        file1.time=timer;
+        file1.difficulty=difficulty;
+        file1.noOfPLayers=noOfPLayers;
+        file1.name1=name_1;
+        file1.name2=name_2;
+    }
+    if (choice==2)
+    {
+        struct game file2;
+        file2.playerOne=arrayOfPlayerOne;
+        file2.playerTwo=arrayOfplayerTwo;
+        file2.time=timer;
+        file2.difficulty=difficulty;
+        file2.noOfPLayers=noOfPLayers
+    }
+    if (choice==3)
+    {
+        struct game file3;
+        file3.playerOne=arrayOfPlayerOne;
+        file3.playerTwo=arrayOfplayerTwo;
+        file3.time=timer;
+        file3.difficulty=difficulty;
+        file3.noOfPLayers=noOfPLayers;
+    }
+    system(cls);
+    menu();
+}
+
