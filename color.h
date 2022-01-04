@@ -248,5 +248,105 @@ void check_boxes(int player1[40][2],int player2[40][2],int noOfboxes,int boxes[n
      k++;
     }
 }
+void printing_grid(int sizeOfGrid,int maxturns ,int playerOne[maxturns][2] ,int playerTwo[maxturns][2],char A[sizeOfGrid][sizeOfGrid])
+{
+    printf("\n\n");
+   for (int i=0;i<sizeOfGrid;i++){
+        printf("\t\t\t\t\t\t   ");
+    for(int j=0;j<sizeOfGrid;j++){
+        int variable =0;
+        if (i==0 || j==0)
+        {
+            printf("%c ",A[i][j]);
+        }
+        else{
+        for (int k=0;k<maxturns;k++)
+        {
+            char shape;
+            if (A[i][j]==32 )
+                  {
+
+                      if (i%2==1)
+                      {
+                          shape=205;
+                      }
+                      else if (i%2==0 && j%2==0)
+                      {
+                          shape=219;
+                      }
+                      else if(i%2==0 && j%2==1)
+                      {
+                          shape=186;
+                      }
+                  }
+            if (i==playerOne[k][0]&&j==playerOne[k][1])
+            {
+
+                  color_char(RED,shape);
+                  variable=1;
+                  break;
 
 
+
+            }
+            else if (i==playerTwo[k][0]&&j==playerTwo[k][1])
+            {
+                  color_char(BLUE,shape);
+                  variable=1;
+                  break;
+            }
+
+        }
+        if (variable==0)
+           {
+               printf("%c ",A[i][j]);
+           }
+
+    }}
+   printf("\n");
+   }
+
+}
+int whose_turn(int maxturns,int playerOne[maxturns][2],int playerTwo[maxturns][2],int player)
+{
+       for(int i=0;i<maxturns;i++)
+       {
+        if (playerOne[i][0]==-1 && playerOne[i][1]==-1)
+        {
+            if (i-1<0)
+            {
+                player=1;
+                break;
+            }
+            else
+            {
+                if (playerOne[i-1][0]==-1 && playerOne[i-1][1]==0)
+                {
+                    if (playerTwo[i-1][0]%2==0 && playerTwo[i-1][1]%2==0)
+                    {
+                        player=2;
+                        break;
+                    }
+                    else
+                    {
+                        player=1;
+                        break;
+                    }
+
+                }
+                else if (playerOne[i-1][0]%2==0 && playerOne[i-1][1]%2==0)
+                {
+                    player=1;
+                    break;
+                }
+                else
+                {
+                    player=2;
+                    break;
+                }
+
+            }
+        }
+   }
+   return player;
+}

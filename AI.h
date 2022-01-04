@@ -58,7 +58,7 @@ while(1)
 
   {
 
-  /////initializing all values with zero
+////////initializing all values with zero
   indwin[3]=0;indwin[2]=0,turnsOfPlayer1=0;turnsOfPlayer2=0;windifference=0;
   int boxes[noOfBoxes]; zeros(noOfBoxes,boxes);
 
@@ -98,44 +98,8 @@ while(1)
    getTime(timeOfBeginning,timehrsMinSec);
 
 ////////gwtting whose turn/////////////////
-   for(int i=0;i<maxturns;i++)
-   {
-        if (playerOne[i][0]==-1 && playerOne[i][1]==-1)
-        {
-            if (i-1<0)
-            {
-                player=1;
-                break;
-            }
-            else
-            {
-                if (playerOne[i-1][0]==-1 && playerOne[i-1][1]==0)
-                {
-                    if (computer[i-1][0]%2==0 && computer[i-1][1]%2==0)
-                    {
-                        player=2;
-                        break;
-                    }
-                    else
-                    {
-                        player=1;
-                        break;
-                    }
+     player =whose_turn(maxturns,playerOne,computer,player);
 
-                }
-                else if (playerOne[i-1][0]%2==0 && playerOne[i-1][1]%2==0)
-                {
-                    player=1;
-                    break;
-                }
-                else
-                {
-                    player=2;
-                    break;
-                }
-            }
-        }
-   }
 //////////getting windifference
 ///////GETTING WINDIFFERENCE
     for (int i=0;i<maxturns;i++)
@@ -164,58 +128,9 @@ while(1)
         }
     }
 
-    /////////PRINTING THE GRID
-    printf("\n");
-   for (int i=0;i<sizeOfGrid;i++){
-        printf("\t\t\t\t\t\t   ");
-    for(int j=0;j<sizeOfGrid;j++){
-        int variable =0;
-        if (i==0 || j==0)
-        {
-            printf("%c ",A[i][j]);
-        }
-        else{
-        for (int k=0;k<maxturns;k++)
-        {
-            char shape;
-            if (A[i][j]==32 )
-                  {
-
-                      if (i%2==1)
-                      {
-                          shape=205;
-                      }
-                      else if (i%2==0 && j%2==0)
-                      {
-                          shape=219;
-                      }
-                      else if(i%2==0 && j%2==1)
-                      {
-                          shape=186;
-                      }
-                  }
-            if (i==playerOne[k][0]&&j==playerOne[k][1])
-            {
-                  color_char(RED,shape);
-                  variable=1;
-                  break;
-            }
-            else if (i==computer[k][0]&&j==computer[k][1])
-            {
-                  color_char(BLUE,shape);
-                  variable=1;
-                  break;
-            }
-
-        }
-        if (variable==0)
-           {
-               printf("%c ",A[i][j]);
-           }
-
-    }}
-   printf("\n");
-   }
+////////////PRINTING THE GRID
+   printing_grid(sizeOfGrid,maxturns ,playerOne,computer,A);
+///////////////////////////////////////////
    if (indwin[2]>noOfBoxes/2)
    {
        color(RED,"\n\n\tFIRST PLAYER WINS!");
@@ -427,8 +342,6 @@ while(1)
     }
 
     }
-
-
 ////////////////////
 if (row==1 && col==1)
 {   if(NoOfLines==maxlines)

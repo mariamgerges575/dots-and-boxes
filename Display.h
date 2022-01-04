@@ -167,46 +167,7 @@ while(1)
    getTime(timeOfBeginning,timehrsMinSec);
 
 ////////GETTING WHOSE TURN IT IS
-
-   for(int i=0;i<maxturns;i++)
-   {
-        if (playerOne[i][0]==-1 && playerOne[i][1]==-1)
-        {
-            if (i-1<0)
-            {
-                player=1;
-                break;
-            }
-            else
-            {
-                if (playerOne[i-1][0]==-1 && playerOne[i-1][1]==0)
-                {
-                    if (playerTwo[i-1][0]%2==0 && playerTwo[i-1][1]%2==0)
-                    {
-                        player=2;
-                        break;
-                    }
-                    else
-                    {
-                        player=1;
-                        break;
-                    }
-
-                }
-                else if (playerOne[i-1][0]%2==0 && playerOne[i-1][1]%2==0)
-                {
-                    player=1;
-                    break;
-                }
-                else
-                {
-                    player=2;
-                    break;
-                }
-
-            }
-        }
-   }
+   player =whose_turn(maxturns,playerOne,playerTwo,player);
 ///////GETTING WINDIFFERENCE
     for (int i=0;i<maxturns;i++)
     {
@@ -237,63 +198,10 @@ while(1)
 //////////////////////////////////
 
 /////////PRINTING THE GRID
-   printf("\n\n");
-   for (int i=0;i<sizeOfGrid;i++){
-        printf("\t\t\t\t\t\t   ");
-    for(int j=0;j<sizeOfGrid;j++){
-        int variable =0;
-        if (i==0 || j==0)
-        {
-            printf("%c ",A[i][j]);
-        }
-        else{
-        for (int k=0;k<maxturns;k++)
-        {
-            char shape;
-            if (A[i][j]==32 )
-                  {
 
-                      if (i%2==1)
-                      {
-                          shape=205;
-                      }
-                      else if (i%2==0 && j%2==0)
-                      {
-                          shape=219;
-                      }
-                      else if(i%2==0 && j%2==1)
-                      {
-                          shape=186;
-                      }
-                  }
-            if (i==playerOne[k][0]&&j==playerOne[k][1])
-            {
+   printing_grid(sizeOfGrid,maxturns ,playerOne,playerTwo,A);
 
-                  color_char(RED,shape);
-                  variable=1;
-                  break;
-
-
-
-            }
-            else if (i==playerTwo[k][0]&&j==playerTwo[k][1])
-            {
-                  color_char(BLUE,shape);
-                  variable=1;
-                  break;
-            }
-
-        }
-        if (variable==0)
-           {
-               printf("%c ",A[i][j]);
-           }
-
-    }}
-   printf("\n");
-   }
-
-   ///////////////counting no of lines
+///////////////counting no of lines
    noOflines=maxlines;
    for (int i=0;i<maxturns;i++)
    {
@@ -315,7 +223,7 @@ while(1)
    else if(indwin[3]>noOfBoxes/2)
    {
        color_str(BLUE,"\n\n\t\t\t\t\t",name2);color(BLUE,"  WINS!");
-       color(CYAN,"\n\n\tenter 3,3 for main menu");
+       color(CYAN,"\n\n\tenter 4,4 for main menu");
        winner=2;
 
        break;
@@ -334,7 +242,7 @@ while(1)
 
        color_int(RED,"\n\n\tnumber of moves for first player: ",turnsOfPlayer1); color_int(BLUE,"\t\t   number of moves for second player: ",turnsOfPlayer2);
        color_int(RED,"\n\n\tfirst player's score:",indwin[2]);  color_int(BLUE,"\t\t\t\t   second player's score:",indwin[3]);
-       color_int(YELLOW,"\n\n\tnumber of remaining lines:",noOflines);color_int(YELLOW,"\t\t\t TIME: ",timehrsMinSec[0]);color_int(YELLOW,":",timehrsMinSec[1]);color_int(YELLOW,":",timehrsMinSec[2]);
+       color_int(YELLOW,"\n\n\tnumber of remaining lines:",noOflines);color_int(YELLOW,"\t\t\t   TIME: ",timehrsMinSec[0]);color_int(YELLOW,":",timehrsMinSec[1]);color_int(YELLOW,":",timehrsMinSec[2]);
        color(CYAN,"\n\n\tenter 1,1 for undo\t 2,2 for redo\t3,3 for save\t4,4 for main menu\t1,1 for clear");
 
 //////////////choose row and colum////////////////
@@ -496,7 +404,6 @@ while(1)
    }
 
  }
-
         color(RESET,"\n\n\tENTER ROW:");
         row=scan_int(r);
         color(RESET,"\tENTER COL:");
