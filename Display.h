@@ -1,4 +1,6 @@
 void menu(){
+//    Read_scores();
+   printing_top11_file();
    printf("\n\n\t\t\t\t\t\t  DOTS AND BOXES");
    color(PURPLE,"\n\n\n\t\t1:NEW GAME\n\n");
    color(PURPLE,"\t\t2:Top Ten\n\n");

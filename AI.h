@@ -131,6 +131,7 @@ for (int i=0;i<maxturns;i++)
        color(RED,"\n\n\tFIRST PLAYER WINS!");
        color(CYAN,"\n\n\tenter 4,4 for main menu");
        winner=1;
+       save_scores(indwin[2],name);
 
        break;
 
@@ -140,6 +141,7 @@ for (int i=0;i<maxturns;i++)
        color(BLUE,"\n\n\tcomputer WINS!");
        color(CYAN,"\n\n\tenter 4,4 for main menu");
        winner=2;
+       save_scores(indwin[3],"computer");
 
        break;
    }

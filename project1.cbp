@@ -33,12 +33,10 @@
 		</Compiler>
 		<Unit filename="AI.h" />
 		<Unit filename="Display.h" />
-		<Unit filename="ai with undo.h" />
 		<Unit filename="color.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="playerOne.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

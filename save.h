@@ -72,8 +72,8 @@ void continue_fn(FILE *file,int maxturns,int player1[maxturns][2],int player2[ma
     {
          fscanf(file ,"%d ",&indwin[i]);
     }
-    fscanf(file ,"%s ",&name1);
-    fscanf(file ,"%s ",&name2);
+    fscanf(file ,"%s ",name1);
+    fscanf(file ,"%s ",name2);
     fscanf(file ,"%ld ",&oldTime);
 
 }
@@ -111,3 +111,78 @@ void pre_continue()
         twoplayers(" "," ",3,1,y);
     }
 }
+struct leaderboard
+{
+    char name[10];
+    int score;
+
+}ranks[11]={{" ",0},{" ",0},{" ",0},{" ",0},{" ",0},{" ",0},{" ",0},{" ",0},{" ",0},{" ",0},{" ",0}};
+/*void initializing_structs()
+{
+    for(int i=0;i<11;i++)
+    {
+        ranks[i].name=" ";
+        ranks[i].score=0;
+    }
+}*/
+
+void save_scores(int score,char name[10])
+{
+    for (int i=0;i<10;i++)
+    {
+        if (score>ranks[0].score)
+        {
+            for (int j=10;j>i;j--)
+            {
+                ranks[j]=ranks[j-1];
+
+            }
+
+        }
+    }
+    printing_top11_file();
+
+}
+void printing_top11_file()
+{
+    FILE *scorespreadsheet=fopen("scorespreadsheet.txt","w");
+    for (int i=0;i<11;i++)
+    {
+        fprintf(scorespreadsheet,"%d ",ranks[i].score);
+        fprintf(scorespreadsheet,"%s ",ranks[i].name);
+    }
+    fclose(scorespreadsheet);
+    /*scorespreadsheet=fopen("scorespreadsheet.txt","r");
+    fscanf(scorespreadsheet,"%d ",&ranks[1].score);
+    fscanf(scorespreadsheet,"%s ",ranks[1].name);
+    printf("\n %d",ranks[1].score);
+    printf("\n %s",ranks[1].name);*/
+}
+void reading_structs_at_beginning ()
+{
+    scorespreadsheet=fopen("scorespreadsheet.txt","r");
+    for (int i=0;i<10;i++)
+    {
+        fscanf(scorespreadsheet,"%d ",&ranks[1].score);
+        fscanf(scorespreadsheet,"%s ",ranks[1].name);
+    }
+}
+/*void save_scores (int score,char name[10])
+{
+    s++;
+    FILE *scorespreadsheet=fopen("scorespreadsheet.txt","a");
+    fprintf(scorespreadsheet,"%d ",score);
+    fprintf(scorespreadsheet,"%s ",name);
+    fclose(scorespreadsheet);
+}*/
+/*void Read_scores()
+{
+    for (int i=0;i<s;i++)
+    {
+        FILE *scorespreadsheet=fopen("scorespreadsheet.txt","a");
+        fscanf(scorespreadsheet,"%d ",&ranks[i].score);
+        fscanf(scorespreadsheet,"%s ",ranks[i].name);
+
+    }
+}*/
+
