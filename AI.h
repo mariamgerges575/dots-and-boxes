@@ -61,8 +61,37 @@ int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=ma
 while(1)
 
   {
+printf("playerone\n");
+  for (int i=0;i<maxturns;i++){
+    for (int j=0;j<2;j++){
+        printf("%d ",playerOne[i][j]);
+    }
+    printf("\n");
+   }
+   printf("computer\n");
+   for (int i=0;i<maxturns;i++){
+    for (int j=0;j<2;j++){
+        printf("%d ",computer[i][j]);
+    }
+    printf("\n");
+   }
+   printf ("\n undo1\n");
+      for (int i=0;i<20;i++){
+    for (int j=0;j<2;j++){
+        printf("%d ",undo1array[i][j]);
+    }
+    printf("\n");
 
-////////initializing all values with zero
+   }
+   printf ("\n undo2\n");
+   printf("\n");
+   for (int i=0;i<40;i++){
+    for (int j=0;j<2;j++){
+        printf("%d ",undo2array[i][j]);
+    }
+    printf("\n");
+   }
+//////////////////////////////////////////initializing all values with zero
   indwin[3]=0;indwin[2]=0,turnsOfPlayer1=0;turnsOfPlayer2=0;windifference=0;
   int boxes[noOfBoxes]; zeros(noOfBoxes,boxes);
   if (difficulty==2)
@@ -103,6 +132,21 @@ for(int i=0;i<noOfBoxes;i++)
 {
     printf("%d\t%d\n",boxes[i],box_index[i]);
 }
+
+printf("playerone\n");
+  for (int i=0;i<maxturns;i++){
+    for (int j=0;j<2;j++){
+        printf("%d ",playerOne[i][j]);
+    }
+    printf("\n");
+   }
+   printf("computer\n");
+   for (int i=0;i<maxturns;i++){
+    for (int j=0;j<2;j++){
+        printf("%d ",computer[i][j]);
+    }
+    printf("\n");
+   }
 ////////////////////////////////////////////////////timeeee
 
    int timehrsMinSec[3]={0,0,0};
@@ -111,34 +155,22 @@ for(int i=0;i<noOfBoxes;i++)
 ////////gwtting whose turn/////////////////
      player =whose_turn(maxturns,playerOne,computer,player);
 
-//////////getting windifference
-///////GETTING WINDIFFERENCE
-    for (int i=0;i<maxturns;i++)
-    {
-        if (playerOne[i][0]==-1 && playerOne[i][1]==-1)
-        {
-            if (playerOne[i-1][0]%2==0 && playerOne[i-1][1]%2==0 && computer[i-1][0]==-1 && computer[i-1][1]%2==0)
-            {
-                windifference++;
-                if (playerOne[i-2][0]%2==0 && playerOne[i-2][1]%2==0 && computer[i-2][0]==-1 && computer[i-2][1]%2==0)
-                {
-                    windifference++;
-                }
-            }
-        }
-        if (computer[i][0]==-1 && computer[i][1]==-1)
-        {
-            if (computer[i-1][0]%2==0 && computer[i-1][1]%2==0 && computer[i-1][0]==-1 && computer[i-1][1]%2==0)
-            {
-                windifference++;
-                if (computer[i-2][0]%2==0 && computer[i-2][1]%2==0 && playerOne[i-2][0]==-1 && playerOne[i-2][1]%2==0)
-                {
-                    windifference++;
-                }
-            }
-        }
-    }
 
+
+////////getting no of lines
+if (difficulty==2)
+    NoOfLines=12;
+else
+    NoOfLines=40;
+
+for (int i=0;i<maxturns;i++)
+{
+    if (playerOne[i][0]%2==0 && playerOne[i][1]%2==1 || playerOne[i][0]%2==1 && playerOne[i][1]%2==0)
+
+        NoOfLines--;
+    if (computer[i][0]%2==0 && computer[i][1]%2==1 || computer[i][0]%2==1 && computer[i][1]%2==0)
+        NoOfLines--;
+}
 ////////////PRINTING THE GRID
    printing_grid(sizeOfGrid,maxturns ,playerOne,computer,A);
 ///////////////////////////////////////////
@@ -353,6 +385,7 @@ if (row==1 && col==1)
                     na2esWa7da=1;
                     playerOne[indwin[0]][0]=-1;
                     playerOne[indwin[0]][1]=-1;
+                    undo_checkBoxes( maxturns, noOfBoxes,computer, indwin, box1array, box2array, box3array, box4array, box5array, box6array, box7array, box8array, box9array, box10array, box11array, box12array, box13array, box14array, box15array, box16array, box_index);
                     computer[indwin[0]][0]=-1;
                     computer[indwin[0]][1]=-1;
                     indwin[0]--;indwin[1]--;
@@ -372,6 +405,7 @@ if (row==1 && col==1)
                     undo2array[indexOfUndo1++][1]=computer[indwin[0]][1];
                     playerOne[indwin[0]][0]=-1;
                     playerOne[indwin[0]][1]=-1;
+                    undo_checkBoxes( maxturns, noOfBoxes,computer, indwin, box1array, box2array, box3array, box4array, box5array, box6array, box7array, box8array, box9array, box10array, box11array, box12array, box13array, box14array, box15array, box16array, box_index);
                     computer[indwin[0]][0]=-1;
                     computer[indwin[0]][1]=-1;
                     indwin[0]--;indwin[1]--;
@@ -397,6 +431,7 @@ if (row==1 && col==1)
                     undo2array[indexOfUndo1++][1]=computer[indwin[0]][1];
                     playerOne[indwin[0]][0]=-1;
                     playerOne[indwin[0]][1]=-1;
+                    undo_checkBoxes( maxturns, noOfBoxes,computer, indwin, box1array, box2array, box3array, box4array, box5array, box6array, box7array, box8array, box9array, box10array, box11array, box12array, box13array, box14array, box15array, box16array, box_index);
                     computer[indwin[0]][0]=-1;
                     computer[indwin[0]][1]=-1;
                     indwin[0]--;indwin[1]--;
@@ -419,6 +454,7 @@ if (row==1 && col==1)
                     undo2array[indexOfUndo1++][1]=computer[indwin[0]][1];
                     playerOne[indwin[0]][0]=-1;
                     playerOne[indwin[0]][1]=-1;
+                    undo_checkBoxes( maxturns, noOfBoxes,computer, indwin, box1array, box2array, box3array, box4array, box5array, box6array, box7array, box8array, box9array, box10array, box11array, box12array, box13array, box14array, box15array, box16array, box_index);
                     computer[indwin[0]][0]=-1;
                     computer[indwin[0]][1]=-1;
                     indwin[0]--;indwin[1]--;
@@ -450,24 +486,20 @@ else if (row==2 && col==2)
 
        }
        else{
-       NoOfLines-=2;
-       int na2esWa7da=0;
        indexOfUndo1--;
        redo=1;
-       if (undo1array[indexOfUndo1][0]%2==0 && undo1array[indexOfUndo1][1]%2==0)
-       {
-           while (undo1array[indexOfUndo1][0]%2==0 && undo1array[indexOfUndo1][1]%2==0)
-           {
-               if (indexOfUndo1<0)
+       if (indexOfUndo1<0)
                 {
                     redo=0;
                     undo=0;
-                    na2esWa7da=0;
                     indexOfUndo1=indexOfUndo1;
-                    break;
+
                 }
-                else
-                {
+        else
+        {
+            if (undo1array[indexOfUndo1-1][0]%2==0 && undo1array[indexOfUndo1-1][1]%2==0 && indexOfUndo1>0)
+            {
+
 
                 playerOne[indwin[0]][0]=undo1array[indexOfUndo1][0];
                 playerOne[indwin[0]][1]=undo1array[indexOfUndo1][1];
@@ -478,74 +510,6 @@ else if (row==2 && col==2)
                 undo2array[indexOfUndo1][0]=-1;
                 undo2array[indexOfUndo1--][1]=-1;
                 indwin[0]++;indwin[1]++;
-                na2esWa7da=1;
-                }
-           }}
-
-        if (indexOfUndo1<0)
-           {
-            indexOfUndo1=indexOfUndo1;
-           }
-           else
-           {
-               playerOne[indwin[0]][0]=undo1array[indexOfUndo1][0];
-                playerOne[indwin[0]][1]=undo1array[indexOfUndo1][1];
-                computer[indwin[0]][0]=undo2array[indexOfUndo1][0];
-                computer[indwin[0]][1]=undo2array[indexOfUndo1][1];
-                undo1array[indexOfUndo1][0]=-1;
-                undo1array[indexOfUndo1][1]=-1;
-                undo2array[indexOfUndo1][0]=-1;
-                undo2array[indexOfUndo1--][1]=-1;
-                indwin[0]++;indwin[1]++;
-                 if (undo1array[indexOfUndo1][0]%2==0 && undo1array[indexOfUndo1][1]%2==0)
-       {
-           while (undo1array[indexOfUndo1][0]%2==0 && undo1array[indexOfUndo1][1]%2==0)
-           {
-               if (indexOfUndo1<0)
-                {
-                    redo=0;
-                    undo=0;
-                    na2esWa7da=0;
-                    indexOfUndo1=indexOfUndo1;
-                    break;
-                }
-                else
-                {playerOne[indwin[0]][0]=undo1array[indexOfUndo1][0];
-                playerOne[indwin[0]][1]=undo1array[indexOfUndo1][1];
-                computer[indwin[0]][0]=undo2array[indexOfUndo1][0];
-                computer[indwin[0]][1]=undo2array[indexOfUndo1][1];
-                undo1array[indexOfUndo1][0]=-1;
-                undo1array[indexOfUndo1][1]=-1;
-                undo2array[indexOfUndo1][0]=-1;
-                undo2array[indexOfUndo1--][1]=-1;
-                indwin[0]++;indwin[1]++;
-                na2esWa7da=1;
-                }
-           }
-           if (indexOfUndo1<0)
-           {
-               indexOfUndo1=indexOfUndo1;
-           }
-           else
-           {
-               playerOne[indwin[0]][0]=undo1array[indexOfUndo1][0];
-                playerOne[indwin[0]][1]=undo1array[indexOfUndo1][1];
-                computer[indwin[0]][0]=undo2array[indexOfUndo1][0];
-                computer[indwin[0]][1]=undo2array[indexOfUndo1][1];
-                undo1array[indexOfUndo1][0]=-1;
-                undo1array[indexOfUndo1][1]=-1;
-                undo2array[indexOfUndo1][0]=-1;
-                undo2array[indexOfUndo1--][1]=-1;
-                indwin[0]++;indwin[1]++;}
-           }
-       while (undo1array[indexOfUndo1][0]==-1 && undo1array[indexOfUndo1][1]==0)
-       {
-           if (indexOfUndo1<0)
-           {
-               indexOfUndo1=indexOfUndo1;
-           }
-           else
-            {
                 playerOne[indwin[0]][0]=undo1array[indexOfUndo1][0];
                 playerOne[indwin[0]][1]=undo1array[indexOfUndo1][1];
                 computer[indwin[0]][0]=undo2array[indexOfUndo1][0];
@@ -556,17 +520,62 @@ else if (row==2 && col==2)
                 undo2array[indexOfUndo1--][1]=-1;
                 indwin[0]++;indwin[1]++;
             }
-       }
+            else
+            {
 
-    }
+                while (undo2array[indexOfUndo1][0]==-1 && undo2array[indexOfUndo1][1]==0 && indexOfUndo1>0)
+                {
+                    playerOne[indwin[0]][0]=undo1array[indexOfUndo1][0];
+                    playerOne[indwin[0]][1]=undo1array[indexOfUndo1][1];
+                    computer[indwin[0]][0]=undo2array[indexOfUndo1][0];
+                    computer[indwin[0]][1]=undo2array[indexOfUndo1][1];
+                    undo1array[indexOfUndo1][0]=-1;
+                    undo1array[indexOfUndo1][1]=-1;
+                    undo2array[indexOfUndo1][0]=-1;
+                    undo2array[indexOfUndo1--][1]=-1;
+                    indwin[0]++;indwin[1]++;
+                }
+                    playerOne[indwin[0]][0]=undo1array[indexOfUndo1][0];
+                    playerOne[indwin[0]][1]=undo1array[indexOfUndo1][1];
+                    computer[indwin[0]][0]=undo2array[indexOfUndo1][0];
+                    computer[indwin[0]][1]=undo2array[indexOfUndo1][1];
+                    undo1array[indexOfUndo1][0]=-1;
+                    undo1array[indexOfUndo1][1]=-1;
+                    undo2array[indexOfUndo1][0]=-1;
+                    undo2array[indexOfUndo1--][1]=-1;
+                    indwin[0]++;indwin[1]++;
+                    if (indexOfUndo1>0){
+                    if(undo2array[indexOfUndo1][0]%2==0 && undo2array[indexOfUndo1][1]%2==0){
+                    while (undo2array[indexOfUndo1][0]%2==0 && undo2array[indexOfUndo1][1]%2==0 && indexOfUndo1>0)
+                    {
+                        playerOne[indwin[0]][0]=undo1array[indexOfUndo1][0];
+                        playerOne[indwin[0]][1]=undo1array[indexOfUndo1][1];
+                        computer[indwin[0]][0]=undo2array[indexOfUndo1][0];
+                        computer[indwin[0]][1]=undo2array[indexOfUndo1][1];
+                        undo1array[indexOfUndo1][0]=-1;
+                        undo1array[indexOfUndo1][1]=-1;
+                        undo2array[indexOfUndo1][0]=-1;
+                        undo2array[indexOfUndo1--][1]=-1;
+                        indwin[0]++;indwin[1]++;
+                        playerOne[indwin[0]][0]=undo1array[indexOfUndo1][0];
+                        playerOne[indwin[0]][1]=undo1array[indexOfUndo1][1];
+                        computer[indwin[0]][0]=undo2array[indexOfUndo1][0];
+                        computer[indwin[0]][1]=undo2array[indexOfUndo1][1];
+                        undo1array[indexOfUndo1][0]=-1;
+                        undo1array[indexOfUndo1][1]=-1;
+                        undo2array[indexOfUndo1][0]=-1;
+                        undo2array[indexOfUndo1--][1]=-1;
+                        indwin[0]++;indwin[1]++;
+                    }
 
-    row=-1;
+            }
+       row=-1;
        col=-1;
        system("cls");
        indexOfUndo1++;
    }
 
-   }
+   }}
 else if (row==3 && col==3)
 {
     //FILE *file;
@@ -580,11 +589,11 @@ else if (row==4 && col ==4)
     menu();
 }
 else{
+        negative_one(undo1array,maxturns);negative_one(undo2array,maxturns);indexOfUndo1=0;
 printf("%d",box);
 
    if(row%2==0 && col%2==0 || row%2==1 && col%2==1|| row<0 || row>sizeOfGrid-1 ||col<0||col>sizeOfGrid-1 )
    {
-       //elmafrod hena 3yzen nclear akher talat sotor lesa mesh 3arfa ezay
        printf("\n\tinvalid numbers \n");
        player--;
        row=-1;

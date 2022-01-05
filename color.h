@@ -398,4 +398,75 @@ struct game
     system(cls);
     menu();
 }*/
+void undo_checkBoxes (int maxturns,int noOfBoxes,int computer[maxturns][2],int indwin[4],int box1array[4][2],int box2array[4][2],int box3array[4][2],int box4array[4][2],int box5array[4][2],int box6array[4][2],int box7array[4][2],int box8array[4][2],int box9array[4][2],int box10array[4][2],int box11array[4][2],int box12array[4][2],int box13array[4][2],int box14array[4][2],int box15array[4][2],int box16array[4][2],int box_index[noOfBoxes])
+{
+    for (int i=0;i<4;i++)
+                    {
+                        if (computer[indwin[0]][0]==box1array[i][0] && computer[indwin[0]][1]==box1array[i][1])
+                        {
+                            box_index[0]--;
+                        }
+                        if (computer[indwin[0]][0]==box2array[i][0] && computer[indwin[0]][1]==box2array[i][1])
+                        {
+                            box_index[1]--;
+                        }
+                        if (computer[indwin[0]][0]==box3array[i][0] && computer[indwin[0]][1]==box3array[i][1])
+                        {
+                            box_index[2]--;
+                        }
+                        if (computer[indwin[0]][0]==box4array[i][0] && computer[indwin[0]][1]==box4array[i][1])
+                        {
+                            box_index[3]--;
+                        }
+                        if (computer[indwin[0]][0]==box5array[i][0] && computer[indwin[0]][1]==box5array[i][1])
+                        {
+                            box_index[4]--;
+                        }
+                        if (computer[indwin[0]][0]==box6array[i][0] && computer[indwin[0]][1]==box6array[i][1])
+                        {
+                            box_index[5]--;
+                        }
+                        if (computer[indwin[0]][0]==box7array[i][0] && computer[indwin[0]][1]==box7array[i][1])
+                        {
+                            box_index[6]--;
+                        }
+                        if (computer[indwin[0]][0]==box8array[i][0] && computer[indwin[0]][1]==box8array[i][1])
+                        {
+                            box_index[7]--;
+                        }
+                        if (computer[indwin[0]][0]==box9array[i][0] && computer[indwin[0]][1]==box9array[i][1])
+                        {
+                            box_index[8]--;
+                        }
+                        if (computer[indwin[0]][0]==box10array[i][0] && computer[indwin[0]][1]==box10array[i][1])
+                        {
+                            box_index[9]--;
+                        }
+                        if (computer[indwin[0]][0]==box11array[i][0] && computer[indwin[0]][1]==box11array[i][1])
+                        {
+                            box_index[10]--;
+                        }
+                        if (computer[indwin[0]][0]==box12array[i][0] && computer[indwin[0]][1]==box12array[i][1])
+                        {
+                            box_index[11]--;
+                        }
+                        if (computer[indwin[0]][0]==box13array[i][0] && computer[indwin[0]][1]==box13array[i][1])
+                        {
+                            box_index[12]--;
+                        }
+                        if (computer[indwin[0]][0]==box14array[i][0] && computer[indwin[0]][1]==box14array[i][1])
+                        {
+                            box_index[13]--;
+                        }
+                        if (computer[indwin[0]][0]==box15array[i][0] && computer[indwin[0]][1]==box15array[i][1])
+                        {
+                            box_index[14]--;
+                        }
+                        if (computer[indwin[0]][0]==box16array[i][0] && computer[indwin[0]][1]==box16array[i][1])
+                        {
+                            box_index[15]--;
+                        }
 
+
+                    }
+}

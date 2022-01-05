@@ -479,18 +479,17 @@ while(1)
 
   {
 
-    //////////////INITIALIZING ALL VALUES WITH ZERO
+    /////////////////////////////////////////////////////////INITIALIZING ALL VALUES WITH ZERO/////////////////////////////////////////////////
     indwin[3]=0;indwin[2]=0;noOfWinsPerTurn=0;turnsOfPlayer1=0;turnsOfPlayer2=0;windifference=0;
     zeros(noOfBoxes,boxes);
-    ////////////ADDING THE TWO NEW POINTS
+
+    ////////////////////////////////////////////////////////ADDING THE TWO NEW POINTS////////////////////////////////////////////////////////////
     if (player%2==1 && row!=-1)
     {
         playerOne[indwin[0]][0]=row;
         playerOne[indwin[0]++][1]=col;
         playerTwo[indwin[1]][0]=-1;
         playerTwo[indwin[1]++][1]=0;
-
-        noOflines--;
     }
     else if (player%2==0 && row!=-1)
     {
@@ -498,12 +497,10 @@ while(1)
         playerTwo[indwin[1]++][1]=col;
         playerOne[indwin[0]][0]=-1;
         playerOne[indwin[0]++][1]=0;
-
-        noOflines--;
     }
 
 
-   //counting turns
+   //////////////////////////////////////////////////////////////counting turns//////////////////////////////////////////////////////////////////
    for (int i=0;i<maxturns;i++)
    {
        if ( (playerOne[i][0]%2==1 && playerOne[i][1]%2==0 || playerOne[i][0]%2==0 && playerOne[i][1]%2==1)&& playerOne[i][0]!=-1)
@@ -512,18 +509,17 @@ while(1)
         turnsOfPlayer2++;
    }
 
+//////////////////////////////////////////////////////////////GETTING THE VALUES OF BOXES AFTER EACH TURN///////////////////////////////////////////
+check_boxes(playerOne,playerTwo,noOfBoxes,boxes,maxi,maxj,indwin,maxturns);
 
-
-//////GETTING THE VALUES OF BOXES AFTER EACH TURN
-  check_boxes(playerOne,playerTwo,noOfBoxes,boxes,maxi,maxj,indwin,maxturns);
-////////////////////////////////////////////////////timeeee
-
+////////////////////////////////////////////////////TIME/////////////////////////////////////////////////////////////////////////////////
    int timehrsMinSec[3]={0,0,0};
    getTime(timeOfBeginning,timehrsMinSec);
 
-////////GETTING WHOSE TURN IT IS
+////////////////////////////////////////////////////////////GETTING WHOSE TURN IT IS/////////////////////////////////////////////////////////////
    player =whose_turn(maxturns,playerOne,playerTwo,player);
-///////GETTING WINDIFFERENCE
+
+////////////////////////////////////////////////////////////////GETTING WINDIFFERENCE/////////////////////////////////////////////////////////
     for (int i=0;i<maxturns;i++)
     {
         if (playerOne[i][0]==-1 && playerOne[i][1]==-1)
@@ -550,22 +546,26 @@ while(1)
         }
     }
 
-//////////////////////////////////
+//////////////////////////////////////////////////////////getting no of lines////////////////////////////////////////////////////////////////
+if (difficulty==2)
+    noOflines=12;
+else
+    noOflines=40;
 
-/////////PRINTING THE GRID
+for (int i=0;i<maxturns;i++)
+{
+    if (playerOne[i][0]%2==0 && playerOne[i][1]%2==1 || playerOne[i][0]%2==1 && playerOne[i][1]%2==0)
 
-   printing_grid(sizeOfGrid,maxturns ,playerOne,playerTwo,A);
-
-///////////////counting no of lines
-   noOflines=maxlines;
-   for (int i=0;i<maxturns;i++)
-   {
-       if (playerOne[i][0]%2==1 && playerOne[i][1]%2==0 || playerOne[i][0]==0 && playerOne[i][1]==1 )
         noOflines--;
-      if (playerTwo[i][0]%2==1 && playerTwo[i][1]%2==0 || playerTwo[i][0]==0 && playerTwo[i][1]==1 )
+    if (playerTwo[i][0]%2==0 && playerTwo[i][1]%2==1 || playerTwo[i][0]%2==1 && playerTwo[i][1]%2==0)
         noOflines--;
-   }
-//////////////////////////////////////////////
+}
+
+/////////////////////////////////////////////////////////////////PRINTING THE GRID////////////////////////////////////////////////////////////
+printing_grid(sizeOfGrid,maxturns ,playerOne,playerTwo,A);
+
+
+//////////////////////////////////////////////DID SOMEONE WIN////////////////////////////////////////////////////////////////////////////
    if (indwin[2]>noOfBoxes/2)
    {
        color_str(RED,"\n\n\t\t\t\t\t",name1);color(RED,"  WINS!");
@@ -600,7 +600,7 @@ while(1)
        color_int(YELLOW,"\n\n\tnumber of remaining lines:",noOflines);color_int(YELLOW,"\t\t\t   TIME: ",timehrsMinSec[0]);color_int(YELLOW,":",timehrsMinSec[1]);color_int(YELLOW,":",timehrsMinSec[2]);
        color(CYAN,"\n\n\tenter 1,1 for undo\t 2,2 for redo\t3,3 for save\t4,4 for main menu\t1,1 for clear");
 
-//////////////choose row and colum////////////////
+/////////////////////////////////////////////////////choose row and col/////////////////////////////////////////////////////////////////////////////
    if (player%2==1)
    {
 
@@ -623,8 +623,8 @@ while(1)
    }
 
 
-////////////////////////////
-////////////Undo////////////
+
+//////////////////////////////////////////////////////////////////////////////UNDO//////////////////////////////////////////////////
    if (row==1 && col==1)
    {
        if(noOflines==maxlines)
@@ -633,7 +633,7 @@ while(1)
            row=-1;
        }
        else{
-       noOflines++;
+
 
        if (windifference==0)
        {
@@ -676,7 +676,7 @@ while(1)
 
    }
    }
-//////Redo///////
+////////////////////////////////////////////////////////////////REDO//////////////////////////////////////////////////////////////////
   else if (row==2 && col==2)
    {
        row=-1;
@@ -707,7 +707,6 @@ while(1)
                 undo1array[indexOfUndo1][1]=-1;
                 undo2array[indexOfUndo1][0]=-1;
                 undo2array[indexOfUndo1][1]=-1;
-                noOflines--;
                 indwin[0]++;indwin[1]++;
                 }
 
