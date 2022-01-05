@@ -178,13 +178,13 @@ void continue_fn(FILE *file,int m,int player1[m][2],int player2[m][2])
 }
 
 
-void check_boxes(int player1[40][2],int player2[40][2],int noOfboxes,int boxes[noOfboxes],int maxi, int indwin[4],int maxturns)
+void check_boxes(int player1[40][2],int player2[40][2],int noOfboxes,int boxes[noOfboxes],int maxi,int maxj, int indwin[4],int maxturns)
 {  int k=0,box=0,colwin=2,rowwin=2,i,j,M,found1=0,found2=0;
     while(k<maxturns && (player1[k][0]!=-1 || player1[k][0]!=-1 || player2[k][0]!=-1 || player2[k][0]!=-1))
     {   rowwin=2; box=0;
         for ( i=0;i<maxi;i+=2)
         {   colwin=2;
-            for( j=0;j<maxi;j+=2)
+            for( j=0;j<maxj;j+=2)
             {
                 if(i<player1[k][0] && player1[k][0]<(i+4) && j<player1[k][1] && player1[k][1]<(j+4)  || i<player2[k][0] && player2[k][0]<(i+4) && j<player2[k][1] && player2[k][1]<(j+4) )
                 {
@@ -398,5 +398,5 @@ struct game
     }
     system(cls);
     menu();
-}
-*/
+}*/
+
