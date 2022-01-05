@@ -12,8 +12,8 @@ int main()
 {
 
 //initializing_structs();
-printing_top11_file();
-reading_structs_at_beginning();
+//printing_top11_file();
+//reading_structs_at_beginning();
 
     //printf ("%d\n",firstplace.score);
     menu();

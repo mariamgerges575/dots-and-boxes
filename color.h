@@ -100,7 +100,7 @@ void twoplayersNames(int x)
 void GetName (char p1[10])
 {
     color(RED,"\n\n\n\n\n\n\t ENTER THE NAME OF THE PLAYER:");
-    printf(RED);fgets(p1,10,stdin);printf(RESET);
+    printf(RED);gets(p1);printf(RESET);
     system("cls");
 }
 

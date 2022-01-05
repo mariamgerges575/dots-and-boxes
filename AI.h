@@ -49,7 +49,7 @@ int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=ma
     int computer[maxturns][2];negative_one(computer,maxturns);
     time_t timeOfBeginning=time(0);
     char r[10],c[10];
-    long int oldTime=60;
+    long int oldTime=0;
     if(continuefn==1)
     {
         FILE *file1=fopen("file1.txt","r");FILE *file2=fopen("file2.txt","r");FILE *file3=fopen("file3.txt","r");
@@ -102,7 +102,6 @@ while(1)
 
    int timehrsMinSec[3]={0,0,0};
    timer=getTime(timeOfBeginning,timehrsMinSec,oldTime);
-   printf("\n timer %ld \n",timer);
 
 ////////gwtting whose turn/////////////////
      player =whose_turn(maxturns,playerOne,computer,player);

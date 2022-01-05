@@ -78,7 +78,7 @@ void continue_fn(FILE *file,int maxturns,int player1[maxturns][2],int player2[ma
 
 }
 void pre_continue()
-{
+{   char name[10],name1[10],name2[10];
     int y=choose_file(); int oneOrtwo ,difficulty;
     FILE *file1=fopen("file1.txt","r");FILE *file2=fopen("file2.txt","r");FILE *file3=fopen("file3.txt","r");
     switch (y)
@@ -96,19 +96,19 @@ void pre_continue()
     fclose(file1);fclose(file2);fclose(file3);
     if (oneOrtwo==1 && difficulty==2)
     {
-        oneplayerx3(" ",2,1,y);
+        oneplayerx3(name,2,1,y);
     }
     else if(oneOrtwo==1 && difficulty==3)
     {
-        oneplayerx3(" ",3,1,y);
+        oneplayerx3(name,3,1,y);
     }
     else if(oneOrtwo==2 && difficulty==2)
     {
-        twoplayers(" "," ",2,1,y);
+        twoplayers(name1,name2,2,1,y);
     }
      else if(oneOrtwo==2 && difficulty==3)
     {
-        twoplayers(" "," ",3,1,y);
+        twoplayers(name1,name2,3,1,y);
     }
 }
 struct leaderboard
@@ -158,7 +158,7 @@ void printing_top11_file()
     printf("\n %d",ranks[1].score);
     printf("\n %s",ranks[1].name);*/
 }
-void reading_structs_at_beginning ()
+/*void reading_structs_at_beginning ()
 {
     scorespreadsheet=fopen("scorespreadsheet.txt","r");
     for (int i=0;i<10;i++)
@@ -166,7 +166,7 @@ void reading_structs_at_beginning ()
         fscanf(scorespreadsheet,"%d ",&ranks[1].score);
         fscanf(scorespreadsheet,"%s ",ranks[1].name);
     }
-}
+}*/
 /*void save_scores (int score,char name[10])
 {
     s++;
