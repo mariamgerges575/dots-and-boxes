@@ -86,6 +86,7 @@ while(1)
         playerOne[indwin[0]++][1]=0;
         NoOfLines--;
     }
+
     //counting turns
    for (int i=0;i<maxturns;i++)
    {

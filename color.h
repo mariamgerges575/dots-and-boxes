@@ -359,7 +359,6 @@ struct game
     int noOfPLayers;
     int name1;
     int name2;
-
 };
 /*void saveClicked (char arrayOfPlayerOne[][],char arrayOfplayerTwo[],int timer,int difficulty,int noOfPLayers,int name_1,int name_2)
 {

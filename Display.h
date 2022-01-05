@@ -56,6 +56,7 @@ else if (file.difficulty==3)
      maxi=7;
      maxturns=60; maxlines=40;
 }
+
 char name1[]=file.name1;
 char name2[]=file.name2;
 
@@ -64,7 +65,7 @@ char name2[]=file.name2;
 int playerOne[maxturns][2]=file.playerOne;
 int playerTwo[maxturns][2]=file.playerTwo;
 
-void playTwoPlayers( sizeOfGrid,noOfBoxes,maxi,maxturns,maxlines,name1,name2,playerOne,playerTwo,file.difficulty)
+/*void playTwoPlayers( sizeOfGrid,noOfBoxes,maxi,maxturns,maxlines,name1,name2,playerOne,playerTwo,file.difficulty)
 }
 void playTwoPlayers(int sizeOfGrid,int noOfBoxes,int maxi,int maxturns,int maxlines,char name1[],char name2[],int playerOne[][],int playerTwo[][], int difficulty)
 {
@@ -445,7 +446,7 @@ void difficulty_mode_ui(int p)
 
 void twoplayers(char name1[],char name2[],int difficulty)
 {
-     int sizeOfGrid,noOfBoxes,maxi,maxturns,maxlines;
+     int sizeOfGrid,noOfBoxes,maxi,maxj,maxturns,maxlines;
 if (difficulty==2)
 {
      sizeOfGrid=6;
@@ -460,6 +461,7 @@ else if (difficulty==3)
      maxi=7;
      maxturns=60; maxlines=40;
 }
+maxj=maxi;
 int bluewinsarray[12],redwinsarray[12],box1array[12],box2array[12],box3array[12],box4array[12];
 zeros(12,bluewinsarray);zeros(12,redwinsarray);zeros(12,box1array);zeros(12,box2array);zeros(12,box3array);zeros(12,box4array);
 
@@ -513,7 +515,7 @@ while(1)
 
 
 //////GETTING THE VALUES OF BOXES AFTER EACH TURN
-  check_boxes(playerOne,playerTwo,noOfBoxes,boxes,maxi,indwin,maxturns);
+  check_boxes(playerOne,playerTwo,noOfBoxes,boxes,maxi,maxj,indwin,maxturns);
 ////////////////////////////////////////////////////timeeee
 
    int timehrsMinSec[3]={0,0,0};
@@ -558,9 +560,9 @@ while(1)
    noOflines=maxlines;
    for (int i=0;i<maxturns;i++)
    {
-       if (playerOne[i][0]%2==1 && playerOne[i][1]%2==0 || playerOne[i][0]%2==0 && playerOne[i][1]%2==1 )
+       if (playerOne[i][0]%2==1 && playerOne[i][1]%2==0 || playerOne[i][0]==0 && playerOne[i][1]==1 )
         noOflines--;
-      if (playerTwo[i][0]%2==1 && playerTwo[i][1]%2==0 || playerTwo[i][0]%2==0 && playerTwo[i][1]%2==1 )
+      if (playerTwo[i][0]%2==1 && playerTwo[i][1]%2==0 || playerTwo[i][0]==0 && playerTwo[i][1]==1 )
         noOflines--;
    }
 //////////////////////////////////////////////
@@ -755,7 +757,6 @@ while(1)
    }
 
    }
-
  }
         color(RESET,"\n\n\tENTER ROW:");
         row=scan_int(r);
