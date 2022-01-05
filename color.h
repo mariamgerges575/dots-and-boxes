@@ -49,11 +49,11 @@ void GetNames (char p1[10],char p2[10])
     system("cls");
 
 }
-void getTime (int timeOfBeginning,int timehrsMinSec[])
+long int getTime (int timeOfBeginning,int timehrsMinSec[],long int oldTime)
 {
-    int timer;
+    long int timer;
     time_t timenow=time(0);
-    timer= timenow-timeOfBeginning;
+    timer= timenow-timeOfBeginning+oldTime;
     int hours=0,minutes=0,seconds=0;
     minutes=timer/60;
     seconds=timer-60*minutes;
@@ -66,19 +66,8 @@ void getTime (int timeOfBeginning,int timehrsMinSec[])
      timehrsMinSec[0]=hours;
      timehrsMinSec[1]=minutes;
      timehrsMinSec[2]=seconds;
+     return timer;
 
-}
-void twoplayersNames(int x)
-{char name1[10],name2[10];
- GetNames(name1,name2);
- twoplayers(name1,name2,x);
-  /* switch(x)
-   {
-    case(2):
-        twoplayersx3(name1,name2);
-    case(3):
-        twoplayersx5(name1,name2);
-    }*/
 }
 
 void negative_one(int A[][2],int m)
@@ -101,12 +90,17 @@ void oneplayerName(int x)
 {
     char name[10];
     GetName(name);
-    oneplayerx3(name,x);
+    oneplayerx3(name,x,0,0);
+}
+void twoplayersNames(int x)
+{char name1[10],name2[10];
+ GetNames(name1,name2);
+ twoplayers(name1,name2,x,0,0);
 }
 void GetName (char p1[10])
 {
     color(RED,"\n\n\n\n\n\n\t ENTER THE NAME OF THE PLAYER:");
-    printf(RED);gets(p1);printf(RESET);
+    printf(RED);fgets(p1,10,stdin);printf(RESET);
     system("cls");
 }
 
@@ -138,45 +132,6 @@ void initialize_grid(int m,char A[m][m])
     }
     return;
 }
-
-int choose_file(char c)
-{
-    char s[10]; int x;
-    color(PURPLE,"\n 1 for file 1 \n 2 for file 2 \n 3 for file 3");
-    printf("\nenter the number");x=scan_int(s);
-    return x;
-
-}
-
-void save (FILE *file,int m,int player1[m][2],int player2[m][2])
-{
-    file=fopen("file.txt","w");
-    for(int i=0;i<m;i++)
-    {
-        fprintf(file ,"%d %d ",player1[i][0],player1[i][1]);
-    }
-
-    for(int i=0;i<m;i++)
-    {
-        fprintf(file ,"%d %d ",player2[i][0],player2[i][1]);
-    }
-    fclose(file);
-
-}
-void continue_fn(FILE *file,int m,int player1[m][2],int player2[m][2])
-{
-    file=fopen("file.txt","r");
-    for(int i=0;i<m;i++)
-    {
-        fscanf(file ,"%d %d ",&player1[i][0],&player1[i][1]);
-    }
-    for(int i=0;i<m;i++)
-    {
-        fscanf(file ,"%d %d ",&player2[i][0],&player2[i][1]);
-    }
-    fclose(file);
-}
-
 
 void check_boxes(int player1[40][2],int player2[40][2],int noOfboxes,int boxes[noOfboxes],int maxi,int maxj, int indwin[4],int maxturns)
 {  int k=0,box=0,colwin=2,rowwin=2,i,j,M,found1=0,found2=0;
@@ -210,7 +165,6 @@ void check_boxes(int player1[40][2],int player2[40][2],int noOfboxes,int boxes[n
                                player2[indwin[1]][0]=-1;
                                player2[indwin[1]++][1]=0;
                             }
-
 
                         indwin[2]++;
                         }

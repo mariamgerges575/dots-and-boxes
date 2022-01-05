@@ -1,6 +1,6 @@
-void oneplayerx3(char name[],int difficulty,int continuefn)
+void oneplayerx3(char name[],int difficulty,int continuefn, int file_number)
 {
-int sizeOfGrid,noOfBoxes,turns,maxi,maxturns,maxlines,maxj,boxwin;
+int sizeOfGrid,noOfBoxes,turns,maxi,maxturns,maxlines,maxj,boxwin,y;
 if (difficulty==2)
 {
      sizeOfGrid=6;
@@ -25,7 +25,7 @@ else if (difficulty==3)
 int undo1array[maxturns][2];negative_one(undo1array,maxturns);
 int undo2array[maxturns][2];negative_one(undo2array,maxturns);
 char A[sizeOfGrid][sizeOfGrid]; initialize_grid(sizeOfGrid,A);
-int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=maxlines,undo=0,indexOfUndo1=0,windifference=0,N=0,x=0,redo=1,timer=0;
+int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=maxlines,undo=0,indexOfUndo1=0,windifference=0,N=0,x=0,redo=1; long int timer=0;
     int box1array[4][2]={{1,2},{2,1},{2,3},{3,2}};
     int box2array[4][2]={{1,4},{2,5},{2,3},{3,4}};
     int box3array[4][2]={{1,6},{2,5},{2,7},{3,6}};
@@ -45,52 +45,21 @@ int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=ma
     int boxes[noOfBoxes]; zeros(noOfBoxes,boxes);
     int box_index[noOfBoxes]; zeros(noOfBoxes,box_index); int indwin[4]; zeros(4,indwin);
     int box=-1 ;
-    int playerOne[maxturns][2];int computer[maxturns][2];
-   /* if(continuefn==1)
-    {
-        FILE *file=open("file.txt","r");
-        continue_fn(file,maxturns,playerOne,computer);
-        close(file);
-    }
-    else{*/
-        negative_one(playerOne,maxturns);
-        negative_one(computer,maxturns);
-
+    int playerOne[maxturns][2];negative_one(playerOne,maxturns);
+    int computer[maxturns][2];negative_one(computer,maxturns);
     time_t timeOfBeginning=time(0);
     char r[10],c[10];
+    long int oldTime=60;
+    if(continuefn==1)
+    {
+        FILE *file1=fopen("file1.txt","r");FILE *file2=fopen("file2.txt","r");FILE *file3=fopen("file3.txt","r");
+        opening_files(file_number,file1,file2,file3,maxturns,playerOne,computer,indwin,name,"computer",oldTime);
+        close(file1);close(file2);close(file3);
+    }
 while(1)
 
-  {
-printf("playerone\n");
-  for (int i=0;i<maxturns;i++){
-    for (int j=0;j<2;j++){
-        printf("%d ",playerOne[i][j]);
-    }
-    printf("\n");
-   }
-   printf("computer\n");
-   for (int i=0;i<maxturns;i++){
-    for (int j=0;j<2;j++){
-        printf("%d ",computer[i][j]);
-    }
-    printf("\n");
-   }
-   printf ("\n undo1\n");
-      for (int i=0;i<20;i++){
-    for (int j=0;j<2;j++){
-        printf("%d ",undo1array[i][j]);
-    }
-    printf("\n");
+{
 
-   }
-   printf ("\n undo2\n");
-   printf("\n");
-   for (int i=0;i<40;i++){
-    for (int j=0;j<2;j++){
-        printf("%d ",undo2array[i][j]);
-    }
-    printf("\n");
-   }
 //////////////////////////////////////////initializing all values with zero
   indwin[3]=0;indwin[2]=0,turnsOfPlayer1=0;turnsOfPlayer2=0;windifference=0;
   int boxes[noOfBoxes]; zeros(noOfBoxes,boxes);
@@ -128,29 +97,12 @@ printf("playerone\n");
 ////////////////boxes checking//////////////
 
    check_boxes(playerOne,computer,noOfBoxes,boxes,maxi,maxj,indwin,maxturns);
-for(int i=0;i<noOfBoxes;i++)
-{
-    printf("%d\t%d\n",boxes[i],box_index[i]);
-}
 
-printf("playerone\n");
-  for (int i=0;i<maxturns;i++){
-    for (int j=0;j<2;j++){
-        printf("%d ",playerOne[i][j]);
-    }
-    printf("\n");
-   }
-   printf("computer\n");
-   for (int i=0;i<maxturns;i++){
-    for (int j=0;j<2;j++){
-        printf("%d ",computer[i][j]);
-    }
-    printf("\n");
-   }
 ////////////////////////////////////////////////////timeeee
 
    int timehrsMinSec[3]={0,0,0};
-   getTime(timeOfBeginning,timehrsMinSec);
+   timer=getTime(timeOfBeginning,timehrsMinSec,oldTime);
+   printf("\n timer %ld \n",timer);
 
 ////////gwtting whose turn/////////////////
      player =whose_turn(maxturns,playerOne,computer,player);
@@ -576,11 +528,15 @@ else if (row==2 && col==2)
    }
 
    }}
+       }
+   }
 else if (row==3 && col==3)
 {
-    //FILE *file;
-    //save(file,maxturns,playerOne,computer);
-    //system("cls");
+    FILE *file1=fopen("file1.txt","w");FILE *file2=fopen("file2.txt","w");FILE *file3=fopen("file3.txt","w");
+    y=choose_file();
+    creating_files(2,difficulty,y,file1,file2,file3,maxturns,playerOne,computer,indwin,name,"computer",timer);
+    fclose(file1);fclose(file2);fclose(file3);
+    system("cls");
     menu();
 
 }
