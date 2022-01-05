@@ -361,7 +361,7 @@ struct game
     int name2;
 
 };
-void saveClicked (char arrayOfPlayerOne[][],char arrayOfplayerTwo[],int timer,int difficulty,int noOfPLayers,int name_1,int name_2)
+/*void saveClicked (char arrayOfPlayerOne[][],char arrayOfplayerTwo[],int timer,int difficulty,int noOfPLayers,int name_1,int name_2)
 {
     printf("choose one of  the following files\n\n1:file1\n2:file2\n3:file3\nyour choice:");
     char r[10];
@@ -399,4 +399,4 @@ void saveClicked (char arrayOfPlayerOne[][],char arrayOfplayerTwo[],int timer,in
     system(cls);
     menu();
 }
-
+*/

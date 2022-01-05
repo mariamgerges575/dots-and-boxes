@@ -127,7 +127,19 @@ while(1)
             }
         }
     }
+////////getting no of lines
+if (difficulty==2)
+    NoOfLines=12;
+else
+    NoOfLines=40;
 
+for (int i=0;i<maxturns;i++)
+{
+    if (playerOne[i][0]%2==0 && playerOne[i][1]%2==1 || playerOne[i][0]%2==1 && playerOne[i][1]%2==0)
+        NoOfLines--;
+    if (computer[i][0]%2==0 && computer[i][1]%2==1 || computer[i][0]%2==1 && computer[i][1]%2==0)
+        NoOfLines--;
+}
 ////////////PRINTING THE GRID
    printing_grid(sizeOfGrid,maxturns ,playerOne,computer,A);
 ///////////////////////////////////////////

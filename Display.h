@@ -16,7 +16,7 @@ void menu(){
     case 2:
         break;
     case 3:
-        files_screen();
+      //  files_screen();
         break;
     case 4:
         break;
@@ -24,7 +24,7 @@ void menu(){
         menu();
     }
 }
-void files_screen()
+/*void files_screen()
 {
     system("cls");
     printf("choose one of  the following files\n\n1:file1\n2:file2\n3:file3\nyour choice:");
@@ -376,7 +376,7 @@ while(1)
         }
  }
 
-}
+}*/
 void players_mode_ui()
 {
     color(YELLOW,"\n\n\n\t\t\t\t\t\t select mode \n\n\n\n\n");
@@ -558,9 +558,9 @@ while(1)
    noOflines=maxlines;
    for (int i=0;i<maxturns;i++)
    {
-       if (playerOne[i][0]%2==1 && playerOne[i][1]%2==0 || playerOne[i][0]==0 && playerOne[i][1]==1 )
+       if (playerOne[i][0]%2==1 && playerOne[i][1]%2==0 || playerOne[i][0]%2==0 && playerOne[i][1]%2==1 )
         noOflines--;
-      if (playerTwo[i][0]%2==1 && playerTwo[i][1]%2==0 || playerTwo[i][0]==0 && playerTwo[i][1]==1 )
+      if (playerTwo[i][0]%2==1 && playerTwo[i][1]%2==0 || playerTwo[i][0]%2==0 && playerTwo[i][1]%2==1 )
         noOflines--;
    }
 //////////////////////////////////////////////
