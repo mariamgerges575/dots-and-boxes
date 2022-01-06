@@ -221,7 +221,7 @@ printing_grid(sizeOfGrid,maxturns ,playerOne,playerTwo,A);
 
 
 //////////////////////////////////////////////DID SOMEONE WIN////////////////////////////////////////////////////////////////////////////
-   if (indwin[2]>noOfBoxes/2)
+   /*if (indwin[2]>noOfBoxes/2)
    {
        color_str(RED,"\n\n\t\t\t\t\t",name1);color(RED,"  WINS!");
        color(CYAN,"\n\n\tenter 0,0 for undo\t1,1 for redo\t2,2 for save\t3,3 for main menu");
@@ -245,6 +245,35 @@ printing_grid(sizeOfGrid,maxturns ,playerOne,playerTwo,A);
        winner=0;
 
        break;
+   }*/
+   if(noOflines==0)
+   {
+       if(indwin[2]>indwin[3])
+        {
+       color(RED,"\n\n\tFIRST PLAYER WINS!\n");
+       color(RESET,"\t\t\t\tSCORE: ");color_int(RED,"",indwin[2]);color_str(RED," for ",name1);color(RESET," TO ");color_int(BLUE,"",indwin[3]);color_str(BLUE," for ",name2);
+       color(CYAN,"\n\n\tenter 4,4 for main menu");
+       winner=1;
+       save_scores(indwin[2],name1);
+       break;
+       }
+       else if(indwin[2]<indwin[3])
+       {
+            color(BLUE,"\n\n\tSECOND PLAYER WINS!\n");
+            color(RESET,"\t\t\t\t\tSCORE: ");color_int(BLUE,"",indwin[3]);color_str(BLUE," for ",name2);color(RESET," TO ");color_int(RED,"",indwin[2]);color_str(RED," for ",name1);
+            color(CYAN,"\n\n\tenter 4,4 for main menu");
+            winner=1;
+            save_scores(indwin[3],name2);
+            break;
+
+       }
+       else if(indwin[2]==indwin[3])
+       {
+            printf ("\n\n\t tie");
+            color(CYAN,"\n\n\tenter 3,3 for main menu");
+            winner=0;
+            break;
+       }
    }
    else
    {

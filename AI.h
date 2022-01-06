@@ -125,7 +125,7 @@ for (int i=0;i<maxturns;i++)
 ////////////PRINTING THE GRID
    printing_grid(sizeOfGrid,maxturns ,playerOne,computer,A);
 ///////////////////////////////////////////
-   if (indwin[2]>boxwin)
+   /*if (indwin[2]>boxwin)
    {
        color(RED,"\n\n\tFIRST PLAYER WINS!");
        color(CYAN,"\n\n\tenter 4,4 for main menu");
@@ -151,6 +151,35 @@ for (int i=0;i<maxturns;i++)
        winner=0;
 
        break;
+   }*/
+   if(NoOfLines==0)
+   {
+       if(indwin[2]>indwin[3])
+        {
+       color(RED,"\n\n\tFIRST PLAYER WINS!\n");
+       color(RESET,"\t\t\t\tSCORE: ");color_int(RED,"",indwin[2]);color_str(RED," for ",name);color(RESET," TO ");color_int(BLUE,"",indwin[3]);color_str(BLUE," for ","computer");
+       color(CYAN,"\n\n\tenter 4,4 for main menu");
+       winner=1;
+       save_scores(indwin[2],name);
+       break;
+       }
+       else if(indwin[2]<indwin[3])
+       {
+            color(BLUE,"\n\n\tcomputer WINS!\n");
+            color(RESET,"\t\t\t\t\tSCORE: ");color_int(BLUE,"",indwin[3]);color_str(BLUE," for ","computer");color(RESET," TO ");color_int(RED,"",indwin[2]);color_str(RED," for ",name);
+            color(CYAN,"\n\n\tenter 4,4 for main menu");
+            winner=1;
+            save_scores(indwin[3],"computer");
+            break;
+
+       }
+       else if(indwin[2]==indwin[3])
+       {
+            printf ("\n\n\t tie");
+            color(CYAN,"\n\n\tenter 3,3 for main menu");
+            winner=0;
+            break;
+       }
    }
    else
    {
