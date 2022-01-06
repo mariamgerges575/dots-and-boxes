@@ -9,7 +9,6 @@ if (difficulty==2)
      maxj=7;
      maxturns=24;
      maxlines=12;
-     boxwin=2;
 
 }
 else if (difficulty==3)
@@ -20,7 +19,6 @@ else if (difficulty==3)
      maxj=7;
      maxturns=60;
      maxlines=40;
-     boxwin=8;
 }
 int undo1array[maxturns][2];negative_one(undo1array,maxturns);
 int undo2array[maxturns][2];negative_one(undo2array,maxturns);
@@ -53,7 +51,7 @@ int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=ma
     if(continuefn==1)
     {
         FILE *file1=fopen("file1.txt","r");FILE *file2=fopen("file2.txt","r");FILE *file3=fopen("file3.txt","r");
-        opening_files(file_number,file1,file2,file3,maxturns,playerOne,computer,indwin,name,"computer",oldTime);
+        opening_files(file_number,file1,file2,file3,maxturns,playerOne,computer,indwin,name,"computer",oldTime,noOfBoxes,box_index);
         close(file1);close(file2);close(file3);
     }
 while(1)
@@ -559,14 +557,12 @@ else if (row==2 && col==2)
        indexOfUndo1++;
    }
 
-   }}
-       }
-   }
+   }}}}
 else if (row==3 && col==3)
 {
     FILE *file1=fopen("file1.txt","w");FILE *file2=fopen("file2.txt","w");FILE *file3=fopen("file3.txt","w");
     y=choose_file();
-    creating_files(2,difficulty,y,file1,file2,file3,maxturns,playerOne,computer,indwin,name,"computer",timer);
+    creating_files(1,difficulty,y,file1,file2,file3,maxturns,playerOne,computer,indwin,name,"computer",timer,noOfBoxes,box_index);
     fclose(file1);fclose(file2);fclose(file3);
     system("cls");
     menu();

@@ -128,7 +128,7 @@ long int oldTime=0;
 if(continuefn==1)
 {
     FILE *file1=fopen("file1.txt","r");FILE *file2=fopen("file2.txt","r");FILE *file3=fopen("file3.txt","r");
-    opening_files(file_number,file1,file2,file3,maxturns,playerOne,playerTwo,indwin,name1,name2,oldTime);
+    opening_files(file_number,file1,file2,file3,maxturns,playerOne,playerTwo,indwin,name1,name2,oldTime,0,undo1array);
     close(file1);close(file2);close(file3);
 }
 while(1)
@@ -405,7 +405,7 @@ printing_grid(sizeOfGrid,maxturns ,playerOne,playerTwo,A);
    {
     FILE *file1=fopen("file1.txt","w");FILE *file2=fopen("file2.txt","w");FILE *file3=fopen("file3.txt","w");
     y=choose_file();
-    creating_files(2,difficulty,y,file1,file2,file3,maxturns,playerOne,playerTwo,indwin,name1,name2,timer);
+    creating_files(2,difficulty,y,file1,file2,file3,maxturns,playerOne,playerTwo,indwin,name1,name2,timer,0,undo1array);
     fclose(file1);fclose(file2);fclose(file3);
     system("cls");
     menu();

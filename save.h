@@ -5,22 +5,22 @@ int choose_file()
     return x;
 
 }
-void creating_files(int oneOrtwo,int difficulty,int x,FILE *file1,FILE *file2,FILE *file3,int maxturns,int player1[maxturns][2],int player2[maxturns][2],int indwin[4],char name1[10],char name2[10],long int oldTime)
+void creating_files(int oneOrtwo,int difficulty,int x,FILE *file1,FILE *file2,FILE *file3,int maxturns,int player1[maxturns][2],int player2[maxturns][2],int indwin[4],char name1[10],char name2[10],long int oldTime,int noOfboxes,int box_index[noOfboxes])
 {
     switch(x)
     {
        case 1:
-           save(oneOrtwo,difficulty,file1,maxturns,player1,player2,indwin,name1,name2,oldTime);
+           save(oneOrtwo,difficulty,file1,maxturns,player1,player2,indwin,name1,name2,oldTime,noOfboxes,box_index);
            break;
        case 2:
-           save(oneOrtwo,difficulty,file2,maxturns,player1,player2,indwin,name1,name2,oldTime);
+           save(oneOrtwo,difficulty,file2,maxturns,player1,player2,indwin,name1,name2,oldTime,noOfboxes,box_index);
            break;
         case 3:
-           save(oneOrtwo,difficulty,file3,maxturns,player1,player2,indwin,name1,name2,oldTime);
+           save(oneOrtwo,difficulty,file3,maxturns,player1,player2,indwin,name1,name2,oldTime,noOfboxes,box_index);
            break;
     }
 }
-void save (int oneOrtwo,int difficulty,FILE *file,int maxturns,int player1[maxturns][2],int player2[maxturns][2],int indwin[4],char name1[10],char name2[10],long int oldTime)
+void save (int oneOrtwo,int difficulty,FILE *file,int maxturns,int player1[maxturns][2],int player2[maxturns][2],int indwin[4],char name1[10],char name2[10],long int oldTime,int noOfboxes,int box_index[noOfboxes])
 {
     fprintf(file ,"%d ",oneOrtwo);
     fprintf(file ,"%d ",difficulty);
@@ -36,27 +36,32 @@ void save (int oneOrtwo,int difficulty,FILE *file,int maxturns,int player1[maxtu
     {
          fprintf(file ,"%d ",indwin[i]);
     }
+    for(int i=0 ;i<noOfboxes;i++)
+    {
+        fprintf(file ,"%d ",box_index[i]);
+    }
+    fprintf(file ,"%ld ",oldTime);
     fprintf(file ,"%s ",name1);
     fprintf(file ,"%s ",name2);
-    fprintf(file ,"%ld ",oldTime);
+
 }
 
-void opening_files(int x,FILE *file1,FILE *file2,FILE *file3,int maxturns,int player1[maxturns][2],int player2[maxturns][2],int indwin[4],char name1[10],char name2[10],long int oldTime)
+void opening_files(int x,FILE *file1,FILE *file2,FILE *file3,int maxturns,int player1[maxturns][2],int player2[maxturns][2],int indwin[4],char name1[10],char name2[10],long int oldTime,int noOfboxes,int box_index[noOfboxes])
 {
     switch(x)
     {
        case 1:
-           continue_fn(file1,maxturns,player1,player2,indwin,name1,name2,oldTime);
+           continue_fn(file1,maxturns,player1,player2,indwin,name1,name2,oldTime,noOfboxes,box_index);
            break;
        case 2:
-           continue_fn(file2,maxturns,player1,player2,indwin,name1,name2,oldTime);
+           continue_fn(file2,maxturns,player1,player2,indwin,name1,name2,oldTime,noOfboxes,box_index);
            break;
         case 3:
-           continue_fn(file3,maxturns,player1,player2,indwin,name1,name2,oldTime);
+           continue_fn(file3,maxturns,player1,player2,indwin,name1,name2,oldTime,noOfboxes,box_index);
            break;
     }
 }
-void continue_fn(FILE *file,int maxturns,int player1[maxturns][2],int player2[maxturns][2],int indwin[4],char name1[10],char name2[10],long int oldTime)
+void continue_fn(FILE *file,int maxturns,int player1[maxturns][2],int player2[maxturns][2],int indwin[4],char name1[10],char name2[10],long int oldTime,int noOfboxes,int box_index[noOfboxes])
 {   int x,y;
     fscanf(file ,"%d ",&x);
     fscanf(file ,"%d ",&y);
@@ -72,10 +77,14 @@ void continue_fn(FILE *file,int maxturns,int player1[maxturns][2],int player2[ma
     {
          fscanf(file ,"%d ",&indwin[i]);
     }
+    for(int i=0 ;i<noOfboxes;i++)
+    {
+        fscanf (file ,"%d ",&box_index[i]);
+    }
+    fscanf(file ,"%ld ",&oldTime);
     fscanf(file ,"%s ",name1);
     fscanf(file ,"%s ",name2);
-    fscanf(file ,"%ld ",&oldTime);
-    printf("old time %ld",oldTime);
+
 
 }
 void pre_continue()
