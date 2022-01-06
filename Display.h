@@ -16,6 +16,7 @@ void menu(){
         players_mode_ui();
         break;
     case 2:
+        show_top10();
         break;
     case 3:
         pre_continue();
@@ -254,6 +255,7 @@ printing_grid(sizeOfGrid,maxturns ,playerOne,playerTwo,A);
        color(RESET,"\t\t\t\tSCORE: ");color_int(RED,"",indwin[2]);color_str(RED," for ",name1);color(RESET," TO ");color_int(BLUE,"",indwin[3]);color_str(BLUE," for ",name2);
        color(CYAN,"\n\n\tenter 4,4 for main menu");
        winner=1;
+       printf("%d %s",indwin[2],name1);
        save_scores(indwin[2],name1);
        break;
        }

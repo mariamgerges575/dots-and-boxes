@@ -101,7 +101,9 @@ while(1)
 ////////////////////////////////////////////////////timeeee
 
    int timehrsMinSec[3]={0,0,0};
+   printf("\nold time %ld\n",oldTime);
    timer=getTime(timeOfBeginning,timehrsMinSec,oldTime);
+   printf("timer %ld\n",timer);
 
 ////////gwtting whose turn/////////////////
      player =whose_turn(maxturns,playerOne,computer,player);

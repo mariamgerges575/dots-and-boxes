@@ -75,6 +75,7 @@ void continue_fn(FILE *file,int maxturns,int player1[maxturns][2],int player2[ma
     fscanf(file ,"%s ",name1);
     fscanf(file ,"%s ",name2);
     fscanf(file ,"%ld ",&oldTime);
+    printf("old time %ld",oldTime);
 
 }
 void pre_continue()
@@ -113,10 +114,10 @@ void pre_continue()
 }
 struct leaderboard
 {
-    char name[10];
+    char name[6];
     int score;
 
-}ranks[11]={{" ",0},{" ",0},{" ",0},{" ",0},{" ",0},{" ",0},{" ",0},{" ",0},{" ",0},{" ",0},{" ",0}};
+}ranks[11];
 /*void initializing_structs()
 {
     for(int i=0;i<11;i++)
@@ -126,20 +127,37 @@ struct leaderboard
     }
 }*/
 
-void save_scores(int score,char name[10])
+void save_scores(int score,char name[6])
 {
     for (int i=0;i<10;i++)
     {
-        if (score>ranks[0].score)
+        //printf("score %d rank[%d].score %d",score,i,ranks[i].score);
+        if (score>ranks[i].score)
         {
+
             for (int j=10;j>i;j--)
             {
-                ranks[j]=ranks[j-1];
+                printf ("verified");
+                ranks[j] = ranks[j-1];
+
+
 
             }
+            ranks[i].score=score;
+            for (int k=0;k<6;k++)
+                {
+                    ranks[i].name[k]=name[k];
+                }
+            break;
 
         }
     }
+    for (int i=0;i<10;i++)
+    {
+        printf("\n rank[%d].score %d",i,ranks[i].score);
+        printf("\n rank[%d].name %s",i,ranks[i].name);
+    }
+
     printing_top11_file();
 
 }
@@ -158,15 +176,35 @@ void printing_top11_file()
     printf("\n %d",ranks[1].score);
     printf("\n %s",ranks[1].name);*/
 }
-/*void reading_structs_at_beginning ()
+void reading_structs_at_beginning ()
 {
-    scorespreadsheet=fopen("scorespreadsheet.txt","r");
+    FILE *scorespreadsheet=fopen("scorespreadsheet.txt","r");
     for (int i=0;i<10;i++)
     {
-        fscanf(scorespreadsheet,"%d ",&ranks[1].score);
-        fscanf(scorespreadsheet,"%s ",ranks[1].name);
+        fscanf(scorespreadsheet,"%d ",&ranks[i].score);
+        fscanf(scorespreadsheet,"%s ",ranks[i].name);
     }
-}*/
+}
+void show_top10()
+{
+    printf("\n\t\t\t\t\t TOP TEN");
+    for (int i=0;i<10;i++)
+    {
+        printf("\n\tname: %s\t\t score:%d",ranks[i].name,ranks[i].score);
+    }
+    color(PURPLE,"\n\n\n\t\t enter any no to return to main menu\n\n");
+    char s [10];int x;
+    x=scan_int(s);
+   system("cls");
+    switch(x)
+    {
+     case 1:
+        menu();
+        break;
+     default:
+        menu();}
+
+}
 /*void save_scores (int score,char name[10])
 {
     s++;

@@ -53,7 +53,9 @@ long int getTime (int timeOfBeginning,int timehrsMinSec[],long int oldTime)
 {
     long int timer;
     time_t timenow=time(0);
+    printf("old time %ld\n",oldTime);
     timer= timenow-timeOfBeginning+oldTime;
+    printf("timer %ld",timer);
     int hours=0,minutes=0,seconds=0;
     minutes=timer/60;
     seconds=timer-60*minutes;
