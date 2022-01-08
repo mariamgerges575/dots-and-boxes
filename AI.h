@@ -23,7 +23,7 @@ else if (difficulty==3)
 int undo1array[maxturns][2];negative_one(undo1array,maxturns);
 int undo2array[maxturns][2];negative_one(undo2array,maxturns);
 char A[sizeOfGrid][sizeOfGrid]; initialize_grid(sizeOfGrid,A);
-int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=maxlines,undo=0,indexOfUndo1=0,windifference=0,N=0,x=0,redo=1; long int timer=0;
+int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=maxlines,undo=0,indexOfUndo1=0,windifference=0,N=0,x=0,redo=1; long int timer;
     int box1array[4][2]={{1,2},{2,1},{2,3},{3,2}};
     int box2array[4][2]={{1,4},{2,5},{2,3},{3,4}};
     int box3array[4][2]={{1,6},{2,5},{2,7},{3,6}};
@@ -46,13 +46,14 @@ int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=ma
     int playerOne[maxturns][2];negative_one(playerOne,maxturns);
     int computer[maxturns][2];negative_one(computer,maxturns);
     time_t timeOfBeginning=time(0);
-    char r[10],c[10];
-    long int oldTime=0;
+    char r[10],c[10],s[10];
+    long int oldTime=0;long int oold[1]={0};
     if(continuefn==1)
     {
         FILE *file1=fopen("file1.txt","r");FILE *file2=fopen("file2.txt","r");FILE *file3=fopen("file3.txt","r");
-        opening_files(file_number,file1,file2,file3,maxturns,playerOne,computer,indwin,name,"computer",oldTime,noOfBoxes,box_index);
+        opening_files(file_number,file1,file2,file3,maxturns,playerOne,computer,indwin,name,s,oold,noOfBoxes,box_index);
         close(file1);close(file2);close(file3);
+        oldTime=oold[0];
     }
 while(1)
 

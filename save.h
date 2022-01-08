@@ -46,7 +46,7 @@ void save (int oneOrtwo,int difficulty,FILE *file,int maxturns,int player1[maxtu
 
 }
 
-void opening_files(int x,FILE *file1,FILE *file2,FILE *file3,int maxturns,int player1[maxturns][2],int player2[maxturns][2],int indwin[4],char name1[10],char name2[10],long int oldTime,int noOfboxes,int box_index[noOfboxes])
+void opening_files(int x,FILE *file1,FILE *file2,FILE *file3,int maxturns,int player1[maxturns][2],int player2[maxturns][2],int indwin[4],char name1[10],char name2[10],long int oldTime[1],int noOfboxes,int box_index[noOfboxes])
 {
     switch(x)
     {
@@ -61,7 +61,7 @@ void opening_files(int x,FILE *file1,FILE *file2,FILE *file3,int maxturns,int pl
            break;
     }
 }
-void continue_fn(FILE *file,int maxturns,int player1[maxturns][2],int player2[maxturns][2],int indwin[4],char name1[10],char name2[10],long int oldTime,int noOfboxes,int box_index[noOfboxes])
+void continue_fn(FILE *file,int maxturns,int player1[maxturns][2],int player2[maxturns][2],int indwin[4],char name1[10],char name2[10],long int oldTime[1],int noOfboxes,int box_index[noOfboxes])
 {   int x,y;
     fscanf(file ,"%d ",&x);
     fscanf(file ,"%d ",&y);
@@ -81,7 +81,7 @@ void continue_fn(FILE *file,int maxturns,int player1[maxturns][2],int player2[ma
     {
         fscanf (file ,"%d ",&box_index[i]);
     }
-    fscanf(file ,"%ld ",&oldTime);
+    fscanf(file ,"%ld ",&oldTime[0]);
     fscanf(file ,"%s ",name1);
     fscanf(file ,"%s ",name2);
 

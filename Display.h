@@ -121,16 +121,18 @@ int playerOne[maxturns][2];negative_one(playerOne,maxturns);
 int playerTwo[maxturns][2];negative_one(playerTwo,maxturns);
 char A[sizeOfGrid][sizeOfGrid]; initialize_grid(sizeOfGrid,A);
 int undo=0,indexOfUndo1=0,noOfWinsPerTurn=0,windifference=0,indexOfUndo2=0,N=0,x=0,redo=1,col=-1,row=-1,player=2,previousbluewins=0,previousredwins=0,winner,turnsOfPlayer1=0,turnsOfPlayer2=0,noOflines=maxlines;
-char r[10],c[10]; int boxes[noOfBoxes]; zeros(noOfBoxes,boxes); long int timer;
+char r[10],c[10]; int boxes[noOfBoxes]; zeros(noOfBoxes,boxes); int timer;
 time_t timeOfBeginning=time(0);
 int indwin[4]; zeros(4,indwin); //[0]=index1,[1]=index2,[2]=redwins,[3]=bluewins;
-long int oldTime=0;
+long int oldTime=0;long int oold[1]={0};
 if(continuefn==1)
 {
     FILE *file1=fopen("file1.txt","r");FILE *file2=fopen("file2.txt","r");FILE *file3=fopen("file3.txt","r");
-    opening_files(file_number,file1,file2,file3,maxturns,playerOne,playerTwo,indwin,name1,name2,oldTime,0,undo1array);
+    opening_files(file_number,file1,file2,file3,maxturns,playerOne,playerTwo,indwin,name1,name2,oold,0,undo1array);
     close(file1);close(file2);close(file3);
+    oldTime=oold[0];
 }
+
 while(1)
 
   {
