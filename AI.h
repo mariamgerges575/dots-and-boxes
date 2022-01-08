@@ -59,18 +59,18 @@ while(1)
 
 {
 ///////print invalid message //////////////
-if(invalid==1 && player%2==0)
+if(invalid==1 )
 {
     color(YELLOW,"Invalid Numbers");
     invalid=0;
 }
-if (no_undo==1 && player%2==0)
+if (no_undo==1 )
 {
     color(YELLOW,"no possible undo");
     no_undo=0;
 
 }
-if(no_redo==1 && player%2==0)
+if(no_redo==1 )
 {
     color(YELLOW,"no possible redo");
     no_redo=0;
@@ -453,9 +453,9 @@ else if (row==2 && col==2)
 
        if (undo==0)
        {
-       system("cls");
        row=-1;
        no_redo=1;
+       system("cls");
        continue;
 
        }
