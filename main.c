@@ -6,17 +6,15 @@
 #include "Display.h"
 #include "AI.h"
 #include "save.h"
+#include "twoplayers.h"
+#include "game_functions.h"
+
 
 
 int main()
 {
-
 //initializing_structs();
-//printing_top11_file();
 reading_structs_at_beginning();
-printf ("%d",ranks[0].score);
-
-    //printf ("%d\n",firstplace.score);
-    menu();
+menu();
 
 }

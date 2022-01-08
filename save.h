@@ -1,10 +1,4 @@
-int choose_file()
-{
-    char s[10]; int x;
-    color(PURPLE,"\n 1 for file 1 \n 2 for file 2 \n 3 for file 3");    printf("\nenter the number");x=scan_int(s);
-    return x;
 
-}
 void creating_files(int oneOrtwo,int difficulty,int x,FILE *file1,FILE *file2,FILE *file3,int maxturns,int player1[maxturns][2],int player2[maxturns][2],int indwin[4],char name1[10],char name2[10],long int oldTime,int noOfboxes,int box_index[noOfboxes])
 {
     switch(x)
@@ -84,11 +78,10 @@ void continue_fn(FILE *file,int maxturns,int player1[maxturns][2],int player2[ma
     fscanf(file ,"%ld ",&oldTime[0]);
     fscanf(file ,"%s ",name1);
     fscanf(file ,"%s ",name2);
-
-
 }
 void pre_continue()
 {   char name[10],name1[10],name2[10];
+
     int y=choose_file(); int oneOrtwo ,difficulty;
     FILE *file1=fopen("file1.txt","r");FILE *file2=fopen("file2.txt","r");FILE *file3=fopen("file3.txt","r");
     switch (y)
@@ -102,6 +95,13 @@ void pre_continue()
       case 3 :
         fscanf(file3,"%d %d ",&oneOrtwo,&difficulty);
         break;
+      case 4:
+          system("cls");menu();
+      case 5:
+        return 0;
+      default:
+        pre_continue();
+
     }
     fclose(file1);fclose(file2);fclose(file3);
     if (oneOrtwo==1 && difficulty==2)
@@ -121,20 +121,14 @@ void pre_continue()
         twoplayers(name1,name2,3,1,y);
     }
 }
+
+
 struct leaderboard
 {
     char name[6];
     int score;
 
 }ranks[11];
-/*void initializing_structs()
-{
-    for(int i=0;i<11;i++)
-    {
-        ranks[i].name=" ";
-        ranks[i].score=0;
-    }
-}*/
 
 void save_scores(int score,char name[6])
 {
@@ -179,11 +173,6 @@ void printing_top11_file()
         fprintf(scorespreadsheet,"%s ",ranks[i].name);
     }
     fclose(scorespreadsheet);
-    /*scorespreadsheet=fopen("scorespreadsheet.txt","r");
-    fscanf(scorespreadsheet,"%d ",&ranks[1].score);
-    fscanf(scorespreadsheet,"%s ",ranks[1].name);
-    printf("\n %d",ranks[1].score);
-    printf("\n %s",ranks[1].name);*/
 }
 void reading_structs_at_beginning ()
 {
@@ -214,22 +203,3 @@ void show_top10()
         menu();}
 
 }
-/*void save_scores (int score,char name[10])
-{
-    s++;
-    FILE *scorespreadsheet=fopen("scorespreadsheet.txt","a");
-    fprintf(scorespreadsheet,"%d ",score);
-    fprintf(scorespreadsheet,"%s ",name);
-    fclose(scorespreadsheet);
-}*/
-/*void Read_scores()
-{
-    for (int i=0;i<s;i++)
-    {
-        FILE *scorespreadsheet=fopen("scorespreadsheet.txt","a");
-        fscanf(scorespreadsheet,"%d ",&ranks[i].score);
-        fscanf(scorespreadsheet,"%s ",ranks[i].name);
-
-    }
-}*/
-

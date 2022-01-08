@@ -11,7 +11,7 @@
 
 1640280072 c:\users\mariam\desktop\project1\display.h
 
-1641455162 source:c:\users\mariam\desktop\dots-and-boxes\main.c
+1641654636 source:c:\users\mariam\desktop\dots-and-boxes\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -20,12 +20,14 @@
 	"Display.h"
 	"AI.h"
 	"save.h"
+	"twoplayers.h"
+	"game_functions.h"
 
-1641455162 c:\users\mariam\desktop\dots-and-boxes\color.h
+1641651777 c:\users\mariam\desktop\dots-and-boxes\color.h
 	<stdio.h>
 	<stdlib.h>
 
-1641629986 c:\users\mariam\desktop\dots-and-boxes\display.h
+1641641502 c:\users\mariam\desktop\dots-and-boxes\display.h
 
 1641435255 source:c:\users\samni\desktop\dots-and-boxes\main.c
 	<stdio.h>
@@ -43,11 +45,15 @@
 
 1641434126 c:\users\samni\desktop\dots-and-boxes\display.h
 
-1641630566 c:\users\mariam\desktop\dots-and-boxes\ai.h
+1641655999 c:\users\mariam\desktop\dots-and-boxes\ai.h
 
 1641430787 c:\users\samni\desktop\dots-and-boxes\ai.h
 
-1641630484 c:\users\mariam\desktop\dots-and-boxes\save.h
+1641641502 c:\users\mariam\desktop\dots-and-boxes\save.h
 
 1641435462 c:\users\samni\desktop\dots-and-boxes\save.h
+
+1641655999 c:\users\mariam\desktop\dots-and-boxes\twoplayers.h
+
+1641655103 c:\users\mariam\desktop\dots-and-boxes\game_functions.h
 

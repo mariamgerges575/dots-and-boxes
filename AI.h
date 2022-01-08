@@ -1,5 +1,6 @@
 void oneplayerx3(char name[],int difficulty,int continuefn, int file_number)
 {
+//////////////////////////////initialization//////////////////////////////////////
 int sizeOfGrid,noOfBoxes,turns,maxi,maxturns,maxlines,maxj,boxwin,y;
 if (difficulty==2)
 {
@@ -9,7 +10,6 @@ if (difficulty==2)
      maxj=7;
      maxturns=24;
      maxlines=12;
-
 }
 else if (difficulty==3)
 {
@@ -23,7 +23,7 @@ else if (difficulty==3)
 int undo1array[maxturns][2];negative_one(undo1array,maxturns);
 int undo2array[maxturns][2];negative_one(undo2array,maxturns);
 char A[sizeOfGrid][sizeOfGrid]; initialize_grid(sizeOfGrid,A);
-int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=maxlines,undo=0,indexOfUndo1=0,windifference=0,N=0,x=0,redo=1; long int timer;
+int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=maxlines,undo=0,indexOfUndo1=0,windifference=0,N=0,x=0,redo=1,invalid=0,no_undo=0,no_redo=0;
     int box1array[4][2]={{1,2},{2,1},{2,3},{3,2}};
     int box2array[4][2]={{1,4},{2,5},{2,3},{3,4}};
     int box3array[4][2]={{1,6},{2,5},{2,7},{3,6}};
@@ -45,9 +45,9 @@ int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=ma
     int box=-1 ;
     int playerOne[maxturns][2];negative_one(playerOne,maxturns);
     int computer[maxturns][2];negative_one(computer,maxturns);
-    time_t timeOfBeginning=time(0);
     char r[10],c[10],s[10];
-    long int oldTime=0;long int oold[1]={0};
+    int oldTime=0; int oold[1]={0};time_t timeOfBeginning=time(0); int timer=0;
+    //////////////////////////////////to continue previous game///////////////////////////////
     if(continuefn==1)
     {
         FILE *file1=fopen("file1.txt","r");FILE *file2=fopen("file2.txt","r");FILE *file3=fopen("file3.txt","r");
@@ -58,7 +58,24 @@ int col=-1,row=-1,winner,turnsOfPlayer1=0,player=2,turnsOfPlayer2=0,NoOfLines=ma
 while(1)
 
 {
+///////print invalid message //////////////
+if(invalid==1 && player%2==0)
+{
+    color(YELLOW,"Invalid Numbers");
+    invalid=0;
+}
+if (no_undo==1 && player%2==0)
+{
+    color(YELLOW,"no possible undo");
+    no_undo=0;
 
+}
+if(no_redo==1 && player%2==0)
+{
+    color(YELLOW,"no possible redo");
+    no_redo=0;
+
+}
 //////////////////////////////////////////initializing all values with zero
   indwin[3]=0;indwin[2]=0,turnsOfPlayer1=0;turnsOfPlayer2=0;windifference=0;
   int boxes[noOfBoxes]; zeros(noOfBoxes,boxes);
@@ -84,7 +101,7 @@ while(1)
         NoOfLines--;
     }
 
-    //counting turns
+    /////////////counting turns
    for (int i=0;i<maxturns;i++)
    {
        if ( (playerOne[i][0]%2==1 && playerOne[i][1]%2==0 || playerOne[i][0]%2==0 && playerOne[i][1]%2==1)&& playerOne[i][0]!=-1)
@@ -92,24 +109,22 @@ while(1)
        if ( (computer[i][0]%2==1 && computer[i][1]%2==0 || computer[i][0]%2==0 && computer[i][1]%2==1)&& computer[i][0]!=-1)
         turnsOfPlayer2++;
 
-   };
+   }
 ////////////////boxes checking//////////////
 
    check_boxes(playerOne,computer,noOfBoxes,boxes,maxi,maxj,indwin,maxturns);
 
-////////////////////////////////////////////////////timeeee
+//////////////////////////////////////////////////// time /////////////////
 
    int timehrsMinSec[3]={0,0,0};
-   printf("\nold time %ld\n",oldTime);
    timer=getTime(timeOfBeginning,timehrsMinSec,oldTime);
-   printf("timer %ld\n",timer);
 
 ////////gwtting whose turn/////////////////
      player =whose_turn(maxturns,playerOne,computer,player);
 
 
 
-////////getting no of lines
+////////getting no of lines/////////////////////////////////////
 if (difficulty==2)
     NoOfLines=12;
 else
@@ -123,36 +138,10 @@ for (int i=0;i<maxturns;i++)
     if (computer[i][0]%2==0 && computer[i][1]%2==1 || computer[i][0]%2==1 && computer[i][1]%2==0)
         NoOfLines--;
 }
-////////////PRINTING THE GRID
+////////////PRINTING THE GRID/////////////////////////////////////
    printing_grid(sizeOfGrid,maxturns ,playerOne,computer,A);
-///////////////////////////////////////////
-   /*if (indwin[2]>boxwin)
-   {
-       color(RED,"\n\n\tFIRST PLAYER WINS!");
-       color(CYAN,"\n\n\tenter 4,4 for main menu");
-       winner=1;
-       save_scores(indwin[2],name);
+////////////////////////////////////chick if SOMEONE WIN/////////////////////
 
-       break;
-
-   }
-   else if(indwin[3]>boxwin)
-   {
-       color(BLUE,"\n\n\tcomputer WINS!");
-       color(CYAN,"\n\n\tenter 4,4 for main menu");
-       winner=2;
-       save_scores(indwin[3],"computer");
-
-       break;
-   }
-   else if (indwin[2]==boxwin && indwin[3]==boxwin)
-   {
-       printf ("\n\n\t tie");
-       color(CYAN,"\n\n\tenter 3,3 for main menu");
-       winner=0;
-
-       break;
-   }*/
    if(NoOfLines==0)
    {
        if(indwin[2]>indwin[3])
@@ -201,7 +190,8 @@ for (int i=0;i<maxturns;i++)
             printf(RED); col=scan_int(c); printf(RESET);
 
    }
-
+///////////////////////computer choose his row and col///////////////////
+////////////////choose the best box to choose col and row form/////////////////
    else if (player%2==0)
    {
 
@@ -249,7 +239,7 @@ for (int i=0;i<maxturns;i++)
             }
         }
         }
-
+/////////////////////choose row and col from a choosen box//////////////////////////
     switch(box)
     {
         case 0:
@@ -336,12 +326,13 @@ for (int i=0;i<maxturns;i++)
     }
 
     }
-////////////////////
+////////////////////undo////////////////////////////
 if (row==1 && col==1)
 {   if(NoOfLines==maxlines)
     {
        printf("no possible undo");
        row=-1;
+       no_undo=1;
        system("cls");
     }
     else{
@@ -455,7 +446,7 @@ if (row==1 && col==1)
     }
 
 }
-///////REDO//////////
+//////////////////////////////////////REDO////////////////////////////////
 else if (row==2 && col==2)
 
    {
@@ -463,8 +454,8 @@ else if (row==2 && col==2)
        if (undo==0)
        {
        system("cls");
-
        row=-1;
+       no_redo=1;
        continue;
 
        }
@@ -559,30 +550,51 @@ else if (row==2 && col==2)
    }
 
    }}}}
+////////////////////////to save a game//////////////////
 else if (row==3 && col==3)
 {
     FILE *file1=fopen("file1.txt","w");FILE *file2=fopen("file2.txt","w");FILE *file3=fopen("file3.txt","w");
     y=choose_file();
+    if (y==4)
+    {
+        system("cls");menu();
+    }
+    else if (y==5)
+        return 0 ;
+    else if(x==1 || x==2 || x==3)
+    {system("cls");
     creating_files(1,difficulty,y,file1,file2,file3,maxturns,playerOne,computer,indwin,name,"computer",timer,noOfBoxes,box_index);
     fclose(file1);fclose(file2);fclose(file3);
     system("cls");
     menu();
+    }
+    else
+    {
+        row=-1;
+        system("cls");
+        invalid=1;
+        continue;
+    }
 
 }
+//////////////////to return to menu/////////////////////
 else if (row==4 && col ==4)
 {   system("cls");
     menu();
 }
+//////////////////check the validity of the col and row/////////////////////////
 else{
         negative_one(undo1array,maxturns);negative_one(undo2array,maxturns);indexOfUndo1=0;
-printf("%d",box);
 
    if(row%2==0 && col%2==0 || row%2==1 && col%2==1|| row<0 || row>sizeOfGrid-1 ||col<0||col>sizeOfGrid-1 )
    {
        printf("\n\tinvalid numbers \n");
        player--;
        row=-1;
+       invalid=1;
+
    }
+////////////////////////check is row and col are choosen before/////////////////////////
    for (int k=0;k<maxturns;k++)
            {
                if ( row==playerOne[k][0]&&col==playerOne[k][1] || row==computer[k][0]&&col==computer[k][1])
@@ -590,12 +602,16 @@ printf("%d",box);
                     printf("\n\tinvalid numbers \n");
                     player--;
                     row=-1;
+                    invalid=1;
                     break;
+
                }
            }
    system("cls");
-   }}
+   }
+   }
  }
+ ///////////////////////end of the game ////////////
             printf("\n\n\t>>>>first player\'s turn:\n");
             color(RED,"\n\n\tENTER ROW:");
             printf(RED); row=scan_int(r); printf(RESET);

@@ -34,9 +34,12 @@
 		<Unit filename="AI.h" />
 		<Unit filename="Display.h" />
 		<Unit filename="color.h" />
+		<Unit filename="game_functions.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="save.h" />
+		<Unit filename="twoplayers.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
