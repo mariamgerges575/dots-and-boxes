@@ -134,13 +134,12 @@ void save_scores(int score,char name[6])
 {
     for (int i=0;i<10;i++)
     {
-        //printf("score %d rank[%d].score %d",score,i,ranks[i].score);
         if (score>ranks[i].score)
         {
 
             for (int j=10;j>i;j--)
             {
-                printf ("verified");
+
                 ranks[j] = ranks[j-1];
 
 
@@ -155,11 +154,11 @@ void save_scores(int score,char name[6])
 
         }
     }
-    for (int i=0;i<10;i++)
+   /* for (int i=0;i<10;i++)
     {
         printf("\n rank[%d].score %d",i,ranks[i].score);
         printf("\n rank[%d].name %s",i,ranks[i].name);
-    }
+    }*/
 
     printing_top11_file();
 
