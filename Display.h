@@ -100,7 +100,7 @@ int choose_file()
 {
     char s[10]; int x;
     color(PURPLE,"\n 1 for file 1 \n 2 for file 2 \n 3 for file 3");
-    color(BLUE,"\n\t\t\t\t\tenter 4 got main Menu  or  5 for Exit");
+    color(BLUE,"\n\t\t\t\t\tenter 4 for main Menu  or  5 for Exit");
     printf("\n\nenter the number");x=scan_int(s);
 
 }

@@ -561,7 +561,7 @@ else if (row==3 && col==3)
     }
     else if (y==5)
         return 0 ;
-    else if(x==1 || x==2 || x==3)
+    else if(y==1 || y==2 || x==3)
     {system("cls");
     creating_files(1,difficulty,y,file1,file2,file3,maxturns,playerOne,computer,indwin,name,"computer",timer,noOfBoxes,box_index);
     fclose(file1);fclose(file2);fclose(file3);
