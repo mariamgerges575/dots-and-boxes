@@ -106,7 +106,6 @@ int choose_file()
 }
 void GetNames (char p1[10],char p2[10])
 {
-
     color(RED,"\n\n\n\n\n\n\t ENTER THE NAME OF THE FIRST PLAYER:");
     printf(RED);gets(p1);printf(RESET);
     color(BLUE,"\n\n\t ENTER THE NAME OF THE SECOND PLAYER:");
