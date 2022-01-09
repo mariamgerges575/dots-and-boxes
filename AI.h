@@ -166,7 +166,7 @@ for (int i=0;i<maxturns;i++)
        else if(indwin[2]==indwin[3])
        {
             printf ("\n\n\t tie");
-            color(CYAN,"\n\n\tenter 3,3 for main menu");
+            color(CYAN,"\n\n\tenter 4,4 for main menu");
             winner=0;
             break;
        }
@@ -612,13 +612,21 @@ else{
    }
  }
  ///////////////////////end of the game ////////////
-            printf("\n\n\t>>>>first player\'s turn:\n");
-            color(RED,"\n\n\tENTER ROW:");
-            printf(RED); row=scan_int(r); printf(RESET);
-            color(RED,"\tENTER COL:");
-            printf(RED); col=scan_int(c); printf(RESET);
-            if (row==4 && col ==4)
-            {   system("cls");
-                menu();
-            }
+
+while (1)
+ {
+      color(RESET,"\n\n\tENTER ROW:");
+        row=scan_int(r);
+        color(RESET,"\tENTER COL:");
+        col=scan_int(c);
+         if (row==4 && col==4)
+        {
+            system("cls");
+            menu();
+        }
+        else{
+            color(CYAN,"\n\n\tenter 4,4 for main menu");
+            continue;
+        }
+ }
  }

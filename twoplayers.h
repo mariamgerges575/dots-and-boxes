@@ -172,7 +172,7 @@ printing_grid(sizeOfGrid,maxturns ,playerOne,playerTwo,A);
        else if(indwin[2]==indwin[3])
        {
             printf ("\n\n\t tie");
-            color(CYAN,"\n\n\tenter 3,3 for main menu");
+            color(CYAN,"\n\n\tenter 4,4 for main menu");
             winner=0;
             break;
        }
@@ -367,7 +367,9 @@ printing_grid(sizeOfGrid,maxturns ,playerOne,playerTwo,A);
    }
  }
  ///////////////////////end o the game ////////////////////////
-        color(RESET,"\n\n\tENTER ROW:");
+ while (1)
+ {
+      color(RESET,"\n\n\tENTER ROW:");
         row=scan_int(r);
         color(RESET,"\tENTER COL:");
         col=scan_int(c);
@@ -376,6 +378,12 @@ printing_grid(sizeOfGrid,maxturns ,playerOne,playerTwo,A);
             system("cls");
             menu();
         }
+        else{
+            color(CYAN,"\n\n\tenter 4,4 for main menu");
+            continue;
+        }
+ }
+
  }
 
 
