@@ -1,2 +1,2 @@
 # dots-and-boxes
-#dots and boxes game in c 
+dots and boxes game in c 
