@@ -1,4 +1,6 @@
 # dots-and-boxes
+![image](https://user-images.githubusercontent.com/96488115/219979356-8aca6d7b-0a2b-4eac-ba2a-b9bc8dc1a146.png)
+
 ## describtion
 Dots and Boxes is a game for two players OR only one player vs computer, It starts with an empty grid of 
 dots, The players take turns in the game by putting a single line between the dots until the whole grid is 
